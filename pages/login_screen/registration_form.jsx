@@ -13,7 +13,6 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
-import RegistrationScreen from "./registration_screen";
 
 const RegistrationForm = () => {
   const navigation = useNavigation();
@@ -64,7 +63,7 @@ const RegistrationForm = () => {
           {errors.password && touched.password && (
             <Text style={styles.errorText}>{errors.password}</Text>
           )}
-          <TouchableOpacity onPress={handleSubmit} style={styles.touch}>
+          <TouchableOpacity onPress={() => navigation.navigate("IntroScreen1")} style={styles.touch}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Зарегистрироваться</Text>
             </View>

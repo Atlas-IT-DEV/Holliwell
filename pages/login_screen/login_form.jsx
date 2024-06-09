@@ -13,6 +13,8 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
+import RecoveryPasswordForm from "./recovery_password_form";
+import RecoveryPasswordScreen from "./recovery_password_screen";
 
 const LoginForm = () => {
   const navigation = useNavigation();
@@ -63,7 +65,9 @@ const LoginForm = () => {
           {errors.password && touched.password && (
             <Text style={styles.errorText}>{errors.password}</Text>
           )}
-          <TouchableOpacity onPress={() => navigation.navigate()}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(RecoveryPasswordScreen)}
+          >
             <Text style={styles.forgotPassword}>Забыли пароль?</Text>
           </TouchableOpacity>
 
