@@ -8,10 +8,11 @@ import {
   StyleSheet,
   Alert,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
-
+import { Link } from "@react-navigation/native";
 
 const LoginForm = () => {
   const loginValidationSchema = Yup.object().shape({
@@ -29,7 +30,6 @@ const LoginForm = () => {
       "Функция восстановления пароля пока не реализована"
     );
   };
-
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -76,6 +76,44 @@ const LoginForm = () => {
               <Text style={styles.buttonText}>ВОЙТИ</Text>
             </View>
           </TouchableOpacity>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              alignSelf: "center",
+            }}
+          >
+            <View
+              style={{
+                borderBottomColor: "#D9D9D9",
+                borderBottomWidth: 1,
+                width: 110,
+                marginTop: 30,
+              }}
+            ></View>
+            <Text style={styles.signWith}>Войдите с помощью</Text>
+            <View
+              style={{
+                borderBottomColor: "#D9D9D9",
+                borderBottomWidth: 1,
+                width: 110,
+                marginTop: 30,
+              }}
+            ></View>
+          </View>
+          <View style={styles.signBar}>
+            <Image source={require("./../../images/phone.png")} />
+            <Image source={require("./../../images/telegram.png")} />
+          </View>
+          <View style={styles.registrationLink}>
+            <Text>Нет профиля?</Text>
+            <TouchableOpacity>
+              <Text style={{ textDecorationLine: "underline" }}>
+                Зарегистрируйтесь здесь
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )}
     </Formik>
@@ -135,5 +173,24 @@ const styles = StyleSheet.create({
   },
   touch: {
     marginTop: 20,
+  },
+  signWith: {
+    marginTop: 30,
+    alignSelf: "center",
+    padding: 10,
+    fontSize: 14,
+    fontWeight: 100,
+  },
+  signBar: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 20,
+    marginTop: 20,
+  },
+  registrationLink: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 10,
+    marginTop: 30,
   },
 });

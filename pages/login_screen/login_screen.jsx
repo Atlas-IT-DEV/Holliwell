@@ -1,12 +1,23 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Dimensions,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import LoginForm from "./login_form";
 
 const LoginScreen = () => {
+  const screenHeight = Dimensions.get("window").height;
   return (
     <View style={styles.container}>
-      <Image source={require("./../../images/login_boobs.png")} />
-      <LoginForm/>
+      <Image
+        source={require("./../../images/login_boobs.png")}
+        style={{ height: screenHeight >= 902 ? 447 : 250 }}
+      />
+      <LoginForm />
     </View>
   );
 };
@@ -19,12 +30,10 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     display: "flex",
     alignContent: "center",
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start",
   },
   topImage: {
     width: "100%",
-    
-    
   },
 });
 
