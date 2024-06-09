@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/metro-runtime": "~3.2.1",
     "@react-native-community/netinfo": "^11.3.2",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
@@ -18,12 +19,11 @@
     "mobx": "^6.12.3",
     "mobx-react-lite": "^4.0.7",
     "react": "18.2.0",
-    "react-native": "0.74.1",
-    "react-navigation": "^5.0.0",
-    "yup": "^1.4.0",
-    "react-native-web": "~0.19.10",
     "react-dom": "18.2.0",
-    "@expo/metro-runtime": "~3.2.1"
+    "react-native": "0.74.1",
+    "react-native-web": "~0.19.10",
+    "react-navigation": "^5.0.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

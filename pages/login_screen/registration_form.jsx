@@ -13,8 +13,9 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
+import RegistrationScreen from "./registration_screen";
 
-const LoginForm = () => {
+const RegistrationForm = () => {
   const navigation = useNavigation();
   const loginValidationSchema = Yup.object().shape({
     email: Yup.string()
@@ -40,7 +41,7 @@ const LoginForm = () => {
         touched,
       }) => (
         <View style={styles.container}>
-          <Text style={styles.label}>ВОЙТИ В ПРОФИЛЬ</Text>
+          <Text style={styles.label}>Регистрация</Text>
           <TextInput
             style={styles.input}
             onChangeText={handleChange("email")}
@@ -63,13 +64,9 @@ const LoginForm = () => {
           {errors.password && touched.password && (
             <Text style={styles.errorText}>{errors.password}</Text>
           )}
-          <TouchableOpacity onPress={() => navigation.navigate()}>
-            <Text style={styles.forgotPassword}>Забыли пароль?</Text>
-          </TouchableOpacity>
-
           <TouchableOpacity onPress={handleSubmit} style={styles.touch}>
             <View style={styles.button}>
-              <Text style={styles.buttonText}>ВОЙТИ</Text>
+              <Text style={styles.buttonText}>Зарегистрироваться</Text>
             </View>
           </TouchableOpacity>
           <View
@@ -88,7 +85,7 @@ const LoginForm = () => {
                 marginTop: 30,
               }}
             ></View>
-            <Text style={styles.signWith}>Войдите с помощью</Text>
+            <Text style={styles.signWith}>Зарегистрируйтесь с помощью</Text>
             <View
               style={{
                 borderBottomColor: "#D9D9D9",
@@ -103,12 +100,12 @@ const LoginForm = () => {
             <Image source={require("./../../images/telegram.png")} />
           </View>
           <View style={styles.registrationLink}>
-            <Text>Нет профиля?</Text>
+            <Text>Уже есть профиль?</Text>
             <TouchableOpacity
-              onPress={() => navigation.navigate("RegistrationScreen")}
+              onPress={() => navigation.navigate("LoginScreen")}
             >
               <Text style={{ textDecorationLine: "underline" }}>
-                Зарегистрируйтесь здесь
+                Войдите здесь
               </Text>
             </TouchableOpacity>
           </View>
@@ -118,7 +115,7 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",

@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RootStore from "./store/root_store";
 import { RootStoreContext } from "./store/store_context";
 import LoginScreen from "./pages/login_screen/login_screen";
+import RegistrationScreen from "./pages/login_screen/registration_screen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,10 +15,13 @@ export default function App() {
           initialRouteName="LoginScreen"
           screenOptions={{ headerShown: false }}
         >
-          <Stack.Screen name="LoginScreen" component={LoginScreen}/>
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen
+            name="RegistrationScreen"
+            component={RegistrationScreen}
+          />
         </Stack.Navigator>
       </RootStoreContext.Provider>
     </NavigationContainer>
   );
 }
-

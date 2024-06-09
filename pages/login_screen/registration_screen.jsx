@@ -8,20 +8,29 @@ import {
   ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import LoginForm from "./login_form";
+import RegistrationForm from "./registration_form";
 
-const LoginScreen = () => {
+const RegistrationScreen = () => {
   const screenHeight = Dimensions.get("window").height;
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("./../../images/login_boobs.png")}
-        style={{ height: screenHeight >= 902 ? 447 : 230, width:"100%"}}
+        source={require("./../../images/woman.png")}
+        style={{ height: screenHeight >= 902 ? 447 : 230, width: "100%" }}
       >
-        <Text style={{fontSize: 30, marginTop:30, justifyContent: "center", alignSelf:"center", color: "white"}}>HOLIWELL</Text>
+        <Text
+          style={{
+            fontSize: 30,
+            marginTop: 30,
+            justifyContent: "center",
+            alignSelf: "center",
+            color: "white",
+          }}
+        >
+          HOLIWELL
+        </Text>
       </ImageBackground>
-
-      <LoginForm />
+      <RegistrationForm />
     </View>
   );
 };
@@ -41,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default RegistrationScreen;
