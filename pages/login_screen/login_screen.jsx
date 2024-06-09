@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import LoginForm from "./login_form";
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
   return (
     <View style={styles.container}>
@@ -18,6 +19,7 @@ const LoginScreen = () => {
         style={{ height: screenHeight >= 902 ? 447 : 250 }}
       />
       <LoginForm />
+      {/* <TouchableOpacity onPress={() => navigation('LoginScreen')}></TouchableOpacity> */}
     </View>
   );
 };
