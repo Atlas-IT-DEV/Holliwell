@@ -3,10 +3,12 @@ import { useNavigation } from "@react-navigation/native";
 import LoginForm from "./login_form";
 
 const LoginScreen = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <Image source={require("./../../images/login_boobs.png")} />
       <LoginForm/>
+      {/* <TouchableOpacity onPress={() => navigation('LoginScreen')}></TouchableOpacity> */}
     </View>
   );
 };
