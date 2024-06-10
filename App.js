@@ -8,6 +8,7 @@ import RecoveryPasswordScreen from "./pages/login_screen/recovery_password_scree
 import IntroScreen1 from "./pages/login_screen/intro_screen1";
 import IntroScreen2 from "./pages/login_screen/intro_screen2";
 import PrivacyPolicyScreen from "./pages/login_screen/privacy_policy_screen";
+import MainScreen from "./pages/login_screen/main_screen";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,10 @@ export default function App() {
           <Stack.Screen
             name="PrivacyPolicyScreen"
             component={PrivacyPolicyScreen}
+          />
+          <Stack.Screen
+            name="MainScreen"
+            component={MainScreen}
           />
         </Stack.Navigator>
       </RootStoreContext.Provider>

@@ -10,6 +10,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import MainScreen from "./main_screen";
 
 const PrivacyPolicyScreen = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -59,7 +60,13 @@ const PrivacyPolicyScreen = () => {
           </Text>
         </View>
         <TouchableOpacity
-          style={{ alignSelf: "center", marginTop: 30, marginBottom: 30,  borderRadius: 5, }}
+          onPress={() => navigation.navigate(MainScreen)}
+          style={{
+            alignSelf: "center",
+            marginTop: 30,
+            marginBottom: 30,
+            borderRadius: 5,
+          }}
         >
           <Text
             style={{
