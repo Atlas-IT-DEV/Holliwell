@@ -10,8 +10,9 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import BurgerMenu from "./burger_menu";
+
 import { useState } from "react";
+import BurgerMenu from "./burger_menu";
 
 const MainScreen = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -24,28 +25,9 @@ const MainScreen = () => {
           style={{ width: "100%", height: screenHeight }}
         >
           <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              gap: 90,
-              marginRight: 20,
-            }}
+            style={{marginTop: 20}}
           >
-            <Text
-              style={{
-                marginTop: 40,
-                alignSelf: "center",
-                fontSize: 30,
-                color: "white",
-              }}
-            >
-              HOLIWELL
-            </Text>
-            <TouchableOpacity
-              style={{ marginTop: 40, alignSelf: "center", width: 28 }}
-            >
-              <Image source={require("./../../images/bar_button.png")} />
-            </TouchableOpacity>
+            <BurgerMenu />
           </View>
           <Text
             style={{
@@ -163,4 +145,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainScreen({});
+export default MainScreen;
