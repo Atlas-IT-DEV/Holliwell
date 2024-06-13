@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     padding: 10,
     fontSize: 14,
-    fontWeight: 100,
+    fontWeight: '100',
   },
   signBar: {
     flexDirection: "row",

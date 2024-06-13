@@ -25,7 +25,7 @@ const PrivacyPolicyScreen = () => {
           <Text style={{ fontSize: 20, marginTop: 30 }}>
             1. Общие положения
           </Text>
-          <Text style={{ marginTop: 10, fontSize: 14, fontWeight: 300 }}>
+          <Text style={{ marginTop: 10, fontSize: 14, fontWeight: '300' }}>
             Настоящая политика обработки персональных данных составлена в
             соответствии с требованиями Федерального закона от 27.07.2006. №
             152-ФЗ «О персональных данных» (далее — Закон о персональных данных)
@@ -44,7 +44,7 @@ const PrivacyPolicyScreen = () => {
           <Text style={{ fontSize: 20, marginTop: 30 }}>
             2. Основные понятия, используемые в Политике
           </Text>
-          <Text style={{ marginTop: 10, fontSize: 14, fontWeight: 300 }}>
+          <Text style={{ marginTop: 10, fontSize: 14, fontWeight: '300' }}>
             2.1. Автоматизированная обработка персональных данных — обработка
             персональных данных с помощью средств вычислительной техники. {"\n"}{" "}
             {"\n"}2.2. Блокирование персональных данных — временное прекращение

@@ -19,16 +19,33 @@ const MainScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
+      <View
+        style={{
+          // marginTop: 20,
+          // width: "100%",
+          // display: "flex",
+          // alignContent: "center",
+          // flexDirection: "column",
+        }}
+      >
+        {/* <Text
+          style={{
+            fontSize: 30,
+            justifyContent: "center",
+            alignSelf: "center",
+            color: "white",
+            marginBottom: 60,
+          }}
+        >
+          HOLIWELL
+        </Text> */}
+        <BurgerMenu />
+      </View>
       <ScrollView>
         <ImageBackground
           source={require("./../../images/woman_main.png")}
-          style={{ width: "100%", height: screenHeight }}
+          style={{ width: "100%", height: 600 }}
         >
-          <View
-            style={{marginTop: 20}}
-          >
-            <BurgerMenu />
-          </View>
           <Text
             style={{
               fontSize: 40,
@@ -37,13 +54,13 @@ const MainScreen = () => {
               marginTop: 250,
             }}
           >
-            Медитируй
+            МЕДИТИРУЙ
           </Text>
           <Text
             style={{
               color: "white",
               fontSize: 20,
-              fontWeight: 300,
+              fontWeight: "300",
               marginRight: 44,
               marginLeft: 44,
               textAlign: "center",
@@ -55,7 +72,7 @@ const MainScreen = () => {
         </ImageBackground>
         <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={{ marginTop: 40, fontSize: 28 }}>
-            Добро пожаловать, {"\n"}Name
+          ДОБРО ПОЖАЛОВАТЬ, {"\n"}ТАТЬЯНА!
           </Text>
           <Text style={{ marginTop: 10, fontSize: 14 }}>
             Не ограничивай себя в движении, {"\n"}
@@ -72,15 +89,15 @@ const MainScreen = () => {
           ></View>
           <Image
             source={require("./../../images/train.png")}
-            style={{ marginTop: 40, width: "100%" }}
+            style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
           />
           <Image
             source={require("./../../images/listen.png")}
-            style={{ marginTop: 40, width: "100%" }}
+            style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
           />
           <Image
             source={require("./../../images/meditation.png")}
-            style={{ marginTop: 40, width: "100%" }}
+            style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
           />
           <View
             style={{
@@ -91,7 +108,7 @@ const MainScreen = () => {
             }}
           ></View>
           <Text style={{ fontSize: 28, marginTop: 40 }}>О HOLIWELL</Text>
-          <Text style={{ fontSize: 14, marginTop: 10, fontWeight: 300 }}>
+          <Text style={{ fontSize: 14, marginTop: 10, fontWeight: "300" }}>
             Равным образом дальнейшее развитие различных форм деятельности
             влечет за собой процесс внедрения и модернизации соответствующий
             условий активизации. Разнообразный и богатый опыт сложившаяся
