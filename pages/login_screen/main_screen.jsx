@@ -20,13 +20,15 @@ const MainScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View
-        style={{
-          // marginTop: 20,
-          // width: "100%",
-          // display: "flex",
-          // alignContent: "center",
-          // flexDirection: "column",
-        }}
+        style={
+          {
+            // marginTop: 20,
+            // width: "100%",
+            // display: "flex",
+            // alignContent: "center",
+            // flexDirection: "column",
+          }
+        }
       >
         {/* <Text
           style={{
@@ -72,7 +74,7 @@ const MainScreen = () => {
         </ImageBackground>
         <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={{ marginTop: 40, fontSize: 28 }}>
-          ДОБРО ПОЖАЛОВАТЬ, {"\n"}ТАТЬЯНА!
+            ДОБРО ПОЖАЛОВАТЬ, {"\n"}ТАТЬЯНА!
           </Text>
           <Text style={{ marginTop: 10, fontSize: 14 }}>
             Не ограничивай себя в движении, {"\n"}
@@ -123,8 +125,37 @@ const MainScreen = () => {
               marginTop: 40,
             }}
           ></View>
-          <Text style={{ fontSize: 28, marginTop: 40 }}>КОМАНДА</Text>
-          <ScrollView horizontal style={{ marginTop: 20, marginBottom: 30 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 40,
+            }}
+          >
+            <Text style={{ fontSize: 28 }}>КОМАНДА</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("TeamScreen")}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  gap: 5,
+                  alignItems: "center",
+                  borderBottomColor: "black",
+                  borderBottomWidth: 1.2,
+                }}
+              >
+                <Text style={{ fontSize: 14 }}>смотреть все</Text>
+                <Image
+                  source={require("./../../images/arrow_link.png")}
+                  style={{ width: 10, height: 10 }}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <ScrollView
+            horizontal
+            style={{ marginTop: 20, marginBottom: 30, paddingBottom: 10 }}
+          >
             <View style={{ gap: 20, flexDirection: "row" }}>
               <View style={{ gap: 10 }}>
                 <Image source={require("./../../images/team1.png")} />
