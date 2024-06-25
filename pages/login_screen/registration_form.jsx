@@ -170,7 +170,8 @@ const styles = StyleSheet.create({
   },
   signWith: {
     marginTop: 30,
-    alignSelf: "center",
+    textAlign: "center",
+    alignItems: "center",
     padding: 10,
     fontSize: 14,
     fontWeight: '100',
