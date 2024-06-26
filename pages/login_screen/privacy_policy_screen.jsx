@@ -18,14 +18,14 @@ const PrivacyPolicyScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View style={{ marginLeft: 20, marginRight: 20 }}>
-          <Text style={{ fontSize: 28 }}>
+        <View style={{ marginLeft: 20, marginRight: 20, marginTop: 20 }}>
+          <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
             Политика в отношении обработки персональных данных
           </Text>
-          <Text style={{ fontSize: 20, marginTop: 30 }}>
+          <Text style={{ fontSize: 20, marginTop: 30, fontFamily: "GeologicaRegular" }}>
             1. Общие положения
           </Text>
-          <Text style={{ marginTop: 10, fontSize: 14, fontWeight: '300' }}>
+          <Text style={{ marginTop: 10, fontSize: 14, fontFamily: "GeologicaLight" }}>
             Настоящая политика обработки персональных данных составлена в
             соответствии с требованиями Федерального закона от 27.07.2006. №
             152-ФЗ «О персональных данных» (далее — Закон о персональных данных)
@@ -41,10 +41,10 @@ const PrivacyPolicyScreen = () => {
             Оператор может получить о посетителях веб-сайта
             httpsː//thismywebsite·com.
           </Text>
-          <Text style={{ fontSize: 20, marginTop: 30 }}>
+          <Text style={{ fontSize: 20, marginTop: 30, fontFamily: "GeologicaRegular" }}>
             2. Основные понятия, используемые в Политике
           </Text>
-          <Text style={{ marginTop: 10, fontSize: 14, fontWeight: '300' }}>
+          <Text style={{ marginTop: 10, fontSize: 14, fontFamily: "GeologicaLight" }}>
             2.1. Автоматизированная обработка персональных данных — обработка
             персональных данных с помощью средств вычислительной техники. {"\n"}{" "}
             {"\n"}2.2. Блокирование персональных данных — временное прекращение
@@ -77,6 +77,7 @@ const PrivacyPolicyScreen = () => {
               paddingBottom: 12,
               paddingRight: 50,
               paddingLeft: 50,
+              fontFamily: "GeologicaRegular"
             }}
           >
             Принять
