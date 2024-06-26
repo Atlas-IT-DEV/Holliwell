@@ -9,12 +9,16 @@ import {
   Easing,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { useStores } from "../../store/store_context";
+import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 
 const BurgerMenu = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const animationValue = useState(new Animated.Value(0))[0];
+  const { pageStore } = useStores();
+  const navigation = useNavigation();
 
   const toggleMenu = () => {
     if (isMenuVisible) {
@@ -37,7 +41,7 @@ const BurgerMenu = () => {
 
   const menuHeight = animationValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, height ],
+    outputRange: [0, height],
   });
 
   return (
@@ -81,38 +85,146 @@ const BurgerMenu = () => {
               </Text>
             </TouchableOpacity>
             <View style={styles.menuLinks}>
-              <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center'}}>ТРЕНИРУЙСЯ</Text>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                >
+                  ТРЕНИРУЙСЯ
+                </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center'}}>ТРЕНИРУЙСЯ</Text>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                >
+                  ТРЕНИРУЙСЯ
+                </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center'}}>ТРЕНИРУЙСЯ</Text>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                >
+                  ТРЕНИРУЙСЯ
+                </Text>
               </TouchableOpacity>
             </View>
             <View style={styles.menuLinks}>
-              <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center'}}>ТРЕНИРУЙСЯ</Text>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                >
+                  ТРЕНИРУЙСЯ
+                </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center'}}>ТРЕНИРУЙСЯ</Text>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                >
+                  ТРЕНИРУЙСЯ
+                </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center'}}>ТРЕНИРУЙСЯ</Text>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                >
+                  ТРЕНИРУЙСЯ
+                </Text>
               </TouchableOpacity>
             </View>
             <View style={styles.menuLinks}>
-              <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center'}}>ТРЕНИРУЙСЯ</Text>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                >
+                  ТРЕНИРУЙСЯ
+                </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center'}}>ТРЕНИРУЙСЯ</Text>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                >
+                  ТРЕНИРУЙСЯ
+                </Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={{width:'100%', display:'flex', alignContent:'center', alignSelf:'center'}}>
-                  <Text style={{fontSize:20, color:'white', alignSelf:'center', marginTop:30}}>ВЫЙТИ</Text>
-              </TouchableOpacity>
+            <TouchableOpacity
+              style={{
+                width: "100%",
+                display: "flex",
+                alignContent: "center",
+                alignSelf: "center",
+              }}
+              onPress={() => {
+                pageStore.logout();
+                navigation.navigate("LoginScreen");
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: "white",
+                  alignSelf: "center",
+                  marginTop: 30,
+                }}
+              >
+                ВЫЙТИ
+              </Text>
+            </TouchableOpacity>
           </View>
         </Animated.View>
       )}
@@ -127,7 +239,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 99999,
-    
   },
   burgerButton: {
     position: "absolute",
@@ -137,7 +248,7 @@ const styles = StyleSheet.create({
   },
   burgerText: {
     fontSize: 30,
-    color:'white'
+    color: "white",
   },
   menuContainer: {
     position: "absolute",
@@ -174,12 +285,12 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 20,
-    width:230,
-    alignContent:'center',
-    alignItems:'center',
-    paddingVertical:30,
-    borderBottomColor:'white',
-    borderBottomWidth:1
+    width: 230,
+    alignContent: "center",
+    alignItems: "center",
+    paddingVertical: 30,
+    borderBottomColor: "white",
+    borderBottomWidth: 1,
   },
 });
 

@@ -10,13 +10,13 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
-import { useState } from "react";
+import { useStores } from "../../store/store_context";
 import BurgerMenu from "./burger_menu";
 
 const MainScreen = () => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
+  const { pageStore } = useStores();
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -74,7 +74,12 @@ const MainScreen = () => {
         </ImageBackground>
         <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={{ marginTop: 40, fontSize: 28 }}>
-            ДОБРО ПОЖАЛОВАТЬ, {"\n"}ТАТЬЯНА!
+            ДОБРО ПОЖАЛОВАТЬ
+            {pageStore.first_name != "" &&
+              pageStore.first_name != null &&
+              ","}{" "}
+            {"\n"}
+            {pageStore.first_name}
           </Text>
           <Text style={{ marginTop: 10, fontSize: 14 }}>
             Не ограничивай себя в движении, {"\n"}

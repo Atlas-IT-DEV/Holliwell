@@ -13,6 +13,7 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
+import { useStores } from "../../store/store_context";
 
 const RegistrationForm = () => {
   const navigation = useNavigation();
@@ -21,15 +22,29 @@ const RegistrationForm = () => {
       .email("Введите действительный email")
       .required("Email обязателен"),
     password: Yup.string()
-      .min(8, ({ min }) => `Пароль должен состоять минимум из ${min} символов`)
+      .min(6, ({ min }) => `Пароль должен состоять минимум из ${min} символов`)
       .required("Пароль обязателен"),
   });
+  const { pageStore } = useStores();
+  const register = async (values) => {
+    await pageStore.registerUser(values);
+    await pageStore.login(values)
+    pageStore.registered && navigation.navigate("IntroScreen1");
+  };
 
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{
+        email: "",
+        password: "",
+        is_active: true,
+        is_superuser: false,
+        is_verified: false,
+        first_name: "",
+        last_name: "",
+      }}
       validationSchema={loginValidationSchema}
-      onSubmit={(values) => Alert.alert(JSON.stringify(values))}
+      onSubmit={(values) => register(values)}
     >
       {({
         handleChange,
@@ -63,7 +78,7 @@ const RegistrationForm = () => {
           {errors.password && touched.password && (
             <Text style={styles.errorText}>{errors.password}</Text>
           )}
-          <TouchableOpacity onPress={() => navigation.navigate("IntroScreen1")} style={styles.touch}>
+          <TouchableOpacity onPress={() => handleSubmit()} style={styles.touch}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Зарегистрироваться</Text>
             </View>
@@ -174,7 +189,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     fontSize: 14,
-    fontWeight: '100',
+    fontWeight: "100",
   },
   signBar: {
     flexDirection: "row",

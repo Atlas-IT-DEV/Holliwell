@@ -13,8 +13,8 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
-import RecoveryPasswordForm from "./recovery_password_form";
 import RecoveryPasswordScreen from "./recovery_password_screen";
+import { useStores } from "../../store/store_context";
 
 const LoginForm = () => {
   const navigation = useNavigation();
@@ -23,15 +23,22 @@ const LoginForm = () => {
       .email("Введите действительный email")
       .required("Email обязателен"),
     password: Yup.string()
-      .min(8, ({ min }) => `Пароль должен состоять минимум из ${min} символов`)
+      .min(6, ({ min }) => `Пароль должен состоять минимум из ${min} символов`)
       .required("Пароль обязателен"),
   });
+  const { pageStore } = useStores();
+  const login = async (values) => {
+    await pageStore.login(values);
+    pageStore.registered && navigation.navigate("IntroScreen1");
+  };
 
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
       validationSchema={loginValidationSchema}
-      onSubmit={(values) => Alert.alert(JSON.stringify(values))}
+      onSubmit={(values) => {
+        login(values);
+      }}
     >
       {({
         handleChange,
@@ -181,7 +188,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     padding: 10,
     fontSize: 14,
-    fontWeight: '100',
+    fontWeight: "100",
   },
   signBar: {
     flexDirection: "row",
