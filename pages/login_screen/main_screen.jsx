@@ -41,23 +41,45 @@ const MainScreen = () => {
         >
           HOLIWELL
         </Text> */}
-        <BurgerMenu />
       </View>
+
       <ScrollView>
+        <BurgerMenu />
         <ImageBackground
           source={require("./../../images/woman_main.png")}
           style={{ width: "100%", height: 600 }}
         >
+          <View
+            style={{
+              marginTop: 30,
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 30,
+                color: "white",
+                textAlign: "center",
+                width: "100%",
+              }}
+            >
+              HOLIWELL
+            </Text>
+          </View>
           <Text
             style={{
               fontSize: 40,
               color: "white",
               alignSelf: "center",
-              marginTop: 250,
+              marginTop: 220,
+              fontFamily: "GeologicaMedium",
             }}
           >
             МЕДИТИРУЙ
           </Text>
+
           <Text
             style={{
               color: "white",
@@ -66,6 +88,7 @@ const MainScreen = () => {
               marginRight: 44,
               marginLeft: 44,
               textAlign: "center",
+              fontFamily: "GeologicaLight",
             }}
           >
             Отличный способ научиться сосредоточиться, снизить стресс и улучшить
@@ -73,7 +96,13 @@ const MainScreen = () => {
           </Text>
         </ImageBackground>
         <View style={{ marginLeft: 20, marginRight: 20 }}>
-          <Text style={{ marginTop: 40, fontSize: 28 }}>
+          <Text
+            style={{
+              marginTop: 40,
+              fontSize: 28,
+              fontFamily: "GeologicaRegular",
+            }}
+          >
             ДОБРО ПОЖАЛОВАТЬ
             {pageStore.first_name != "" &&
               pageStore.first_name != null &&
@@ -81,7 +110,13 @@ const MainScreen = () => {
             {"\n"}
             {pageStore.first_name}
           </Text>
-          <Text style={{ marginTop: 10, fontSize: 14 }}>
+          <Text
+            style={{
+              marginTop: 10,
+              fontSize: 14,
+              fontFamily: "GeologicaLight",
+            }}
+          >
             Не ограничивай себя в движении, {"\n"}
             {"\n"}В здоровом теле здоровый дух. Регулярная практика и позитивный
             настрой дадут тебе энергию для реализации твоей цели 🎯
@@ -117,8 +152,22 @@ const MainScreen = () => {
               marginTop: 40,
             }}
           ></View>
-          <Text style={{ fontSize: 28, marginTop: 40 }}>О HOLIWELL</Text>
-          <Text style={{ fontSize: 14, marginTop: 10, fontWeight: "300" }}>
+          <Text
+            style={{
+              fontSize: 28,
+              marginTop: 40,
+              fontFamily: "GeologicaRegular",
+            }}
+          >
+            О HOLIWELL
+          </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              marginTop: 10,
+              fontFamily: "GeologicaLight",
+            }}
+          >
             Равным образом дальнейшее развитие различных форм деятельности
             влечет за собой процесс внедрения и модернизации соответствующий
             условий активизации. Разнообразный и богатый опыт сложившаяся
@@ -140,7 +189,9 @@ const MainScreen = () => {
               marginTop: 40,
             }}
           >
-            <Text style={{ fontSize: 28 }}>КОМАНДА</Text>
+            <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
+              КОМАНДА
+            </Text>
             <TouchableOpacity onPress={() => navigation.navigate("TeamScreen")}>
               <View
                 style={{
@@ -151,7 +202,7 @@ const MainScreen = () => {
                   borderBottomWidth: 1.2,
                 }}
               >
-                <Text style={{ fontSize: 14 }}>смотреть все</Text>
+                <Text style={{ fontSize: 14, fontFamily: "GeologicaRegular" }}>смотреть все</Text>
                 <Image
                   source={require("./../../images/arrow_link.png")}
                   style={{ width: 10, height: 10 }}
