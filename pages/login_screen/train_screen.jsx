@@ -10,6 +10,8 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import CourseCard from "../../components/course_card";
 
 const TrainScreen = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -128,125 +130,8 @@ const TrainScreen = () => {
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-            </View>
-          </View>
-
-          <View style={{ marginTop: 20 }}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-            </View>
-          </View>
-
-          <View style={{ marginTop: 20 }}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-            </View>
-          </View>
-
-          <View style={{ marginTop: 20 }}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-            </View>
-          </View>
-
-          <View style={{ marginTop: 20 }}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-            </View>
-          </View>
-
-          <View style={{ marginTop: 20 }}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{ fontWeight: "bold" }}>
-                  Урок 1: Название урока
-                </Text>
-                <Text>Имя фамилия</Text>
-              </View>
+              <CourseCard />
+              <CourseCard />>
             </View>
           </View>
         </View>
