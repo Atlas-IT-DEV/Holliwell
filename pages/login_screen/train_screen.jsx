@@ -12,6 +12,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import CourseCard from "../../components/course_card";
+import CoursePackCard from "../../components/course_pack_card";
 
 const TrainScreen = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -143,6 +144,17 @@ const TrainScreen = () => {
             >
               <CourseCard />
               <CourseCard />
+            </View>
+            <View style={{ marginTop: 20 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <CoursePackCard />
+                <CoursePackCard />
+              </View>
             </View>
           </View>
         </View>
