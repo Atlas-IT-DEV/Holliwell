@@ -24,7 +24,7 @@ const TeamScreen = () => {
             position: "relative",
             marginLeft: 20,
             marginRight: 20,
-            marginTop: 10,
+            marginTop: 20,
           }}
         >
           <TouchableOpacity
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     display: "flex",
     justifyContent: "flex-start",
+    height:'100%'
   },
   topImage: {
     width: "100%",
