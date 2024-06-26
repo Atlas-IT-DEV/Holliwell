@@ -131,7 +131,7 @@ const TrainScreen = () => {
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <CourseCard />
-              <CourseCard />>
+              <CourseCard />
             </View>
           </View>
         </View>

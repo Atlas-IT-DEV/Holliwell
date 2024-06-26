@@ -5,6 +5,7 @@ const CourseCard = ({
   name = "слушай",
   description = "неплохой урок",
   uri = "http://legacy.reactjs.org/logo-og.png",
+  time = "22:40"
 }) => {
   return (
     <View style={{ minWidth: "45%" }}>
@@ -16,6 +17,11 @@ const CourseCard = ({
         Урок {number}: {name}
       </Text>
       <Text>{description}</Text>
+      <View style={{width: 53, height: 28, backgroundColor: "white", position: "absolute", left: 20, top: 79, justifyContent: "center", alignItems: "center"}}>
+        <Text>
+          {time}
+        </Text>
+      </View>
     </View>
   );
 };
