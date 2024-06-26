@@ -46,6 +46,7 @@ const TrainScreen = () => {
               textAlign: "center",
               position: "absolute",
               zIndex: -1,
+              fontFamily: "GeologicaRegular",
             }}
           >
             Тренируйся
@@ -86,6 +87,8 @@ const TrainScreen = () => {
                     paddingBottom: 10,
                     paddingLeft: 72,
                     paddingRight: 72,
+                    fontSize: 14,
+                    fontFamily: "GeologicaLight",
                   }}
                 >
                   Уроки
@@ -101,6 +104,8 @@ const TrainScreen = () => {
                     paddingBottom: 10,
                     paddingLeft: 72,
                     paddingRight: 72,
+                    fontSize: 14,
+                    fontFamily: "GeologicaLight",
                   }}
                 >
                   Курсы
@@ -124,7 +129,9 @@ const TrainScreen = () => {
               style={{ width: 20, height: 20 }}
               source={require("./../../images/filters.png")}
             />
-            <Text>Новое</Text>
+            <Text style={{ fontSize: 14, fontFamily: "GeologicaThin" }}>
+              Новое
+            </Text>
             <Image
               style={{ width: 20, height: 20 }}
               source={require("./../../images/arrow_down.png")}

@@ -39,6 +39,7 @@ const TeamScreen = () => {
           <Text
             style={{
               fontSize: 20,
+              fontFamily: "GeologicaRegular",
               width: "100%",
               top: 10,
               textAlign: "center",
