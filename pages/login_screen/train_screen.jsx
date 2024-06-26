@@ -71,38 +71,42 @@ const TrainScreen = () => {
               borderRadius: 3,
             }}
           >
-            <View
-              style={{
-                backgroundColor: "white",
-                justifyContent: "center",
-                borderRadius: 3,
-              }}
-            >
-              <Text
+            <TouchableOpacity>
+              <View
                 style={{
-                  textAlign: "center",
-                  paddingTop: 10,
-                  paddingBottom: 10,
-                  paddingLeft: 72,
-                  paddingRight: 72,
+                  backgroundColor: "white",
+                  justifyContent: "center",
+                  borderRadius: 3,
                 }}
               >
-                Уроки
-              </Text>
-            </View>
-            <View>
-              <Text
-                style={{
-                  textAlign: "center",
-                  paddingTop: 10,
-                  paddingBottom: 10,
-                  paddingLeft: 72,
-                  paddingRight: 72,
-                }}
-              >
-                Курсы
-              </Text>
-            </View>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    paddingLeft: 72,
+                    paddingRight: 72,
+                  }}
+                >
+                  Уроки
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    paddingLeft: 72,
+                    paddingRight: 72,
+                  }}
+                >
+                  Курсы
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             style={{
