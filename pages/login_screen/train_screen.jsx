@@ -49,7 +49,14 @@ const TrainScreen = () => {
             Тренируйся
           </Text>
         </View>
-        <View style={{ marginLeft: 20, marginRight: 20, borderRadius: 5, marginBottom: 20 }}>
+        <View
+          style={{
+            marginLeft: 20,
+            marginRight: 20,
+            borderRadius: 5,
+            marginBottom: 20,
+          }}
+        >
           <View
             style={{
               marginTop: 20,
@@ -118,90 +125,126 @@ const TrainScreen = () => {
             />
           </View>
           <View style={{ marginTop: 20 }}>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
-                <Text>Имя фамилия</Text>
-              </View>
-            </View>
-          </View>
-          
-          <View style={{ marginTop: 20 }}>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
-                <Text>Имя фамилия</Text>
-              </View>
-              <View>
-                <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
             </View>
           </View>
-          
+
           <View style={{ marginTop: 20 }}>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
             </View>
           </View>
-          
+
           <View style={{ marginTop: 20 }}>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
             </View>
           </View>
-          
+
           <View style={{ marginTop: 20 }}>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
             </View>
           </View>
-          
+
           <View style={{ marginTop: 20 }}>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
               <View>
                 <Image source={require("./../../images/woman_bo.png")} />
-                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
+                <Text>Имя фамилия</Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={{ marginTop: 20 }}>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
+                <Text>Имя фамилия</Text>
+              </View>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{ fontWeight: "bold" }}>
+                  Урок 1: Название урока
+                </Text>
                 <Text>Имя фамилия</Text>
               </View>
             </View>
