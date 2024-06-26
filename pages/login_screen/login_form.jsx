@@ -114,11 +114,16 @@ const LoginForm = () => {
             <Image source={require("./../../images/telegram.png")} />
           </View>
           <View style={styles.registrationLink}>
-            <Text>Нет профиля?</Text>
+            <Text style={{ fontFamily: "GeologicaThin" }}>Нет профиля?</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate("RegistrationScreen")}
             >
-              <Text style={{ textDecorationLine: "underline" }}>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  fontFamily: "GeologicaThin",
+                }}
+              >
                 Зарегистрируйтесь здесь
               </Text>
             </TouchableOpacity>
@@ -145,6 +150,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 28,
     marginBottom: 22,
+    fontFamily: "GeologicaRegular",
   },
   input: {
     borderColor: "121212",
@@ -153,6 +159,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 20,
     paddingVertical: 12,
+    fontFamily: "GeologicaLight",
+    fontSize: 14,
   },
   errorText: {
     fontSize: 12,
@@ -163,6 +171,8 @@ const styles = StyleSheet.create({
     color: "#121212",
     textAlign: "center",
     alignSelf: "flex-end",
+    fontFamily: "GeologicaThin",
+    fontSize: 14,
   },
   button: {
     backgroundColor: "#303030",
@@ -179,6 +189,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 20,
+    fontFamily: "GeologicaRegular",
   },
   touch: {
     marginTop: 20,
@@ -188,7 +199,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     padding: 10,
     fontSize: 14,
-    fontWeight: "100",
+    fontFamily: "GeologicaThin",
   },
   signBar: {
     flexDirection: "row",
