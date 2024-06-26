@@ -24,7 +24,7 @@ const TrainScreen = () => {
             position: "relative",
             marginLeft: 20,
             marginRight: 20,
-            marginTop: 10,
+            marginTop: 20,
           }}
         >
           <TouchableOpacity
@@ -49,7 +49,7 @@ const TrainScreen = () => {
             Тренируйся
           </Text>
         </View>
-        <View style={{ marginLeft: 20, marginRight: 20 }}>
+        <View style={{ marginLeft: 20, marginRight: 20, borderRadius: 5, marginBottom: 20 }}>
           <View
             style={{
               marginTop: 20,
@@ -59,20 +59,152 @@ const TrainScreen = () => {
               width: "100%",
               backgroundColor: "rgba(217, 217, 217, 1)",
               height: 40,
+              borderRadius: 3,
             }}
           >
             <View
               style={{
-                width: "49%",
                 backgroundColor: "white",
-                height: 30,
                 justifyContent: "center",
+                borderRadius: 3,
               }}
             >
-              <Text style={{ textAlign: "center" }}>Уроки</Text>
+              <Text
+                style={{
+                  textAlign: "center",
+                  paddingTop: 10,
+                  paddingBottom: 10,
+                  paddingLeft: 72,
+                  paddingRight: 72,
+                }}
+              >
+                Уроки
+              </Text>
             </View>
-
-            <Text style={{ width: "48%", textAlign: "center" }}>Курсы</Text>
+            <View>
+              <Text
+                style={{
+                  textAlign: "center",
+                  paddingTop: 10,
+                  paddingBottom: 10,
+                  paddingLeft: 72,
+                  paddingRight: 72,
+                }}
+              >
+                Курсы
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              backgroundColor: "rgba(217, 217, 217, 1)",
+              width: 122,
+              height: 30,
+              borderRadius: 20,
+              marginTop: 20,
+              flexDirection: "row",
+              justifyContent: "space-around",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              style={{ width: 20, height: 20 }}
+              source={require("./../../images/filters.png")}
+            />
+            <Text>Новое</Text>
+            <Image
+              style={{ width: 20, height: 20 }}
+              source={require("./../../images/arrow_down.png")}
+            />
+          </View>
+          <View style={{ marginTop: 20 }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+            </View>
+          </View>
+          
+          <View style={{ marginTop: 20 }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+            </View>
+          </View>
+          
+          <View style={{ marginTop: 20 }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+            </View>
+          </View>
+          
+          <View style={{ marginTop: 20 }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+            </View>
+          </View>
+          
+          <View style={{ marginTop: 20 }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+            </View>
+          </View>
+          
+          <View style={{ marginTop: 20 }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+              <View>
+                <Image source={require("./../../images/woman_bo.png")} />
+                <Text style={{fontWeight: "bold"}}>Урок 1: Название урока</Text>
+                <Text>Имя фамилия</Text>
+              </View>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -86,6 +218,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     display: "flex",
     justifyContent: "flex-start",
+    height: "100%",
   },
   topImage: {
     width: "100%",

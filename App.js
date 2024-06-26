@@ -13,7 +13,6 @@ import IntroScreen2 from "./pages/login_screen/intro_screen2";
 import PrivacyPolicyScreen from "./pages/login_screen/privacy_policy_screen";
 import MainScreen from "./pages/login_screen/main_screen";
 import BurgerMenu from "./pages/login_screen/burger_menu";
-import TeamScreen from "./pages/login_screen/team_screen";
 import { useFonts } from "expo-font";
 import TeamScreen from "./pages/login_screen/team_screen";
 import TrainScreen from "./pages/login_screen/train_screen";
