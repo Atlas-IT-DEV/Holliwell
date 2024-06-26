@@ -114,11 +114,11 @@ const RegistrationForm = () => {
             <Image source={require("./../../images/telegram.png")} />
           </View>
           <View style={styles.registrationLink}>
-            <Text>Уже есть профиль?</Text>
+            <Text style={{fontFamily: "GeologicaThin"}}>Уже есть профиль?</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate("LoginScreen")}
             >
-              <Text style={{ textDecorationLine: "underline" }}>
+              <Text style={{ textDecorationLine: "underline", fontFamily: "GeologicaThin", }}>
                 Войдите здесь
               </Text>
             </TouchableOpacity>
@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 28,
     marginBottom: 22,
+    fontFamily: "GeologicaRegular"
   },
   input: {
     borderColor: "121212",
@@ -153,6 +154,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 20,
     paddingVertical: 12,
+    fontFamily: "GeologicaLight",
   },
   errorText: {
     fontSize: 12,
@@ -179,6 +181,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 20,
+    fontFamily: "GeologicaRegular",
   },
   touch: {
     marginTop: 20,
@@ -189,7 +192,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     fontSize: 14,
-    fontWeight: "100",
+    fontFamily: "GeologicaThin",
   },
   signBar: {
     flexDirection: "row",

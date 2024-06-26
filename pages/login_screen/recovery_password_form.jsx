@@ -39,7 +39,13 @@ const RecoveryPasswordForm = () => {
       }) => (
         <View style={styles.container}>
           <Text style={styles.label}>Восстановление пароля</Text>
-          <Text style={{ color: "#A2A2A2", marginBottom: 30 }}>
+          <Text
+            style={{
+              color: "#A2A2A2",
+              marginBottom: 30,
+              fontFamily: "GeologicaLight",
+            }}
+          >
             Введите адрес вашей электронной почты, на который мы пришлем ссылку
             для восстановления пароля
           </Text>
@@ -55,7 +61,10 @@ const RecoveryPasswordForm = () => {
             <Text style={styles.errorText}>{errors.email}</Text>
           )}
 
-          <TouchableOpacity  onPress={() => navigation.navigate("LoginScreen")} style={styles.touch}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("LoginScreen")}
+            style={styles.touch}
+          >
             <View style={styles.button}>
               <Text style={styles.buttonText}>ОТПРАВИТЬ</Text>
             </View>
@@ -83,6 +92,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 20,
     marginBottom: 28,
+    fontFamily: "GeologicaRegular",
   },
   input: {
     borderColor: "121212",
@@ -91,6 +101,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 20,
     paddingVertical: 12,
+    fontFamily: "GeologicaLight",
   },
   errorText: {
     fontSize: 12,
@@ -117,6 +128,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 20,
+    fontFamily: "GeologicaRegular",
   },
   touch: {
     marginTop: 20,
@@ -126,7 +138,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     padding: 10,
     fontSize: 14,
-    fontWeight: '100',
+    fontWeight: "100",
   },
   signBar: {
     flexDirection: "row",

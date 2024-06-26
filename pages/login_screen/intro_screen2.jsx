@@ -37,17 +37,18 @@ const IntroScreen2 = () => {
               marginBottom: 20,
               fontSize: 40,
               color: "white",
+              fontFamily: "GeologicaMedium"
             }}
           >
             Большой {"\n"}Заголовок {"\n"}в три строки
           </Text>
-          <Text style={{ color: "white", fontSize: 20 }}>
+          <Text style={{ color: "white", fontSize: 20, fontFamily: "GeologicaLight" }}>
             Описание приложения в три строки...
           </Text>
-          <Text style={{ color: "white", fontSize: 20 }}>
+          <Text style={{ color: "white", fontSize: 20, fontFamily: "GeologicaLight" }}>
             Описание приложения в три строки...
           </Text>
-          <Text style={{ color: "white", fontSize: 20 }}>
+          <Text style={{ color: "white", fontSize: 20, fontFamily: "GeologicaLight" }}>
             Описание приложения в три строки...
           </Text>
           <TouchableOpacity
@@ -70,6 +71,7 @@ const IntroScreen2 = () => {
               style={{
                 fontSize: 20,
                 color: "black",
+                fontFamily: "GeologicaRegular"
               }}
             >
               Продолжить
