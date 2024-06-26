@@ -94,10 +94,13 @@ const MainScreen = () => {
               marginTop: 40,
             }}
           ></View>
-          <Image
-            source={require("./../../images/train.png")}
-            style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("TrainScreen")}>
+            <Image
+              source={require("./../../images/train.png")}
+              style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
+            />
+          </TouchableOpacity>
+
           <Image
             source={require("./../../images/listen.png")}
             style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
