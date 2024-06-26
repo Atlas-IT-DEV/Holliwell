@@ -51,7 +51,14 @@ const TrainScreen = () => {
             Тренируйся
           </Text>
         </View>
-        <View style={{ marginLeft: 20, marginRight: 20, borderRadius: 5, marginBottom: 20 }}>
+        <View
+          style={{
+            marginLeft: 20,
+            marginRight: 20,
+            borderRadius: 5,
+            marginBottom: 20,
+          }}
+        >
           <View
             style={{
               marginTop: 20,
@@ -64,38 +71,42 @@ const TrainScreen = () => {
               borderRadius: 3,
             }}
           >
-            <View
-              style={{
-                backgroundColor: "white",
-                justifyContent: "center",
-                borderRadius: 3,
-              }}
-            >
-              <Text
+            <TouchableOpacity>
+              <View
                 style={{
-                  textAlign: "center",
-                  paddingTop: 10,
-                  paddingBottom: 10,
-                  paddingLeft: 72,
-                  paddingRight: 72,
+                  backgroundColor: "white",
+                  justifyContent: "center",
+                  borderRadius: 3,
                 }}
               >
-                Уроки
-              </Text>
-            </View>
-            <View>
-              <Text
-                style={{
-                  textAlign: "center",
-                  paddingTop: 10,
-                  paddingBottom: 10,
-                  paddingLeft: 72,
-                  paddingRight: 72,
-                }}
-              >
-                Курсы
-              </Text>
-            </View>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    paddingLeft: 72,
+                    paddingRight: 72,
+                  }}
+                >
+                  Уроки
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    paddingLeft: 72,
+                    paddingRight: 72,
+                  }}
+                >
+                  Курсы
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             style={{
@@ -120,13 +131,13 @@ const TrainScreen = () => {
             />
           </View>
           <View style={{ marginTop: 20 }}>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-              <CourseCard/>
-              <CourseCard/>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <CourseCard name="жопа" />
+              <CourseCard />
             </View>
           </View>
-          
-          
         </View>
       </ScrollView>
     </SafeAreaView>
