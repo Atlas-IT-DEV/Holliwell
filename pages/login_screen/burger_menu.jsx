@@ -258,10 +258,10 @@ const BurgerMenu = () => {
               <Text
                 style={{
                   fontSize: 20,
-                  color: "white",
                   alignSelf: "center",
                   marginTop: 30,
                   fontFamily: "GeologicaRegular",
+                  color: "rgba(162, 162, 162, 1)",
                 }}
               >
                 ВЫЙТИ
