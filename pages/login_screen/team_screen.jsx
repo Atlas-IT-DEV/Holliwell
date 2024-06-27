@@ -4,15 +4,12 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  Dimensions,
-  ImageBackground,
   ScrollView,
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const TeamScreen = () => {
-  const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>

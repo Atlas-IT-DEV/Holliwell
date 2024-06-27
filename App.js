@@ -33,7 +33,7 @@ export default function App() {
       <RootStoreContext.Provider value={new RootStore()}>
         {fontsLoaded && (
           <Stack.Navigator
-            initialRouteName="LoginScreen"
+            initialRouteName="TrainScreen"
             screenOptions={{ headerShown: false }}
           >
             <Stack.Screen name="LoginScreen" component={LoginScreen} />

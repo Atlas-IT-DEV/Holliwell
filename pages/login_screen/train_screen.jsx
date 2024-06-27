@@ -17,6 +17,7 @@ import CoursePackCard from "../../components/course_pack_card";
 const TrainScreen = () => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
+  const [selected, setSelected] = useState(0);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -68,26 +69,20 @@ const TrainScreen = () => {
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
+              height: 47,
+              borderRadius: 5,
               backgroundColor: "rgba(217, 217, 217, 1)",
-              height: 40,
-              borderRadius: 3,
+              padding: 3,
             }}
           >
-            <TouchableOpacity>
-              <View
-                style={{
-                  backgroundColor: "white",
-                  justifyContent: "center",
-                  borderRadius: 3,
-                }}
-              >
+            <TouchableOpacity
+              onPress={() => setSelected(0)}
+              style={{ width: "50%" }}
+            >
+              <View style={selected == 1 ? styles.grayButt : styles.whiteButt}>
                 <Text
                   style={{
                     textAlign: "center",
-                    paddingTop: 10,
-                    paddingBottom: 10,
-                    paddingLeft: 72,
-                    paddingRight: 72,
                     fontSize: 14,
                     fontFamily: "GeologicaLight",
                   }}
@@ -96,15 +91,15 @@ const TrainScreen = () => {
                 </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <View>
+            <TouchableOpacity
+              onPress={() => setSelected(1)}
+              style={{ width: "50%" }}
+            >
+              <View style={selected == 0 ? styles.grayButt : styles.whiteButt}>
                 <Text
                   style={{
                     textAlign: "center",
-                    paddingTop: 10,
-                    paddingBottom: 10,
-                    paddingLeft: 72,
-                    paddingRight: 72,
+
                     fontSize: 14,
                     fontFamily: "GeologicaLight",
                   }}
@@ -139,26 +134,30 @@ const TrainScreen = () => {
             />
           </View>
           <View style={{ marginTop: 20 }}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <TouchableOpacity onPress={() => navigation.navigate("LessonScreen")}>
-                <CourseCard />
-              </TouchableOpacity>
-
-              <CourseCard />
-            </View>
-            <View style={{ marginTop: 20 }}>
+            {selected == 0 ? (
               <View
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-between",
                 }}
               >
-                <CoursePackCard />
-                <CoursePackCard />
+                <CourseCard />
+
+                <CourseCard />
               </View>
-            </View>
+            ) : (
+              <View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <CoursePackCard />
+                  <CoursePackCard />
+                </View>
+              </View>
+            )}
           </View>
         </View>
       </ScrollView>
@@ -176,6 +175,18 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: "100%",
+  },
+  grayButt: {
+    backgroundColor: "rgba(217, 217, 217, 1)",
+    justifyContent: "center",
+    borderRadius: 5,
+    paddingVertical: 10,
+  },
+  whiteButt: {
+    backgroundColor: "white",
+    justifyContent: "center",
+    borderRadius: 5,
+    paddingVertical: 10,
   },
 });
 
