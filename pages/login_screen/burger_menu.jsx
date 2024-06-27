@@ -79,6 +79,7 @@ const BurgerMenu = () => {
                   paddingVertical: 12,
                   backgroundColor: "white",
                   borderRadius: 5,
+                  fontFamily: "GeologicaRegular",
                 }}
               >
                 АКТИВИРОВАТЬ ДОСТУП
@@ -94,7 +95,12 @@ const BurgerMenu = () => {
                 }}
               >
                 <Text
-                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                  style={{
+                    fontSize: 20,
+                    color: "white",
+                    alignSelf: "center",
+                    fontFamily: "GeologicaRegular",
+                  }}
                 >
                   ТРЕНИРУЙСЯ
                 </Text>
@@ -108,9 +114,14 @@ const BurgerMenu = () => {
                 }}
               >
                 <Text
-                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                  style={{
+                    fontSize: 20,
+                    color: "white",
+                    alignSelf: "center",
+                    fontFamily: "GeologicaRegular",
+                  }}
                 >
-                  ТРЕНИРУЙСЯ
+                  СЛУШАЙ
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -122,53 +133,14 @@ const BurgerMenu = () => {
                 }}
               >
                 <Text
-                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                  style={{
+                    fontSize: 20,
+                    color: "white",
+                    alignSelf: "center",
+                    fontFamily: "GeologicaRegular",
+                  }}
                 >
-                  ТРЕНИРУЙСЯ
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.menuLinks}>
-              <TouchableOpacity
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignContent: "center",
-                  alignSelf: "center",
-                }}
-              >
-                <Text
-                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
-                >
-                  ТРЕНИРУЙСЯ
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignContent: "center",
-                  alignSelf: "center",
-                }}
-              >
-                <Text
-                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
-                >
-                  ТРЕНИРУЙСЯ
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignContent: "center",
-                  alignSelf: "center",
-                }}
-              >
-                <Text
-                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
-                >
-                  ТРЕНИРУЙСЯ
+                  МЕДИТИРУЙ
                 </Text>
               </TouchableOpacity>
             </View>
@@ -182,9 +154,14 @@ const BurgerMenu = () => {
                 }}
               >
                 <Text
-                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                  style={{
+                    fontSize: 20,
+                    alignSelf: "center",
+                    fontFamily: "GeologicaRegular",
+                    color: "rgba(162, 162, 162, 1)",
+                  }}
                 >
-                  ТРЕНИРУЙСЯ
+                  О HOLIWELL
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -196,9 +173,73 @@ const BurgerMenu = () => {
                 }}
               >
                 <Text
-                  style={{ fontSize: 20, color: "white", alignSelf: "center" }}
+                  style={{
+                    fontSize: 20,
+                    alignSelf: "center",
+                    fontFamily: "GeologicaRegular",
+                    color: "rgba(162, 162, 162, 1)",
+                  }}
                 >
-                  ТРЕНИРУЙСЯ
+                  ПОДПИСКА
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 20,
+                    alignSelf: "center",
+                    fontFamily: "GeologicaRegular",
+                    color: "rgba(162, 162, 162, 1)",
+                  }}
+                >
+                  ПОДДЕРЖКА
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.menuLinks}>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 20,
+                    alignSelf: "center",
+                    fontFamily: "GeologicaRegular",
+                    color: "rgba(162, 162, 162, 1)",
+                  }}
+                >
+                  ТЕЛЕГРАММ
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 20,
+                    alignSelf: "center",
+                    fontFamily: "GeologicaRegular",
+                    color: "rgba(162, 162, 162, 1)",
+                  }}
+                >
+                  САЙТ
                 </Text>
               </TouchableOpacity>
             </View>
@@ -220,6 +261,7 @@ const BurgerMenu = () => {
                   color: "white",
                   alignSelf: "center",
                   marginTop: 30,
+                  fontFamily: "GeologicaRegular",
                 }}
               >
                 ВЫЙТИ

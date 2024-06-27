@@ -256,7 +256,7 @@ const LessonScreen = ({
               borderStyle: "solid",
               width: "100%",
               marginTop: 30,
-              marginBottom: 30
+              marginBottom: 30,
             }}
           ></View>
         </View>
