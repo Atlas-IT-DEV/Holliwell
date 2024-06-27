@@ -17,7 +17,7 @@ import { useFonts } from "expo-font";
 import TeamScreen from "./pages/login_screen/team_screen";
 import TrainScreen from "./pages/login_screen/train_screen";
 import LessonScreen from "./components/lesson_card";
-
+import CoachScreen from "./components/coach_card";
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +56,7 @@ export default function App() {
             <Stack.Screen name="TeamScreen" component={TeamScreen} />
             <Stack.Screen name="TrainScreen" component={TrainScreen} />
             <Stack.Screen name="LessonScreen" component={LessonScreen} />
+            <Stack.Screen name="CoachScreen" component={CoachScreen} />
           </Stack.Navigator>
         )}
       </RootStoreContext.Provider>

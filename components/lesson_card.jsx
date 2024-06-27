@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const LessonScreen = ({
   number = 1,
@@ -18,6 +19,7 @@ const LessonScreen = ({
   uri = "http://legacy.reactjs.org/logo-og.png",
   time = "22:40",
 }) => {
+  const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
   return (
     <SafeAreaView>
@@ -229,6 +231,10 @@ const LessonScreen = ({
               </Text>
             </View>
           </View>
+          <Text style={{ marginTop: 20, fontFamily: "GeologicaLight" }}>
+            {about}
+          </Text>
+
           <TouchableOpacity style={{ marginTop: 20 }}>
             <View
               style={{
@@ -240,9 +246,14 @@ const LessonScreen = ({
                 width: 107,
               }}
             >
-              <Text style={{ fontSize: 14, fontFamily: "GeologicaRegular" }}>
-                ПОДРОБНЕЕ
-              </Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("CoachScreen")}
+              >
+                <Text style={{ fontSize: 14, fontFamily: "GeologicaRegular" }}>
+                  ПОДРОБНЕЕ
+                </Text>
+              </TouchableOpacity>
+
               <Image
                 source={require("./../images/arrow_link.png")}
                 style={{ width: 10, height: 10 }}
