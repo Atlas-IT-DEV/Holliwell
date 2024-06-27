@@ -16,6 +16,8 @@ import BurgerMenu from "./pages/login_screen/burger_menu";
 import { useFonts } from "expo-font";
 import TeamScreen from "./pages/login_screen/team_screen";
 import TrainScreen from "./pages/login_screen/train_screen";
+import LessonScreen from "./components/lesson_card";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +55,7 @@ export default function App() {
             <Stack.Screen name="BurgerMenu" component={BurgerMenu} />
             <Stack.Screen name="TeamScreen" component={TeamScreen} />
             <Stack.Screen name="TrainScreen" component={TrainScreen} />
+            <Stack.Screen name="LessonScreen" component={LessonScreen} />
           </Stack.Navigator>
         )}
       </RootStoreContext.Provider>

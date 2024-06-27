@@ -142,7 +142,10 @@ const TrainScreen = () => {
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
-              <CourseCard />
+              <TouchableOpacity onPress={() => navigation.navigate("LessonScreen")}>
+                <CourseCard />
+              </TouchableOpacity>
+
               <CourseCard />
             </View>
             <View style={{ marginTop: 20 }}>
