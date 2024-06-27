@@ -86,7 +86,7 @@ const BurgerMenu = () => {
               </Text>
             </TouchableOpacity>
             <View style={styles.menuLinks}>
-              <TouchableOpacity
+              <TouchableOpacity onPress={() => navigation.navigate("TrainScreen")}
                 style={{
                   width: "100%",
                   display: "flex",
