@@ -13,6 +13,9 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import CourseCard from "../../components/course_card";
 import CoursePackCard from "../../components/course_pack_card";
+import { arrow_back_black } from "../../images/images";
+import { SvgXml } from "react-native-svg";
+
 
 const TrainScreen = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -35,10 +38,7 @@ const TrainScreen = () => {
             style={{ top: 10 }}
             onPress={() => navigation.navigate("MainScreen")}
           >
-            <Image
-              source={require("./../../images/arrow_back.png")}
-              style={{ width: 28, height: 28 }}
-            />
+            <SvgXml xml={arrow_back_black}/>
           </TouchableOpacity>
           <Text
             style={{
@@ -51,7 +51,7 @@ const TrainScreen = () => {
               fontFamily: "GeologicaRegular",
             }}
           >
-            Тренируйся
+            ТРЕНИРУЙСЯ
           </Text>
         </View>
         <View
@@ -142,7 +142,6 @@ const TrainScreen = () => {
                 }}
               >
                 <CourseCard />
-
                 <CourseCard />
               </View>
             ) : (

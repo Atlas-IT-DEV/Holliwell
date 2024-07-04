@@ -8,6 +8,10 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import CoachMiniCard from "../../components/coach_mini_card";
+import { arrow_back_black } from "../../images/images";
+import { SvgXml } from "react-native-svg";
+
 
 const TeamScreen = () => {
   const navigation = useNavigation();
@@ -28,10 +32,7 @@ const TeamScreen = () => {
             style={{ top: 10 }}
             onPress={() => navigation.navigate("MainScreen")}
           >
-            <Image
-              source={require("./../../images/arrow_back.png")}
-              style={{ width: 28, height: 28 }}
-            />
+            <SvgXml xml={arrow_back_black}/>
           </TouchableOpacity>
           <Text
             style={{
@@ -56,50 +57,8 @@ const TeamScreen = () => {
             marginRight: 20,
           }}
         >
-          <View style={{ gap: 10 }}>
-            <Image source={require("./../../images/team1.png")} />
-            <Text style={{ textAlign: "center" }}>Фамилия Имя</Text>
-          </View>
-          <View style={{ gap: 10 }}>
-            <Image source={require("./../../images/team1.png")} />
-            <Text style={{ textAlign: "center" }}>Фамилия Имя</Text>
-          </View>
-        </View>
-        <View
-          style={{
-            marginTop: 30,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginLeft: 20,
-            marginRight: 20,
-          }}
-        >
-          <View style={{ gap: 10 }}>
-            <Image source={require("./../../images/team1.png")} />
-            <Text style={{ textAlign: "center" }}>Фамилия Имя</Text>
-          </View>
-          <View style={{ gap: 10 }}>
-            <Image source={require("./../../images/team1.png")} />
-            <Text style={{ textAlign: "center" }}>Фамилия Имя</Text>
-          </View>
-        </View>
-        <View
-          style={{
-            marginTop: 30,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginLeft: 20,
-            marginRight: 20,
-          }}
-        >
-          <View style={{ gap: 10 }}>
-            <Image source={require("./../../images/team1.png")} />
-            <Text style={{ textAlign: "center" }}>Фамилия Имя</Text>
-          </View>
-          <View style={{ gap: 10 }}>
-            <Image source={require("./../../images/team1.png")} />
-            <Text style={{ textAlign: "center" }}>Фамилия Имя</Text>
-          </View>
+          <CoachMiniCard />
+          <CoachMiniCard />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -112,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     display: "flex",
     justifyContent: "flex-start",
-    height:'100%'
+    height: "100%",
   },
   topImage: {
     width: "100%",

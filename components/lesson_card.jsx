@@ -9,6 +9,10 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { arrow_back, arrow_link, icon_share } from "../images/images";
+import { SvgXml } from "react-native-svg";
+
+
 
 const LessonScreen = ({
   number = 1,
@@ -38,16 +42,10 @@ const LessonScreen = ({
             }}
           >
             <TouchableOpacity>
-              <Image
-                style={{ width: 29, height: 28 }}
-                source={require("./../images/arrow_back_white.png")}
-              />
+              <SvgXml xml={arrow_back}/>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Image
-                style={{ width: 30, height: 29 }}
-                source={require("./../images/share.png")}
-              />
+              <SvgXml xml={icon_share}/>
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -235,7 +233,10 @@ const LessonScreen = ({
             {about}
           </Text>
 
-          <TouchableOpacity style={{ marginTop: 20 }}>
+          <TouchableOpacity
+            style={{ marginTop: 20 }}
+            onPress={() => navigation.navigate("CoachScreen")}
+          >
             <View
               style={{
                 flexDirection: "row",
@@ -246,18 +247,10 @@ const LessonScreen = ({
                 width: 107,
               }}
             >
-              <TouchableOpacity
-                onPress={() => navigation.navigate("CoachScreen")}
-              >
-                <Text style={{ fontSize: 14, fontFamily: "GeologicaRegular" }}>
-                  ПОДРОБНЕЕ
-                </Text>
-              </TouchableOpacity>
-
-              <Image
-                source={require("./../images/arrow_link.png")}
-                style={{ width: 10, height: 10 }}
-              />
+              <Text style={{ fontSize: 14, fontFamily: "GeologicaRegular" }}>
+                ПОДРОБНЕЕ
+              </Text>
+              <SvgXml xml={arrow_link}/>
             </View>
           </TouchableOpacity>
           <View

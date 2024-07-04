@@ -8,6 +8,10 @@ import {
   Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { arrow_back, icon_share } from "../images/images";
+import { SvgXml } from "react-native-svg";
+
+
 
 const CoachScreen = ({
   number = 1,
@@ -36,16 +40,10 @@ const CoachScreen = ({
           }}
         >
           <TouchableOpacity>
-            <Image
-              style={{ width: 29, height: 28 }}
-              source={require("./../images/arrow_back_white.png")}
-            />
+            <SvgXml xml={arrow_back}/>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image
-              style={{ width: 30, height: 29 }}
-              source={require("./../images/share.png")}
-            />
+            <SvgXml xml={icon_share}/>
           </TouchableOpacity>
         </View>
       </ImageBackground>

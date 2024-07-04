@@ -18,6 +18,9 @@ import TeamScreen from "./pages/login_screen/team_screen";
 import TrainScreen from "./pages/login_screen/train_screen";
 import LessonScreen from "./components/lesson_card";
 import CoachScreen from "./components/coach_card";
+import LessonsCourseScreen from "./components/lessons_course_card";
+import ListenScreen from "./pages/login_screen/listen_screen";
+import AboutCourseListenScreen from "./components/about_course_listen_card";
 
 const Stack = createNativeStackNavigator();
 
@@ -57,6 +60,15 @@ export default function App() {
             <Stack.Screen name="TrainScreen" component={TrainScreen} />
             <Stack.Screen name="LessonScreen" component={LessonScreen} />
             <Stack.Screen name="CoachScreen" component={CoachScreen} />
+            <Stack.Screen
+              name="LessonsCourseScreen"
+              component={LessonsCourseScreen}
+            />
+            <Stack.Screen name="ListenScreen" component={ListenScreen} />
+            <Stack.Screen
+              name="AboutCourseListenScreen"
+              component={AboutCourseListenScreen}
+            />
           </Stack.Navigator>
         )}
       </RootStoreContext.Provider>

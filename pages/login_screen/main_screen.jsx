@@ -12,6 +12,9 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { useStores } from "../../store/store_context";
 import BurgerMenu from "./burger_menu";
+import CoachMiniCard from "../../components/coach_mini_card";
+import { SvgXml } from "react-native-svg";
+import { arrow_link } from "../../images/images";
 
 const MainScreen = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -79,7 +82,6 @@ const MainScreen = () => {
           >
             МЕДИТИРУЙ
           </Text>
-
           <Text
             style={{
               color: "white",
@@ -135,15 +137,19 @@ const MainScreen = () => {
               style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
             />
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("ListenScreen")}>
+            <Image
+              source={require("./../../images/listen.png")}
+              style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+              source={require("./../../images/meditation.png")}
+              style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
+            />
+          </TouchableOpacity>
 
-          <Image
-            source={require("./../../images/listen.png")}
-            style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
-          />
-          <Image
-            source={require("./../../images/meditation.png")}
-            style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
-          />
           <View
             style={{
               borderBottomColor: "#D9D9D9",
@@ -202,11 +208,10 @@ const MainScreen = () => {
                   borderBottomWidth: 1.2,
                 }}
               >
-                <Text style={{ fontSize: 14, fontFamily: "GeologicaRegular" }}>смотреть все</Text>
-                <Image
-                  source={require("./../../images/arrow_link.png")}
-                  style={{ width: 10, height: 10 }}
-                />
+                <Text style={{ fontSize: 14, fontFamily: "GeologicaRegular" }}>
+                  смотреть все
+                </Text>
+                <SvgXml xml={arrow_link} />
               </View>
             </TouchableOpacity>
           </View>
@@ -216,22 +221,10 @@ const MainScreen = () => {
             style={{ marginTop: 20, marginBottom: 30, paddingBottom: 10 }}
           >
             <View style={{ gap: 20, flexDirection: "row" }}>
-              <View style={{ gap: 10 }}>
-                <Image source={require("./../../images/team1.png")} />
-                <Text style={{ alignSelf: "center" }}>Фамилия и имя</Text>
-              </View>
-              <View style={{ gap: 10 }}>
-                <Image source={require("./../../images/team1.png")} />
-                <Text style={{ alignSelf: "center" }}>Фамилия и имя</Text>
-              </View>
-              <View style={{ gap: 10 }}>
-                <Image source={require("./../../images/team1.png")} />
-                <Text style={{ alignSelf: "center" }}>Фамилия и имя</Text>
-              </View>
-              <View style={{ gap: 10 }}>
-                <Image source={require("./../../images/team1.png")} />
-                <Text style={{ alignSelf: "center" }}>Фамилия и имя</Text>
-              </View>
+              <CoachMiniCard />
+              <CoachMiniCard />
+              <CoachMiniCard />
+              <CoachMiniCard />
             </View>
           </ScrollView>
         </View>
