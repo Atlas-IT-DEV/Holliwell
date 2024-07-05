@@ -105,7 +105,7 @@ const BurgerMenu = () => {
                   ТРЕНИРУЙСЯ
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity
+              <TouchableOpacity onPress={() => navigation.navigate("ListenScreen")}
                 style={{
                   width: "100%",
                   display: "flex",

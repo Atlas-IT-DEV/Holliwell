@@ -21,6 +21,7 @@ import {
 } from "../images/images";
 import CourseCard from "./course_card";
 import CoachMiniCard from "./coach_mini_card";
+import AudioCard from "./audio_card";
 
 const AboutCourseListenScreen = ({
   name_course = "ВЫДАЮЩИЙСЯ РЕЛЬЕФ",
@@ -48,7 +49,7 @@ const AboutCourseListenScreen = ({
               justifyContent: "space-between",
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
               <SvgXml xml={arrow_back_black} />
             </TouchableOpacity>
           </View>
@@ -121,6 +122,58 @@ const AboutCourseListenScreen = ({
               ОБЗОР КУРСА
             </Text>
           </TouchableOpacity>
+        </View>
+        <View style={{ marginTop: 40, marginHorizontal: 20 }}>
+          <View
+            style={{
+              borderBottomColor: "#D9D9D9",
+              borderBottomWidth: 1,
+              width: "100%",
+            }}
+          ></View>
+          <AudioCard />
+          <AudioCard />
+          <AudioCard />
+        </View>
+
+        <View style={{ marginTop: 40, marginHorizontal: 20 }}>
+          <Text
+            style={{
+              fontFamily: "GeologicaRegular",
+              fontSize: 28,
+              textAlign: "center",
+            }}
+          >
+            КОМАНДА
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 40,
+            }}
+          >
+            <CoachMiniCard />
+            <CoachMiniCard />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 40,
+            }}
+          >
+            <CoachMiniCard />
+            <CoachMiniCard />
+          </View>
+          <View
+            style={{
+              borderBottomColor: "#D9D9D9",
+              borderBottomWidth: 1,
+              width: "100%",
+              marginVertical: 40
+            }}
+          ></View>
         </View>
       </ScrollView>
     </SafeAreaView>

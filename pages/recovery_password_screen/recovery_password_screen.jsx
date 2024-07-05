@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import RecoveryPasswordForm from "./recovery_password_form";
+import RecoveryPasswordForm from "../recovery_password_screen/recovery_password_form";
 
 const RecoveryPasswordScreen = () => {
   const screenHeight = Dimensions.get("window").height;

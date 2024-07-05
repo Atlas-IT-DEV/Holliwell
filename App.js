@@ -6,20 +6,20 @@ import { RootStoreContext } from "./store/store_context";
 // import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import LoginScreen from "./pages/login_screen/login_screen";
-import RegistrationScreen from "./pages/login_screen/registration_screen";
-import RecoveryPasswordScreen from "./pages/login_screen/recovery_password_screen";
-import IntroScreen1 from "./pages/login_screen/intro_screen1";
-import IntroScreen2 from "./pages/login_screen/intro_screen2";
-import PrivacyPolicyScreen from "./pages/login_screen/privacy_policy_screen";
-import MainScreen from "./pages/login_screen/main_screen";
-import BurgerMenu from "./pages/login_screen/burger_menu";
+import RegistrationScreen from "./pages/registration_screen/registration_screen";
+import RecoveryPasswordScreen from "./pages/recovery_password_screen/recovery_password_screen";
+import IntroScreen1 from "./pages/intro_screen/intro_screen1";
+import IntroScreen2 from "./pages/intro_screen/intro_screen2";
+import PrivacyPolicyScreen from "./pages/privacy_policy_screen";
+import MainScreen from "./pages/main_screen/main_screen";
+import BurgerMenu from "./pages/main_screen/burger_menu";
 import { useFonts } from "expo-font";
-import TeamScreen from "./pages/login_screen/team_screen";
-import TrainScreen from "./pages/login_screen/train_screen";
+import TeamScreen from "./pages/team_screen";
+import TrainScreen from "./pages/train_screen";
 import LessonScreen from "./components/lesson_card";
 import CoachScreen from "./components/coach_card";
 import LessonsCourseScreen from "./components/lessons_course_card";
-import ListenScreen from "./pages/login_screen/listen_screen";
+import ListenScreen from "./pages/listen_screen";
 import AboutCourseListenScreen from "./components/about_course_listen_card";
 
 const Stack = createNativeStackNavigator();
@@ -36,7 +36,7 @@ export default function App() {
       <RootStoreContext.Provider value={new RootStore()}>
         {fontsLoaded && (
           <Stack.Navigator
-            initialRouteName="TrainScreen"
+            initialRouteName="MainScreen"
             screenOptions={{ headerShown: false }}
           >
             <Stack.Screen name="LoginScreen" component={LoginScreen} />

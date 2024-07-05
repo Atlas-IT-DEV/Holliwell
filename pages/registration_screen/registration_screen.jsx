@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import RegistrationForm from "./registration_form";
+import RegistrationForm from "../registration_screen/registration_form";
 
 const RegistrationScreen = () => {
   const screenHeight = Dimensions.get("window").height;

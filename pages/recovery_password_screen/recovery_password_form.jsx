@@ -13,7 +13,7 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
-import LoginScreen from "./login_screen";
+import LoginScreen from "../login_screen/login_screen";
 
 const RecoveryPasswordForm = () => {
   const navigation = useNavigation();

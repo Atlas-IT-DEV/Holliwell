@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import PrivacyPolicyScreen from "./privacy_policy_screen";
+import PrivacyPolicyScreen from "../privacy_policy_screen";
 
 const IntroScreen2 = () => {
   const screenHeight = Dimensions.get("window").height;

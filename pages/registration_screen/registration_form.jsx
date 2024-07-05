@@ -28,7 +28,7 @@ const RegistrationForm = () => {
   const { pageStore } = useStores();
   const register = async (values) => {
     await pageStore.registerUser(values);
-    await pageStore.login(values)
+    await pageStore.login(values);
     pageStore.registered && navigation.navigate("IntroScreen1");
   };
 
@@ -114,11 +114,16 @@ const RegistrationForm = () => {
             <Image source={require("./../../images/telegram.png")} />
           </View>
           <View style={styles.registrationLink}>
-            <Text style={{fontFamily: "GeologicaThin"}}>Уже есть профиль?</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("LoginScreen")}
-            >
-              <Text style={{ textDecorationLine: "underline", fontFamily: "GeologicaThin", }}>
+            <Text style={{ fontFamily: "GeologicaThin" }}>
+              Уже есть профиль?
+            </Text>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  fontFamily: "GeologicaThin",
+                }}
+              >
                 Войдите здесь
               </Text>
             </TouchableOpacity>
@@ -145,7 +150,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 28,
     marginBottom: 22,
-    fontFamily: "GeologicaRegular"
+    fontFamily: "GeologicaRegular",
   },
   input: {
     borderColor: "121212",

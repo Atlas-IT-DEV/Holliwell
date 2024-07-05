@@ -92,14 +92,14 @@ const LessonsCourseScreen = ({
                 justifyContent: "space-between",
               }}
             >
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
                 <SvgXml xml={arrow_back} />
               </TouchableOpacity>
               <TouchableOpacity>
                 <SvgXml xml={icon_share} />
               </TouchableOpacity>
             </View>
-            <View
+            <TouchableOpacity
               style={{
                 flexDirection: "row",
                 gap: 5,
@@ -112,7 +112,7 @@ const LessonsCourseScreen = ({
                 ЗАМОРОЗИТЬ
               </Text>
               <SvgXml xml={icon_freeze_small} />
-            </View>
+            </TouchableOpacity>
           </View>
 
           {/* РАЗМОРОЗИТЬ */}

@@ -80,3 +80,8 @@ export const arrow_link = `<svg width="15" height="18" viewBox="0 0 15 18" fill=
 <path d="M4.5 13.9008L13.5 4.90076M13.5 4.90076V14.4008M13.5 4.90076H4" stroke="#121212" stroke-width="1.2"/>
 </svg>
 `;
+
+export const icon_continue = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7 14L14 7L7 -6.03337e-07L6.3 0.699999L12.6 7L6.3 13.3L7 14Z" fill="#A2A2A2"/>
+</svg>
+`;

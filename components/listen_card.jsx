@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { arrow_back, arrow_link, icon_share } from "../images/images";
 import { SvgXml } from "react-native-svg";
 
-const LessonScreen = ({
+const ListenCard = ({
   number = 1,
   name = "Название урока",
   description = "В бар заходит лошадь. Снимает пальто, шляпу. Вешает на вешалку. Подходит стойке и говорит бармену...",
@@ -39,9 +39,7 @@ const LessonScreen = ({
               justifyContent: "space-between",
             }}
           >
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-            >
+            <TouchableOpacity onPress={() => navigation.goBack()}>
               <SvgXml xml={arrow_back} />
             </TouchableOpacity>
             <TouchableOpacity>
@@ -82,7 +80,7 @@ const LessonScreen = ({
                   color: "white",
                 }}
               >
-                СМОТРЕТЬ
+                СЛУШАТЬ
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -163,48 +161,7 @@ const LessonScreen = ({
             }}
           ></View>
         </View>
-        <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
-          <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
-            До тренировки
-          </Text>
-          <Image
-            source={require("./../images/woman_card.png")}
-            style={{ width: "100%", marginTop: 30 }}
-          />
-          <Text style={{ fontFamily: "GeologicaLight", marginTop: 10 }}>
-            Разминка 1
-          </Text>
-          <View
-            style={{
-              borderTopColor: "#D9D9D9",
-              borderTopWidth: 1,
-              borderStyle: "solid",
-              width: "100%",
-              marginTop: 30,
-            }}
-          ></View>
-        </View>
-        <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
-          <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
-            После тренировки
-          </Text>
-          <Image
-            source={require("./../images/woman_card.png")}
-            style={{ width: "100%", marginTop: 30 }}
-          />
-          <Text style={{ fontFamily: "GeologicaLight", marginTop: 10 }}>
-            Разминка 2
-          </Text>
-          <View
-            style={{
-              borderTopColor: "#D9D9D9",
-              borderTopWidth: 1,
-              borderStyle: "solid",
-              width: "100%",
-              marginTop: 30,
-            }}
-          ></View>
-        </View>
+
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
           <View style={{ flexDirection: "row" }}>
             <Image source={require("./../images/team1.png")} />
@@ -269,4 +226,4 @@ const LessonScreen = ({
   );
 };
 
-export default LessonScreen;
+export default ListenCard;

@@ -11,8 +11,6 @@ import { useNavigation } from "@react-navigation/native";
 import { arrow_back, icon_share } from "../images/images";
 import { SvgXml } from "react-native-svg";
 
-
-
 const CoachScreen = ({
   number = 1,
   name = "слушай",
@@ -39,11 +37,11 @@ const CoachScreen = ({
             justifyContent: "space-between",
           }}
         >
-          <TouchableOpacity>
-            <SvgXml xml={arrow_back}/>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <SvgXml xml={arrow_back} />
           </TouchableOpacity>
           <TouchableOpacity>
-            <SvgXml xml={icon_share}/>
+            <SvgXml xml={icon_share} />
           </TouchableOpacity>
         </View>
       </ImageBackground>
