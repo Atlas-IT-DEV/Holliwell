@@ -8,10 +8,9 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import CoachMiniCard from "../components/coach_mini_card";
-import { arrow_back_black } from "../images/images";
+import CoachMiniCard from "../../components/coaches/coach_mini_card";
+import { arrow_back_black } from "../../images/images";
 import { SvgXml } from "react-native-svg";
-
 
 const TeamScreen = () => {
   const navigation = useNavigation();
@@ -32,7 +31,7 @@ const TeamScreen = () => {
             style={{ top: 10 }}
             onPress={() => navigation.navigate("MainScreen")}
           >
-            <SvgXml xml={arrow_back_black}/>
+            <SvgXml xml={arrow_back_black} />
           </TouchableOpacity>
           <Text
             style={{

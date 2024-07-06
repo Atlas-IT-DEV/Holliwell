@@ -14,6 +14,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
 import { useStores } from "../../store/store_context";
+import { icon_phone, icon_telegram } from "../../images/images";
 
 const RegistrationForm = () => {
   const navigation = useNavigation();
@@ -110,8 +111,8 @@ const RegistrationForm = () => {
             ></View>
           </View>
           <View style={styles.signBar}>
-            <Image source={require("./../../images/phone.png")} />
-            <Image source={require("./../../images/telegram.png")} />
+            <SvgXml xml={icon_phone} />
+            <SvgXml xml={icon_telegram} />
           </View>
           <View style={styles.registrationLink}>
             <Text style={{ fontFamily: "GeologicaThin" }}>

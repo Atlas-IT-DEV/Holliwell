@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { arrow_back, arrow_link, icon_share } from "../images/images";
+import { arrow_back, arrow_link, icon_calendar, icon_share } from "../../images/images";
 import { SvgXml } from "react-native-svg";
 
 const LessonScreen = ({
@@ -39,9 +39,7 @@ const LessonScreen = ({
               justifyContent: "space-between",
             }}
           >
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-            >
+            <TouchableOpacity onPress={() => navigation.goBack()}>
               <SvgXml xml={arrow_back} />
             </TouchableOpacity>
             <TouchableOpacity>
@@ -111,7 +109,7 @@ const LessonScreen = ({
             >
               ЗАПЛАНИРОВАТЬ
             </Text>
-            <Image source={require("./../images/icon_calendar.png")} />
+            <SvgXml xml={icon_calendar}/>
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
@@ -168,7 +166,7 @@ const LessonScreen = ({
             До тренировки
           </Text>
           <Image
-            source={require("./../images/woman_card.png")}
+            source={require("../../images/woman_card.png")}
             style={{ width: "100%", marginTop: 30 }}
           />
           <Text style={{ fontFamily: "GeologicaLight", marginTop: 10 }}>
@@ -189,7 +187,7 @@ const LessonScreen = ({
             После тренировки
           </Text>
           <Image
-            source={require("./../images/woman_card.png")}
+            source={require("../../images/woman_card.png")}
             style={{ width: "100%", marginTop: 30 }}
           />
           <Text style={{ fontFamily: "GeologicaLight", marginTop: 10 }}>
@@ -207,7 +205,7 @@ const LessonScreen = ({
         </View>
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
           <View style={{ flexDirection: "row" }}>
-            <Image source={require("./../images/team1.png")} />
+            <Image source={require("../../images/team1.png")} />
             <View>
               <Text
                 style={{

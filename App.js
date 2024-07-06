@@ -14,13 +14,20 @@ import PrivacyPolicyScreen from "./pages/privacy_policy_screen";
 import MainScreen from "./pages/main_screen/main_screen";
 import BurgerMenu from "./pages/main_screen/burger_menu";
 import { useFonts } from "expo-font";
-import TeamScreen from "./pages/team_screen";
-import TrainScreen from "./pages/train_screen";
-import LessonScreen from "./components/lesson_card";
-import CoachScreen from "./components/coach_card";
-import LessonsCourseScreen from "./components/lessons_course_card";
-import ListenScreen from "./pages/listen_screen";
-import AboutCourseListenScreen from "./components/about_course_listen_card";
+import TeamScreen from "./pages/main_screen/team_screen";
+import TrainScreen from "./pages/train/train_screen";
+import LessonScreen from "./pages/train/lesson_train_screen";
+import CoachScreen from "./pages/coach_screen";
+import LessonsCourseScreen from "./pages/train/train_pack_screen";
+import ListenScreen from "./pages/listen/listen_screen";
+import MeditationScreen from "./pages/meditation/meditation_screen";
+import AboutCourseMeditationScreen from "./pages/meditation/about_course_meditation_card";
+import AboutCourseListenScreen from "./pages/listen/about_course_listen_screen";
+import LessonListenScreen from "./pages/listen/lesson_listen_screen";
+import LessonMeditationScreen from "./pages/meditation/lesson_meditation_screen";
+import ProfileScreen from "./pages/profile_screen/profile_screen";
+import EditProfileScreen from "./pages/profile_screen/edit_profile_screen";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -69,6 +76,24 @@ export default function App() {
               name="AboutCourseListenScreen"
               component={AboutCourseListenScreen}
             />
+            <Stack.Screen
+              name="MeditationScreen"
+              component={MeditationScreen}
+            />
+            <Stack.Screen
+              name="AboutCourseMeditationScreen"
+              component={AboutCourseMeditationScreen}
+            />
+            <Stack.Screen
+              name="LessonListenScreen"
+              component={LessonListenScreen}
+            />
+            <Stack.Screen
+              name="LessonMeditationScreen"
+              component={LessonMeditationScreen}
+            />
+            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+            <Stack.Screen name="EditProfileScreen" component={EditProfileScreen}/>
           </Stack.Navigator>
         )}
       </RootStoreContext.Provider>

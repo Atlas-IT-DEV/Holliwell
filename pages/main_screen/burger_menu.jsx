@@ -14,7 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 
-const BurgerMenu = () => {
+const BurgerMenu = ({ color_burger = "" }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const animationValue = useState(new Animated.Value(0))[0];
   const { pageStore } = useStores();
@@ -41,7 +41,7 @@ const BurgerMenu = () => {
 
   const menuHeight = animationValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, height],
+    outputRange: [0, height + 50],
   });
 
   return (
@@ -49,7 +49,7 @@ const BurgerMenu = () => {
       <StatusBar style="auto" />
       {!isMenuVisible ? (
         <TouchableOpacity style={styles.burgerButton} onPress={toggleMenu}>
-          <Text style={styles.burgerText}>☰</Text>
+          <Text style={[styles.burgerText, { color: color_burger }]}>☰</Text>
         </TouchableOpacity>
       ) : null}
       {isMenuVisible && (
@@ -86,7 +86,8 @@ const BurgerMenu = () => {
               </Text>
             </TouchableOpacity>
             <View style={styles.menuLinks}>
-              <TouchableOpacity onPress={() => navigation.navigate("TrainScreen")}
+              <TouchableOpacity
+                onPress={() => navigation.navigate("TrainScreen")}
                 style={{
                   width: "100%",
                   display: "flex",
@@ -105,7 +106,8 @@ const BurgerMenu = () => {
                   ТРЕНИРУЙСЯ
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate("ListenScreen")}
+              <TouchableOpacity
+                onPress={() => navigation.navigate("ListenScreen")}
                 style={{
                   width: "100%",
                   display: "flex",
@@ -125,6 +127,7 @@ const BurgerMenu = () => {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
+                onPress={() => navigation.navigate("MeditationScreen")}
                 style={{
                   width: "100%",
                   display: "flex",
@@ -244,6 +247,27 @@ const BurgerMenu = () => {
               </TouchableOpacity>
             </View>
             <TouchableOpacity
+              onPress={() => navigation.navigate("ProfileScreen")}
+              style={{
+                width: "100%",
+                display: "flex",
+                alignContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 20,
+                  alignSelf: "center",
+                  marginTop: 30,
+                  fontFamily: "GeologicaRegular",
+                  color: "rgba(162, 162, 162, 1)",
+                }}
+              >
+                ПРОФИЛЬ
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               style={{
                 width: "100%",
                 display: "flex",
@@ -290,7 +314,6 @@ const styles = StyleSheet.create({
   },
   burgerText: {
     fontSize: 30,
-    color: "white",
   },
   menuContainer: {
     position: "absolute",

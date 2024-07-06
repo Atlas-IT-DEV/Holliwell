@@ -1,18 +1,19 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { icon_continue, icon_play } from "../images/images";
 import { SvgXml } from "react-native-svg";
-import ListenCard from "./listen_card";
+import { icon_continue, icon_play } from "../../images/images";
+import LessonListenScreen from "../../pages/listen/lesson_listen_screen";
+
 
 const AudioCard = ({
   number = 1,
-  name = "название урока",
+  name = "НУ ТЫ ПОСЛУШАЙ",
   coach = "Фамилия Имя",
   time = "13:30",
 }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(ListenCard)}>
+    <TouchableOpacity onPress={() => navigation.navigate(LessonListenScreen)}>
       <Text
         style={{
           position: "absolute",

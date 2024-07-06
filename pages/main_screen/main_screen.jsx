@@ -12,7 +12,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { useStores } from "../../store/store_context";
 import BurgerMenu from "./burger_menu";
-import CoachMiniCard from "../../components/coach_mini_card";
+import CoachMiniCard from "../../components/coaches/coach_mini_card";
 import { SvgXml } from "react-native-svg";
 import { arrow_link } from "../../images/images";
 
@@ -47,7 +47,7 @@ const MainScreen = () => {
       </View>
 
       <ScrollView>
-        <BurgerMenu />
+        <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
         <ImageBackground
           source={require("./../../images/woman_main.png")}
           style={{ width: "100%", height: 600 }}
@@ -143,7 +143,9 @@ const MainScreen = () => {
               style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("MeditationScreen")}
+          >
             <Image
               source={require("./../../images/meditation.png")}
               style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}

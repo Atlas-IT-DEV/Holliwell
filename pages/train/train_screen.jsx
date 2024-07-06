@@ -11,13 +11,12 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import CourseCard from "../components/course_card";
-import CoursePackCard from "../components/course_pack_card";
-import { arrow_back_black } from "../images/images";
+import CourseCard from "../../components/train/train_mini_card";
+import CoursePackCard from "../../components/train/train_pack_mini_card";
+import { arrow_back_black } from "../../images/images";
 import { SvgXml } from "react-native-svg";
 
 const TrainScreen = () => {
-  const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const [selected, setSelected] = useState(0);
   return (
@@ -122,14 +121,14 @@ const TrainScreen = () => {
           >
             <Image
               style={{ width: 20, height: 20 }}
-              source={require("../images/filters.png")}
+              source={require("../../images/filters.png")}
             />
             <Text style={{ fontSize: 14, fontFamily: "GeologicaThin" }}>
               Новое
             </Text>
             <Image
               style={{ width: 20, height: 20 }}
-              source={require("../images/arrow_down.png")}
+              source={require("../../images/arrow_down.png")}
             />
           </View>
           <View style={{ marginTop: 20 }}>

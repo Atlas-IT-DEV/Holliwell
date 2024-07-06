@@ -18,9 +18,9 @@ import {
   icon_freeze_small,
   icon_freeze_big,
   icon_play,
-} from "../images/images";
-import CourseCard from "./course_card";
-import CoachMiniCard from "./coach_mini_card";
+} from "../../images/images";
+import CourseCard from "../../components/train/train_mini_card";
+import CoachMiniCard from "../../components/coaches/coach_mini_card";
 
 const LessonsCourseScreen = ({
   name_course = "СТРОЙНОСТЬ И ЭНЕРГИЯ",
@@ -54,7 +54,7 @@ const LessonsCourseScreen = ({
                 justifyContent: "space-between",
               }}
             >
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
                 <SvgXml xml={arrow_back} />
               </TouchableOpacity>
               <TouchableOpacity>
@@ -133,7 +133,7 @@ const LessonsCourseScreen = ({
                 justifyContent: "space-between",
               }}
             >
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
                 <SvgXml xml={arrow_back} />
               </TouchableOpacity>
               <TouchableOpacity>

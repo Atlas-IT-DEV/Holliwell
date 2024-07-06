@@ -11,20 +11,12 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SvgXml } from "react-native-svg";
-import {
-  arrow_back_black,
-  lock_image,
-  icon_share,
-  icon_freeze_small,
-  icon_freeze_big,
-  icon_play,
-} from "../images/images";
-import CourseCard from "./course_card";
-import CoachMiniCard from "./coach_mini_card";
-import AudioCard from "./audio_card";
+import { arrow_back, lock_image, icon_share } from "../../images/images";
+import CoachMiniCard from "../../components/coaches/coach_mini_card";
+import LessonMeditationMiniCard from "../../components/meditation/lesson_meditation_mini_card";
 
-const AboutCourseListenScreen = ({
-  name_course = "ВЫДАЮЩИЙСЯ РЕЛЬЕФ",
+const AboutCourseMeditationScreen = ({
+  name_course = "НУ ТЫ ПОМЕДИТИРУЙ",
   about = "Откройте для себя преимущества регулярной медитации на нашем курсе, направленном на улучшение физического и эмоционального благополучия. ",
   uri = "http://legacy.reactjs.org/logo-og.png",
   count_lessons = 13,
@@ -35,10 +27,9 @@ const AboutCourseListenScreen = ({
   return (
     <SafeAreaView>
       <ScrollView>
-        <View
-          style={{
-            width: "100%",
-          }}
+        <ImageBackground
+          source={{ uri: uri }}
+          style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           <View
             style={{
@@ -50,57 +41,30 @@ const AboutCourseListenScreen = ({
             }}
           >
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <SvgXml xml={arrow_back_black} />
+              <SvgXml xml={arrow_back} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <SvgXml xml={icon_share} />
             </TouchableOpacity>
           </View>
-        </View>
-        <Image
-          source={{ uri: uri }}
+        </ImageBackground>
+
+        <Text
           style={{
-            width: 220,
-            height: 220,
-            marginTop: 10,
-            alignSelf: "center",
+            marginTop: 40,
+            fontFamily: "GeologicaRegular",
+            fontSize: 28,
+            textAlign: "center",
           }}
-        />
-        <View style={{ marginHorizontal: 20, marginTop: 40 }}>
+        >
+          {name_course}
+        </Text>
+        <View
+          style={{ marginHorizontal: 20, marginTop: 10, alignItems: "center" }}
+        >
           <Text style={{ fontFamily: "GeologicaThin", textAlign: "center" }}>
-            Аудио-курс
+            Курс медитаций
           </Text>
-          <Text
-            style={{
-              marginTop: 10,
-              fontFamily: "GeologicaRegular",
-              fontSize: 28,
-              textAlign: "center",
-            }}
-          >
-            {name_course}
-          </Text>
-          <Text
-            style={{
-              marginTop: 20,
-              fontFamily: "GeologicaLight",
-              textAlign: "center",
-            }}
-          >
-            {about}
-          </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              gap: 40,
-              marginTop: 20,
-            }}
-          >
-            <Text style={{ fontFamily: "GeologicaThin" }}>
-              Занятий: {count_lessons}
-            </Text>
-            <Text style={{ fontFamily: "GeologicaThin" }}>{time_course}</Text>
-          </View>
-        </View>
-        <View style={{ alignItems: "center" }}>
           <TouchableOpacity
             style={{
               justifyContent: "center",
@@ -122,6 +86,35 @@ const AboutCourseListenScreen = ({
               ОБЗОР КУРСА
             </Text>
           </TouchableOpacity>
+          <View
+            style={{
+              borderBottomColor: "#D9D9D9",
+              borderBottomWidth: 1,
+              width: "100%",
+              marginTop: 40,
+            }}
+          ></View>
+          <Text
+            style={{
+              marginTop: 30,
+              fontFamily: "GeologicaLight",
+            }}
+          >
+            {about}
+          </Text>
+          <View
+            style={{
+              borderBottomColor: "#D9D9D9",
+              borderBottomWidth: 1,
+              width: "100%",
+              marginVertical: 40,
+              // marginHorizontal: 20,
+            }}
+          ></View>
+        </View>
+        <View style={{ gap: 30 }}>
+          <LessonMeditationMiniCard />
+          <LessonMeditationMiniCard />
         </View>
         <View style={{ marginTop: 40, marginHorizontal: 20 }}>
           <View
@@ -129,14 +122,9 @@ const AboutCourseListenScreen = ({
               borderBottomColor: "#D9D9D9",
               borderBottomWidth: 1,
               width: "100%",
+              marginBottom: 40,
             }}
           ></View>
-          <AudioCard />
-          <AudioCard />
-          <AudioCard />
-        </View>
-
-        <View style={{ marginTop: 40, marginHorizontal: 20 }}>
           <Text
             style={{
               fontFamily: "GeologicaRegular",
@@ -171,7 +159,7 @@ const AboutCourseListenScreen = ({
               borderBottomColor: "#D9D9D9",
               borderBottomWidth: 1,
               width: "100%",
-              marginVertical: 40
+              marginVertical: 40,
             }}
           ></View>
         </View>
@@ -188,4 +176,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AboutCourseListenScreen;
+export default AboutCourseMeditationScreen;

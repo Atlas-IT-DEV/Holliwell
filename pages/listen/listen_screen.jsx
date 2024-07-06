@@ -10,12 +10,9 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
-import CourseCard from "../components/course_card";
-import CoursePackCard from "../components/course_pack_card";
-import { arrow_back_black } from "../images/images";
 import { SvgXml } from "react-native-svg";
-import CourseListenMiniCard from "../components/course_listen_mini_card";
+import { arrow_back_black } from "../../images/images";
+import CourseListenMiniCard from "../../components/listen/course_listen_mini_card";
 
 const ListenScreen = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -75,14 +72,14 @@ const ListenScreen = () => {
           >
             <Image
               style={{ width: 20, height: 20 }}
-              source={require("../images/filters.png")}
+              source={require("../../images/filters.png")}
             />
             <Text style={{ fontSize: 14, fontFamily: "GeologicaThin" }}>
               Новое
             </Text>
             <Image
               style={{ width: 20, height: 20 }}
-              source={require("../images/arrow_down.png")}
+              source={require("../../images/arrow_down.png")}
             />
           </View>
           <View

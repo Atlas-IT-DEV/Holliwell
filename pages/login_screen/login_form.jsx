@@ -15,6 +15,8 @@ import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
 import RecoveryPasswordScreen from "../recovery_password_screen/recovery_password_screen";
 import { useStores } from "../../store/store_context";
+import { icon_phone, icon_telegram } from "../../images/images";
+import { SvgXml } from "react-native-svg";
 
 const LoginForm = () => {
   const navigation = useNavigation();
@@ -110,8 +112,8 @@ const LoginForm = () => {
             ></View>
           </View>
           <View style={styles.signBar}>
-            <Image source={require("./../../images/phone.png")} />
-            <Image source={require("./../../images/telegram.png")} />
+            <SvgXml xml={icon_phone} />
+            <SvgXml xml={icon_telegram} />
           </View>
           <View style={styles.registrationLink}>
             <Text style={{ fontFamily: "GeologicaThin" }}>Нет профиля?</Text>

@@ -9,12 +9,17 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { arrow_back, arrow_link, icon_share } from "../images/images";
+import {
+  arrow_back,
+  arrow_link,
+  icon_calendar,
+  icon_share,
+} from "../../images/images";
 import { SvgXml } from "react-native-svg";
 
-const ListenCard = ({
+const LessonMeditationScreen = ({
   number = 1,
-  name = "Название урока",
+  name = "МЕДИТИРУЙ МЕДИТИРУЙ",
   description = "В бар заходит лошадь. Снимает пальто, шляпу. Вешает на вешалку. Подходит стойке и говорит бармену...",
   about = "Откройте для себя преимущества регулярной медитации на нашем курсе, направленном на улучшение физического и эмоционального благополучия. ",
   coach = "Фамилия имя",
@@ -48,8 +53,14 @@ const ListenCard = ({
           </View>
         </ImageBackground>
         <View style={{ marginTop: 40, alignItems: "center" }}>
-          <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
-            Урок {number}: {name}
+          <Text
+            style={{
+              fontSize: 28,
+              fontFamily: "GeologicaRegular",
+              textAlign: "center",
+            }}
+          >
+            Медитация {number}: {name}
           </Text>
           <View style={{ flexDirection: "row", gap: 30, marginTop: 30 }}>
             <Text style={{ fontFamily: "GeologicaThin" }}>{coach}</Text>
@@ -109,7 +120,7 @@ const ListenCard = ({
             >
               ЗАПЛАНИРОВАТЬ
             </Text>
-            <Image source={require("./../images/icon_calendar.png")} />
+            <SvgXml xml={icon_calendar} />
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
@@ -164,7 +175,7 @@ const ListenCard = ({
 
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
           <View style={{ flexDirection: "row" }}>
-            <Image source={require("./../images/team1.png")} />
+            <Image source={require("../../images/team1.png")} />
             <View>
               <Text
                 style={{
@@ -226,4 +237,4 @@ const ListenCard = ({
   );
 };
 
-export default ListenCard;
+export default LessonMeditationScreen;
