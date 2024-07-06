@@ -22,22 +22,8 @@ const PrivacyPolicyScreen = () => {
           <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
             Политика в отношении обработки персональных данных
           </Text>
-          <Text
-            style={{
-              fontSize: 20,
-              marginTop: 30,
-              fontFamily: "GeologicaRegular",
-            }}
-          >
-            1. Общие положения
-          </Text>
-          <Text
-            style={{
-              marginTop: 10,
-              fontSize: 14,
-              fontFamily: "GeologicaLight",
-            }}
-          >
+          <Text style={styles.headers}>1. Общие положения</Text>
+          <Text style={styles.mainText}>
             Настоящая политика обработки персональных данных составлена в
             соответствии с требованиями Федерального закона от 27.07.2006. №
             152-ФЗ «О персональных данных» (далее — Закон о персональных данных)
@@ -53,22 +39,10 @@ const PrivacyPolicyScreen = () => {
             Оператор может получить о посетителях веб-сайта
             httpsː//thismywebsite·com.
           </Text>
-          <Text
-            style={{
-              fontSize: 20,
-              marginTop: 30,
-              fontFamily: "GeologicaRegular",
-            }}
-          >
+          <Text style={styles.headers}>
             2. Основные понятия, используемые в Политике
           </Text>
-          <Text
-            style={{
-              marginTop: 10,
-              fontSize: 14,
-              fontFamily: "GeologicaLight",
-            }}
-          >
+          <Text style={styles.mainText}>
             2.1. Автоматизированная обработка персональных данных — обработка
             персональных данных с помощью средств вычислительной техники. {"\n"}{" "}
             {"\n"}2.2. Блокирование персональных данных — временное прекращение
@@ -119,8 +93,15 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "flex-start",
   },
-  topImage: {
-    width: "100%",
+  mainText: {
+    marginTop: 10,
+    fontSize: 14,
+    fontFamily: "GeologicaLight",
+  },
+  headers: {
+    fontSize: 20,
+    marginTop: 30,
+    fontFamily: "GeologicaRegular",
   },
 });
 

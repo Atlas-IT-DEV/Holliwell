@@ -29,7 +29,7 @@ const IntroScreen1 = () => {
         >
           HOLIWELL
         </Text>
-        <View style={{ marginLeft: 20, marginRight: 20 }}>
+        <View style={{ marginHorizontal: 20 }}>
           <Text
             style={{
               marginTop: 300,
@@ -41,31 +41,13 @@ const IntroScreen1 = () => {
           >
             Большой {"\n"}Заголовок {"\n"}в три строки
           </Text>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 20,
-              fontFamily: "GeologicaLight",
-            }}
-          >
+          <Text style={styles.aboutText}>
             Описание приложения в три строки...
           </Text>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 20,
-              fontFamily: "GeologicaLight",
-            }}
-          >
+          <Text style={styles.aboutText}>
             Описание приложения в три строки...
           </Text>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 20,
-              fontFamily: "GeologicaLight",
-            }}
-          >
+          <Text style={styles.aboutText}>
             Описание приложения в три строки...
           </Text>
           <TouchableOpacity
@@ -110,8 +92,10 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "flex-start",
   },
-  topImage: {
-    width: "100%",
+  aboutText: {
+    color: "white",
+    fontSize: 20,
+    fontFamily: "GeologicaLight",
   },
 });
 

@@ -22,30 +22,6 @@ const MainScreen = () => {
   const { pageStore } = useStores();
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={
-          {
-            // marginTop: 20,
-            // width: "100%",
-            // display: "flex",
-            // alignContent: "center",
-            // flexDirection: "column",
-          }
-        }
-      >
-        {/* <Text
-          style={{
-            fontSize: 30,
-            justifyContent: "center",
-            alignSelf: "center",
-            color: "white",
-            marginBottom: 60,
-          }}
-        >
-          HOLIWELL
-        </Text> */}
-      </View>
-
       <ScrollView>
         <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
         <ImageBackground
@@ -98,13 +74,7 @@ const MainScreen = () => {
           </Text>
         </ImageBackground>
         <View style={{ marginLeft: 20, marginRight: 20 }}>
-          <Text
-            style={{
-              marginTop: 40,
-              fontSize: 28,
-              fontFamily: "GeologicaRegular",
-            }}
-          >
+          <Text style={[styles.headerText, { marginTop: 40 }]}>
             ДОБРО ПОЖАЛОВАТЬ
             {pageStore.first_name != "" &&
               pageStore.first_name != null &&
@@ -112,13 +82,7 @@ const MainScreen = () => {
             {"\n"}
             {pageStore.first_name}
           </Text>
-          <Text
-            style={{
-              marginTop: 10,
-              fontSize: 14,
-              fontFamily: "GeologicaLight",
-            }}
-          >
+          <Text style={[styles.mainText, { marginTop: 10 }]}>
             Не ограничивай себя в движении, {"\n"}
             {"\n"}В здоровом теле здоровый дух. Регулярная практика и позитивный
             настрой дадут тебе энергию для реализации твоей цели 🎯
@@ -160,22 +124,8 @@ const MainScreen = () => {
               marginTop: 40,
             }}
           ></View>
-          <Text
-            style={{
-              fontSize: 28,
-              marginTop: 40,
-              fontFamily: "GeologicaRegular",
-            }}
-          >
-            О HOLIWELL
-          </Text>
-          <Text
-            style={{
-              fontSize: 14,
-              marginTop: 10,
-              fontFamily: "GeologicaLight",
-            }}
-          >
+          <Text style={[styles.headerText, { marginTop: 40 }]}>О HOLIWELL</Text>
+          <Text style={[styles.mainText, { marginTop: 10 }]}>
             Равным образом дальнейшее развитие различных форм деятельности
             влечет за собой процесс внедрения и модернизации соответствующий
             условий активизации. Разнообразный и богатый опыт сложившаяся
@@ -197,9 +147,7 @@ const MainScreen = () => {
               marginTop: 40,
             }}
           >
-            <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
-              КОМАНДА
-            </Text>
+            <Text style={styles.headerText}>КОМАНДА</Text>
             <TouchableOpacity onPress={() => navigation.navigate("TeamScreen")}>
               <View
                 style={{
@@ -244,6 +192,14 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: "100%",
+  },
+  headerText: {
+    fontSize: 28,
+    fontFamily: "GeologicaRegular",
+  },
+  mainText: {
+    fontSize: 14,
+    fontFamily: "GeologicaLight",
   },
 });
 

@@ -9,7 +9,12 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { arrow_back, arrow_link, icon_calendar, icon_share } from "../../images/images";
+import {
+  arrow_back,
+  arrow_link,
+  icon_calendar,
+  icon_share,
+} from "../../images/images";
 import { SvgXml } from "react-native-svg";
 
 const LessonScreen = ({
@@ -34,8 +39,7 @@ const LessonScreen = ({
             style={{
               flexDirection: "row",
               marginTop: 30,
-              marginRight: 20,
-              marginLeft: 20,
+              marginHorizontal: 20,
               justifyContent: "space-between",
             }}
           >
@@ -109,7 +113,7 @@ const LessonScreen = ({
             >
               ЗАПЛАНИРОВАТЬ
             </Text>
-            <SvgXml xml={icon_calendar}/>
+            <SvgXml xml={icon_calendar} />
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>

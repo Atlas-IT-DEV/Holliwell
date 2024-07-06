@@ -112,8 +112,12 @@ const LoginForm = () => {
             ></View>
           </View>
           <View style={styles.signBar}>
-            <SvgXml xml={icon_phone} />
-            <SvgXml xml={icon_telegram} />
+            <TouchableOpacity>
+              <SvgXml xml={icon_phone} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <SvgXml xml={icon_telegram} />
+            </TouchableOpacity>
           </View>
           <View style={styles.registrationLink}>
             <Text style={{ fontFamily: "GeologicaThin" }}>Нет профиля?</Text>

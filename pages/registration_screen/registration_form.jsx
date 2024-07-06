@@ -15,6 +15,7 @@ import * as Yup from "yup";
 import { Link, useNavigation } from "@react-navigation/native";
 import { useStores } from "../../store/store_context";
 import { icon_phone, icon_telegram } from "../../images/images";
+import { SvgXml } from "react-native-svg";
 
 const RegistrationForm = () => {
   const navigation = useNavigation();
@@ -111,8 +112,12 @@ const RegistrationForm = () => {
             ></View>
           </View>
           <View style={styles.signBar}>
-            <SvgXml xml={icon_phone} />
-            <SvgXml xml={icon_telegram} />
+            <TouchableOpacity>
+              <SvgXml xml={icon_phone} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <SvgXml xml={icon_telegram} />
+            </TouchableOpacity>
           </View>
           <View style={styles.registrationLink}>
             <Text style={{ fontFamily: "GeologicaThin" }}>
