@@ -10,6 +10,8 @@ import BurgerMenu from "../main_screen/burger_menu";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import GetCalendar from "../../components/calendar";
 import { useNavigation } from "@react-navigation/native";
+import FavouritesCard from "../../components/favourites_card";
+import ViewedCard from "../../components/viewed_card";
 
 const ProfileScreen = ({
   uri = "http://legacy.reactjs.org/logo-og.png",
@@ -95,8 +97,15 @@ const ProfileScreen = ({
           <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
             ИЗБРАННОЕ
           </Text>
-          <View style={{ marginTop: 20 }}>
-            <Text>Компоненты избранного</Text>
+          <View
+            style={{
+              marginTop: 20,
+              justifyContent: "space-between",
+              flexDirection: "row",
+            }}
+          >
+            <FavouritesCard />
+            <FavouritesCard />
           </View>
           <View
             style={{
@@ -111,8 +120,15 @@ const ProfileScreen = ({
           <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
             ПРОСМОТРЕННОЕ
           </Text>
-          <View style={{ marginTop: 20 }}>
-            <Text>Компоненты просмотренного</Text>
+          <View
+            style={{
+              marginTop: 20,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <ViewedCard />
+            <ViewedCard />
           </View>
           <View
             style={{
