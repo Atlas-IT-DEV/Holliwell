@@ -1,6 +1,6 @@
 import { View, Image, Text, TouchableOpacity } from "react-native";
 
-const FavouritesCard = ({
+const FavouritesViewedCard = ({
   type_of_course = "Аудио-курс",
   name_course = "Название курса",
   uri = "https://legacy.reactjs.org/logo-og.png"
@@ -14,4 +14,4 @@ const FavouritesCard = ({
     )
 };
 
-export default FavouritesCard;
+export default FavouritesViewedCard;

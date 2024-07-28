@@ -7,11 +7,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import BurgerMenu from "../main_screen/burger_menu";
-import { Calendar, LocaleConfig } from "react-native-calendars";
 import GetCalendar from "../../components/calendar";
 import { useNavigation } from "@react-navigation/native";
-import FavouritesCard from "../../components/favourites_card";
-import ViewedCard from "../../components/viewed_card";
+import FavouritesViewedCard from "../../components/favourites_viewed_card";
 
 const ProfileScreen = ({
   uri = "http://legacy.reactjs.org/logo-og.png",
@@ -104,8 +102,8 @@ const ProfileScreen = ({
               flexDirection: "row",
             }}
           >
-            <FavouritesCard />
-            <FavouritesCard />
+         <FavouritesViewedCard/>
+         <FavouritesViewedCard/>
           </View>
           <View
             style={{
@@ -127,8 +125,8 @@ const ProfileScreen = ({
               justifyContent: "space-between",
             }}
           >
-            <ViewedCard />
-            <ViewedCard />
+            <FavouritesViewedCard/>
+            <FavouritesViewedCard/>
           </View>
           <View
             style={{
