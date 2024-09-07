@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import LoginForm from "./login_form";
+import { SvgXml } from "react-native-svg";
 
 const LoginScreen = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -16,11 +17,20 @@ const LoginScreen = () => {
     <View style={styles.container}>
       <ImageBackground
         source={require("./../../images/login_boobs.png")}
-        style={{ height: screenHeight >= 902 ? 447 : 230, width:"100%"}}
+        style={{ height: screenHeight >= 902 ? 447 : 230, width: "100%" }}
       >
-        <Text style={{fontSize: 30, marginTop:30, justifyContent: "center", alignSelf:"center", color: "white"}}>HOLIWELL</Text>
+        <Text
+          style={{
+            fontSize: 30,
+            marginTop: 30,
+            justifyContent: "center",
+            alignSelf: "center",
+            color: "white",
+          }}
+        >
+          HOLIWELL
+        </Text>
       </ImageBackground>
-
       <LoginForm />
     </View>
   );
