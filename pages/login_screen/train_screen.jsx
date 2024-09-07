@@ -14,13 +14,15 @@ import { useState } from "react";
 import CourseCard from "../../components/course_card";
 import CoursePackCard from "../../components/course_pack_card";
 
+import VideoPlayer from "../../components/video_screen";
 const TrainScreen = () => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const [selected, setSelected] = useState(0);
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <VideoPlayer/>
+      {/* <ScrollView>
         <View
           style={{
             flexDirection: "row",
@@ -160,7 +162,7 @@ const TrainScreen = () => {
             )}
           </View>
         </View>
-      </ScrollView>
+      </ScrollView> */}
     </SafeAreaView>
   );
 };
