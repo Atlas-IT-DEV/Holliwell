@@ -7,10 +7,13 @@ const CourseCard = ({
   description = "неплохой урок",
   uri = "http://legacy.reactjs.org/logo-og.png",
   time = "22:40",
+  lesson_obj = {},
 }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("LessonScreen")}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("LessonScreen", lesson_obj)}
+    >
       <View style={{ minWidth: "45%" }}>
         <Image
           source={{ uri: uri }}

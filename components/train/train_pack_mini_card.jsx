@@ -6,11 +6,12 @@ const CoursePackCard = ({
   name = "Рельеф как у Скалы",
   description = "Фамилия Имя",
   uri = "http://legacy.reactjs.org/logo-og.png",
+  course_obj = {}
 }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("LessonsCourseScreen")}
+      onPress={() => navigation.navigate("LessonsCourseScreen", course_obj)}
     >
       <View style={{ minWidth: "45%" }}>
         <Image

@@ -20,20 +20,11 @@ import {
 import { SvgXml } from "react-native-svg";
 import { useStores } from "../../store/store_context";
 
-const LessonListenScreen = ({
-  route,
-  number = 1,
-  name = "СЛУШАЙ СЛУШАЙ",
-  description = "В бар заходит лошадь. Снимает пальто, шляпу. Вешает на вешалку. Подходит стойке и говорит бармену...",
-  about = "Откройте для себя преимущества регулярной медитации на нашем курсе, направленном на улучшение физического и эмоционального благополучия.",
-  coach = "Фамилия имя",
-  uri = "http://legacy.reactjs.org/logo-og.png",
-  time = "22:40",
-}) => {
+const LessonListenScreen = ({ route }) => {
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
   const { pageStore } = useStores();
-  
+
   const [sound, setSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 

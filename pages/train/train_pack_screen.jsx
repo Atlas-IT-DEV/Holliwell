@@ -26,14 +26,16 @@ const LessonsCourseScreen = ({
   name_course = "СТРОЙНОСТЬ И ЭНЕРГИЯ",
   about = "Откройте для себя преимущества регулярной медитации на нашем курсе, направленном на улучшение физического и эмоционального благополучия. ",
   uri = "http://legacy.reactjs.org/logo-og.png",
+  route,
 }) => {
+  console.log(route.params.lessons);
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
   return (
     <SafeAreaView>
       <ScrollView>
         <ImageBackground
-          source={{ uri: uri }}
+          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
           style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           {/* Разблокировать доступ */}
@@ -165,7 +167,7 @@ const LessonsCourseScreen = ({
           }}
         >
           <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
-            {name_course}
+            {route.params.title}
           </Text>
           <Text style={{ marginTop: 10, fontFamily: "GeologicaThin" }}>
             Курс тренировок
@@ -218,7 +220,7 @@ const LessonsCourseScreen = ({
             О курсе
           </Text>
           <Text style={{ marginTop: 10, fontFamily: "GeologicaLight" }}>
-            {about}
+            {route.params.description}
           </Text>
 
           <TouchableOpacity
@@ -250,8 +252,20 @@ const LessonsCourseScreen = ({
             }}
           ></View>
         </View>
-        <View style={{ marginTop: 40 }}>
-          <CourseCard />
+        <View style={{ marginTop: 40, gap: 20 }}>
+          {route.params.lessons.map((elem, index) => {
+            console.log(elem.title);
+            return (
+              <CourseCard
+                number={index + 1}
+                name={elem.title}
+                coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
+                time={elem.audio_length}
+                lesson_obj={{ ...elem, number: index + 1 }}
+                key={elem}
+              />
+            );
+          })}
         </View>
 
         <View style={{ marginHorizontal: 20, marginTop: 40 }}>
@@ -273,16 +287,47 @@ const LessonsCourseScreen = ({
           >
             КОМАНДА
           </Text>
-          <View
-            style={{
-              marginTop: 40,
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <CoachMiniCard />
-            <CoachMiniCard />
-          </View>
+          {route.params.lessons.map((elem, index, array) => {
+            index *= 2;
+
+            return (
+              <View
+                style={{
+                  marginTop: 40,
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                {array.slice(index, index + 2).length == 2 ? (
+                  <>
+                    <CoachMiniCard
+                      coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
+                      uri={
+                        "http://154.194.52.246" + elem.trainer.path_to_avatar
+                      }
+                      key={elem}
+                    />
+                    <CoachMiniCard
+                      coach={`${array[index + 1].trainer.last_name} ${
+                        array[index + 1].trainer.first_name
+                      }`}
+                      uri={
+                        "http://154.194.52.246" +
+                        array[index + 1].trainer.path_to_avatar
+                      }
+                      key={elem}
+                    />
+                  </>
+                ) : array.slice(index, index + 2).length == 1 ? (
+                  <CoachMiniCard
+                    coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
+                    uri={"http://154.194.52.246" + elem.trainer.path_to_avatar}
+                    key={elem}
+                  />
+                ) : null}
+              </View>
+            );
+          })}
           <View
             style={{
               borderTopColor: "#D9D9D9",

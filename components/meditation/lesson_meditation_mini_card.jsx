@@ -1,19 +1,23 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-
 const LessonMeditationMiniCard = ({
   uri = "http://legacy.reactjs.org/logo-og.png",
   number_lesson = "1",
   time = "34:44",
   name = "ПОМЕДИТИРУЙ",
   coach = "Фамилия Имя",
+  lesson_obj = {},
 }) => {
   const navigation = useNavigation();
 
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate("LessonMeditationScreen")}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("LessonMeditationScreen", lesson_obj)
+        }
+      >
         <Image source={{ uri: uri }} style={{ width: "100%", height: 251 }} />
         <View
           style={{
@@ -51,7 +55,7 @@ const LessonMeditationMiniCard = ({
           fontSize: 20,
         }}
       >
-        Медитация {number_lesson}: {name}
+        {name}
       </Text>
       <Text
         style={{
