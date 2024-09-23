@@ -22,15 +22,38 @@ import {
 import CoachMiniCard from "../../components/coaches/coach_mini_card";
 import AudioCard from "../../components/listen/audio_card";
 
-const AboutCourseListenScreen = ({
-  name_course = "СЛУШАЙ",
-  about = "Откройте для себя преимущества регулярной медитации на нашем курсе, направленном на улучшение физического и эмоционального благополучия. ",
-  uri = "http://legacy.reactjs.org/logo-og.png",
-  count_lessons = 13,
-  time_course = "2 часа 13 мин",
-}) => {
+const AboutCourseListenScreen = ({ route }) => {
+  const combineTimeStrings = (timeStrings) => {
+    // Разделяем каждую строку времени на часы, минуты и секунды
+    const times = timeStrings.map((str) => {
+      const parts = str.split(":");
+      return {
+        hours: parseInt(parts[0], 10),
+        minutes: parseInt(parts[1], 10),
+        seconds: parseInt(parts[2], 10),
+      };
+    });
+
+    // Суммируем часы, минуты и секунды
+    let totalHours = 0;
+    let totalMinutes = 0;
+    let totalSeconds = 0;
+    for (const time of times) {
+      totalHours += time.hours;
+      totalMinutes += time.minutes;
+      totalSeconds += time.seconds;
+    }
+
+    // Приводим результаты к целым числам и форматируем результат
+    const totalHoursString = ("0" + Math.floor(totalHours)).slice(-2);
+    const totalMinutesString = ("0" + Math.floor(totalMinutes)).slice(-2);
+    const totalSecondsString = ("0" + Math.floor(totalSeconds)).slice(-2);
+    return `${totalHoursString}:${totalMinutesString}:${totalSecondsString}`;
+  };
+
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
+  console.log(route);
   return (
     <SafeAreaView>
       <ScrollView>
@@ -54,12 +77,13 @@ const AboutCourseListenScreen = ({
           </View>
         </View>
         <Image
-          source={{ uri: uri }}
+          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
           style={{
             width: 220,
             height: 220,
             marginTop: 10,
             alignSelf: "center",
+            resizeMode: "streatch",
           }}
         />
         <View style={{ marginHorizontal: 20, marginTop: 40 }}>
@@ -74,7 +98,7 @@ const AboutCourseListenScreen = ({
               textAlign: "center",
             }}
           >
-            {name_course}
+            {route.params.title}
           </Text>
           <Text
             style={{
@@ -83,7 +107,7 @@ const AboutCourseListenScreen = ({
               textAlign: "center",
             }}
           >
-            {about}
+            {route.params.description}
           </Text>
           <View
             style={{
@@ -94,9 +118,15 @@ const AboutCourseListenScreen = ({
             }}
           >
             <Text style={{ fontFamily: "GeologicaThin" }}>
-              Занятий: {count_lessons}
+              Занятий: {route.params.lessons.length}
             </Text>
-            <Text style={{ fontFamily: "GeologicaThin" }}>{time_course}</Text>
+            <Text style={{ fontFamily: "GeologicaThin" }}>
+              {combineTimeStrings(
+                route.params.lessons.map((elem) => {
+                  return elem.audio_length;
+                })
+              )}
+            </Text>
           </View>
         </View>
         <View style={{ alignItems: "center" }}>
@@ -130,9 +160,18 @@ const AboutCourseListenScreen = ({
               width: "100%",
             }}
           ></View>
-          <AudioCard />
-          <AudioCard />
-          <AudioCard />
+          {route.params.lessons.map((elem, index) => {
+            return (
+              <AudioCard
+                number={index + 1}
+                name={elem.title}
+                coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
+                time={elem.audio_length}
+                lesson_obj={{ ...elem, number: index + 1 }}
+                key={elem}
+              />
+            );
+          })}
         </View>
 
         <View style={{ marginTop: 40, marginHorizontal: 20 }}>
@@ -145,32 +184,53 @@ const AboutCourseListenScreen = ({
           >
             КОМАНДА
           </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginTop: 40,
-            }}
-          >
-            <CoachMiniCard />
-            <CoachMiniCard />
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginTop: 40,
-            }}
-          >
-            <CoachMiniCard />
-            <CoachMiniCard />
-          </View>
+          {route.params.lessons.map((elem, index, array) => {
+            index *= 2;
+
+            return (
+              <View
+                style={{
+                  marginTop: 40,
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                {array.slice(index, index + 2).length == 2 ? (
+                  <>
+                    <CoachMiniCard
+                      coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
+                      uri={
+                        "http://154.194.52.246" + elem.trainer.path_to_avatar
+                      }
+                      key={elem}
+                    />
+                    <CoachMiniCard
+                      coach={`${array[index + 1].trainer.last_name} ${
+                        array[index + 1].trainer.first_name
+                      }`}
+                      uri={
+                        "http://154.194.52.246" +
+                        array[index + 1].trainer.path_to_avatar
+                      }
+                      key={elem}
+                    />
+                  </>
+                ) : array.slice(index, index + 2).length == 1 ? (
+                  <CoachMiniCard
+                    coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
+                    uri={"http://154.194.52.246" + elem.trainer.path_to_avatar}
+                    key={elem}
+                  />
+                ) : null}
+              </View>
+            );
+          })}
           <View
             style={{
               borderBottomColor: "#D9D9D9",
               borderBottomWidth: 1,
               width: "100%",
-              marginVertical: 40
+              marginVertical: 40,
             }}
           ></View>
         </View>

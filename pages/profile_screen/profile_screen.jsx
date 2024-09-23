@@ -25,7 +25,7 @@ const ProfileScreen = ({
         >
           <Image
             source={{ uri: uri }}
-            style={{ width: 90, height: 90, borderRadius: "100%" }}
+            style={{ width: 90, height: 90, borderRadius: 90 }}
           />
           <Text
             style={{

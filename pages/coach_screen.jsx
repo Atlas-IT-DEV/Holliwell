@@ -12,6 +12,7 @@ import { arrow_back, icon_share } from "../images/images";
 import { SvgXml } from "react-native-svg";
 
 const CoachScreen = ({
+  route,
   number = 1,
   name = "слушай",
   description = "неплохой урок",
@@ -25,8 +26,8 @@ const CoachScreen = ({
   return (
     <SafeAreaView>
       <ImageBackground
-        source={{ uri: uri }}
-        style={{ width: "100%", height: screenHeight / 2 }}
+        source={{ uri: "http://154.194.52.246" + route.params.path_to_background }}
+        style={{ width: "100%", height: screenHeight / 2, }}
       >
         <View
           style={{
@@ -54,13 +55,14 @@ const CoachScreen = ({
         }}
       >
         <Image
-          source={{ uri: uri }}
+          source={{ uri: "http://154.194.52.246" + route.params.path_to_avatar }}
           style={{
             width: 170,
             height: 170,
-            borderRadius: "100%",
+            borderRadius: 170,
             borderWidth: 5,
             borderColor: "white",
+            resizeMode:"stretch"
           }}
         />
       </View>
@@ -73,10 +75,10 @@ const CoachScreen = ({
         }}
       >
         <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
-          {coach}
+          {`${route.params.last_name} ${route.params.first_name}`}
         </Text>
         <Text style={{ marginTop: 30, fontFamily: "GeologicaLight" }}>
-          {about_coach}
+          {route.params.description}
         </Text>
       </View>
     </SafeAreaView>

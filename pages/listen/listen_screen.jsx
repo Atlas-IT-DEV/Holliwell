@@ -13,10 +13,19 @@ import { useNavigation } from "@react-navigation/native";
 import { SvgXml } from "react-native-svg";
 import { arrow_back_black } from "../../images/images";
 import CourseListenMiniCard from "../../components/listen/course_listen_mini_card";
+import { useStores } from "../../store/store_context";
+import { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 
-const ListenScreen = () => {
+const ListenScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
+  const { pageStore } = useStores();
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    pageStore.getAllListening();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -82,21 +91,55 @@ const ListenScreen = () => {
               source={require("../../images/arrow_down.png")}
             />
           </View>
-          <View
-            style={{
-              marginTop: 20,
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <CourseListenMiniCard />
-            <CourseListenMiniCard />
-          </View>
+
+          {pageStore.listening.map((elem, index, array) => {
+            index *= 2;
+            console.log();
+            return (
+              <View
+                style={{
+                  marginTop: 20,
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                {array.slice(index, index + 2).length == 2 ? (
+                  <>
+                    <CourseListenMiniCard
+                      name={elem.title}
+                      uri={"http://154.194.52.246" + elem.path_to_cover}
+                      price={elem?.price}
+
+                      course_obj={elem}
+                      key={elem}
+                    />
+                    <CourseListenMiniCard
+                      name={array[index + 1].title}
+                      uri={
+                        "http://154.194.52.246" + array[index + 1].path_to_cover
+                      }
+                      price={array[index + 1]?.price}
+                      course_obj={array[index + 1]}
+                      key={array[index + 1]}
+                    />
+                  </>
+                ) : array.slice(index, index + 2).length == 1 ? (
+                  <CourseListenMiniCard
+                    name={elem.title}
+                    uri={"http://154.194.52.246" + elem.path_to_cover}
+                    price={elem?.price}
+                    course_obj={elem}
+                    key={elem}
+                  />
+                ) : null}
+              </View>
+            );
+          })}
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

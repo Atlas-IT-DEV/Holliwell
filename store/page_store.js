@@ -12,8 +12,13 @@ class pageStore {
   isVerified = false;
   isActive = false;
   token = null;
+  listening = [];
+  meditation = [];
+  training = [];
+  liked = [];
 
   id = null;
+  trainers = [];
   constructor() {
     makeAutoObservable(this);
   }
@@ -67,6 +72,84 @@ class pageStore {
     this.isSuperuser = false;
     this.isVerified = false;
     this.isActive = false;
+  };
+  getAllTrainers = async () => {
+    const response = await fetch(
+      "http://154.194.52.246:8000/api/trainers/all",
+      { method: "GET", headers: { accept: "application/json" } }
+    );
+    const result = await response.json();
+    this.trainers = result;
+  };
+  getAllListening = async () => {
+    const response = await fetch("http://154.194.52.246:8000/api/courses/all", {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+    const result = await response.json();
+    this.listening = result.filter(
+      (elem) => elem.course_type_slug == "listening"
+    );
+    console.log(this.listening);
+  };
+  getAllMeditate = async () => {
+    const response = await fetch("http://154.194.52.246:8000/api/courses/all", {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+    const result = await response.json();
+    this.meditation = result.filter(
+      (elem) => elem.course_type_slug == "meditation"
+    );
+  };
+  getAllTraining = async () => {
+    const response = await fetch("http://154.194.52.246:8000/api/courses/all", {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+    const result = await response.json();
+    this.training = result.filter(
+      (elem) => elem.course_type_slug == "training"
+    );
+  };
+  likeLesson = async (id) => {
+    const response = await fetch(
+      "http://154.194.52.246:8000/api/users/like-lessons",
+      {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Bearer ${this.token}`,
+        },
+        body: JSON.stringify({ lesson_id: id }),
+      }
+    );
+    const result = await response.json();
+    await this.getLiked();
+  };
+  getLiked = async () => {
+    const response = await fetch(
+      "http://154.194.52.246:8000/api/users/my_favorite",
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    this.liked = result;
   };
 }
 export default pageStore;

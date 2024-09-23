@@ -15,11 +15,19 @@ import BurgerMenu from "./burger_menu";
 import CoachMiniCard from "../../components/coaches/coach_mini_card";
 import { SvgXml } from "react-native-svg";
 import { arrow_link } from "../../images/images";
+import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 
-const MainScreen = () => {
+const MainScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const { pageStore } = useStores();
+  useEffect(() => {
+    pageStore.getAllTrainers();
+  }, []);
+  useEffect(() => {
+    console.log(pageStore.trainers);
+  }, [pageStore.trainers]);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -171,17 +179,22 @@ const MainScreen = () => {
             style={{ marginTop: 20, marginBottom: 30, paddingBottom: 10 }}
           >
             <View style={{ gap: 20, flexDirection: "row" }}>
-              <CoachMiniCard />
-              <CoachMiniCard />
-              <CoachMiniCard />
-              <CoachMiniCard />
+              {pageStore.trainers.map((elem) => {
+                return (
+                  <CoachMiniCard
+                    coach={`${elem.last_name} ${elem.first_name}`}
+                    uri={"http://154.194.52.246" + elem.path_to_background}
+                    key={elem.description}
+                  />
+                );
+              })}
             </View>
           </ScrollView>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

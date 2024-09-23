@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,6 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Audio } from "expo-av";
 import {
   arrow_back,
   arrow_link,
@@ -16,23 +18,89 @@ import {
   icon_share,
 } from "../../images/images";
 import { SvgXml } from "react-native-svg";
+import { useStores } from "../../store/store_context";
 
 const LessonListenScreen = ({
+  route,
   number = 1,
   name = "СЛУШАЙ СЛУШАЙ",
   description = "В бар заходит лошадь. Снимает пальто, шляпу. Вешает на вешалку. Подходит стойке и говорит бармену...",
-  about = "Откройте для себя преимущества регулярной медитации на нашем курсе, направленном на улучшение физического и эмоционального благополучия. ",
+  about = "Откройте для себя преимущества регулярной медитации на нашем курсе, направленном на улучшение физического и эмоционального благополучия.",
   coach = "Фамилия имя",
   uri = "http://legacy.reactjs.org/logo-og.png",
   time = "22:40",
 }) => {
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
+  const { pageStore } = useStores();
+  
+  const [sound, setSound] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Функция для загрузки и проигрывания звука
+  const loadAndPlayAudio = async () => {
+    try {
+      const { sound: newSound } = await Audio.Sound.createAsync({
+        uri: "http://154.194.52.246" + route.params.path_to_audio,
+      });
+      setSound(newSound);
+
+      newSound.setOnPlaybackStatusUpdate(async (status) => {
+        if (status.didJustFinish) {
+          await newSound.stopAsync();
+          await newSound.unloadAsync();
+          setSound(null);
+          setIsPlaying(false);
+        }
+      });
+
+      await newSound.playAsync();
+      setIsPlaying(true);
+    } catch (error) {
+      console.log("Ошибка при загрузке/проигрывании аудио:", error);
+    }
+  };
+
+  // Функция для остановки звука
+  const pauseAudio = async () => {
+    try {
+      if (sound) {
+        await sound.pauseAsync();
+        setIsPlaying(false);
+      }
+    } catch (error) {
+      console.log("Ошибка при остановке аудио:", error);
+    }
+  };
+
+  // Основная функция для проигрывания/остановки аудио
+  const playPauseAudio = async () => {
+    if (sound) {
+      if (isPlaying) {
+        await pauseAudio();
+      } else {
+        await sound.playAsync();
+        setIsPlaying(true);
+      }
+    } else {
+      await loadAndPlayAudio();
+    }
+  };
+
+  // Очистка ресурса звука при размонтировании компонента
+  useEffect(() => {
+    return () => {
+      if (sound) {
+        sound.unloadAsync();
+      }
+    };
+  }, [sound]);
+
   return (
     <SafeAreaView>
       <ScrollView>
         <ImageBackground
-          source={{ uri: uri }}
+          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
           style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           <View
@@ -54,11 +122,15 @@ const LessonListenScreen = ({
         </ImageBackground>
         <View style={{ marginTop: 40, alignItems: "center" }}>
           <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
-            Урок {number}: {name}
+            Урок {route.params.number}: {route.params.title}
           </Text>
           <View style={{ flexDirection: "row", gap: 30, marginTop: 30 }}>
-            <Text style={{ fontFamily: "GeologicaThin" }}>{coach}</Text>
-            <Text style={{ fontFamily: "GeologicaThin" }}>{time}</Text>
+            <Text
+              style={{ fontFamily: "GeologicaThin" }}
+            >{`${route.params.trainer.last_name} ${route.params.trainer.first_name}`}</Text>
+            <Text style={{ fontFamily: "GeologicaThin" }}>
+              {route.params.audio_length}
+            </Text>
           </View>
           <View
             style={{
@@ -79,13 +151,10 @@ const LessonListenScreen = ({
                 width: "45%",
                 borderRadius: 5,
               }}
+              onPress={playPauseAudio}
             >
-              <Text
-                style={{
-                  color: "white",
-                }}
-              >
-                СЛУШАТЬ
+              <Text style={{ color: "white" }}>
+                {isPlaying ? "ОСТАНОВИТЬ" : "СЛУШАТЬ"}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -98,6 +167,9 @@ const LessonListenScreen = ({
                 borderWidth: 2,
                 borderRadius: 5,
                 width: "45%",
+              }}
+              onPress={() => {
+                pageStore.likeLesson(route.params.id);
               }}
             >
               <Text>В ИЗБРАННОЕ</Text>
@@ -142,9 +214,9 @@ const LessonListenScreen = ({
               lineHeight: 20,
             }}
           >
-            {description}
+            {route.params.description}
           </Text>
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Text
               style={{
                 textDecorationLine: "underline",
@@ -154,7 +226,7 @@ const LessonListenScreen = ({
             >
               Читать дальше
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           <View
             style={{
@@ -187,17 +259,19 @@ const LessonListenScreen = ({
                   marginTop: 10,
                 }}
               >
-                {coach}
+                {`${route.params.trainer.last_name} ${route.params.trainer.first_name}`}
               </Text>
             </View>
           </View>
           <Text style={{ marginTop: 20, fontFamily: "GeologicaLight" }}>
-            {about}
+            {route.params.trainer.description}
           </Text>
 
           <TouchableOpacity
             style={{ marginTop: 20 }}
-            onPress={() => navigation.navigate("CoachScreen")}
+            onPress={() =>
+              navigation.navigate("CoachScreen", route.params.trainer)
+            }
           >
             <View
               style={{

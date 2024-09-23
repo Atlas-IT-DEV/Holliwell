@@ -13,6 +13,7 @@ const CourseListenMiniCard = ({
   name = "СЛУШАЙ",
   uri = "http://legacy.reactjs.org/logo-og.png",
   price = "1990",
+  course_obj = {}
 }) => {
   const navigation = useNavigation();
   return (
@@ -37,7 +38,7 @@ const CourseListenMiniCard = ({
           marginTop: 10,
           textAlign: "center",
           fontFamily: "GeologicaRegular",
-          fontSize: 16,
+          fontSize: 14,
         }}
       >
         {name}
@@ -52,7 +53,7 @@ const CourseListenMiniCard = ({
         {price}₽
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate("AboutCourseListenScreen")}
+        onPress={() => navigation.navigate("AboutCourseListenScreen", course_obj)}
         style={{
           borderColor: "black",
           borderWidth: 2,

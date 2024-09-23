@@ -10,10 +10,11 @@ const AudioCard = ({
   name = "НУ ТЫ ПОСЛУШАЙ",
   coach = "Фамилия Имя",
   time = "13:30",
+  lesson_obj = {}
 }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(LessonListenScreen)}>
+    <TouchableOpacity onPress={() => navigation.navigate("LessonListenScreen", lesson_obj)}>
       <Text
         style={{
           position: "absolute",

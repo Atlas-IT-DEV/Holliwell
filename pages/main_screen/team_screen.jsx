@@ -11,9 +11,12 @@ import { useNavigation } from "@react-navigation/native";
 import CoachMiniCard from "../../components/coaches/coach_mini_card";
 import { arrow_back_black } from "../../images/images";
 import { SvgXml } from "react-native-svg";
+import { useStores } from "../../store/store_context";
+import { useEffect } from "react";
 
 const TeamScreen = () => {
   const navigation = useNavigation();
+  const { pageStore } = useStores();
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -56,8 +59,14 @@ const TeamScreen = () => {
             marginRight: 20,
           }}
         >
-          <CoachMiniCard />
-          <CoachMiniCard />
+          {pageStore.trainers.map((elem) => {
+            return (
+              <CoachMiniCard
+                coach={`${elem.last_name} ${elem.first_name}`}
+                uri={"http://154.194.52.246" + elem.path_to_background}
+              />
+            );
+          })}
         </View>
       </ScrollView>
     </SafeAreaView>
