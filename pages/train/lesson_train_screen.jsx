@@ -25,6 +25,7 @@ const LessonScreen = ({
   coach = "Фамилия имя",
   uri = "http://legacy.reactjs.org/logo-og.png",
   time = "22:40",
+  route,
 }) => {
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
@@ -32,7 +33,7 @@ const LessonScreen = ({
     <SafeAreaView>
       <ScrollView>
         <ImageBackground
-          source={{ uri: uri }}
+          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
           style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           <View
@@ -53,11 +54,15 @@ const LessonScreen = ({
         </ImageBackground>
         <View style={{ marginTop: 40, alignItems: "center" }}>
           <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
-            Урок {number}: {name}
+            {route.params.title}
           </Text>
           <View style={{ flexDirection: "row", gap: 30, marginTop: 30 }}>
-            <Text style={{ fontFamily: "GeologicaThin" }}>{coach}</Text>
-            <Text style={{ fontFamily: "GeologicaThin" }}>{time}</Text>
+            <Text
+              style={{ fontFamily: "GeologicaThin" }}
+            >{`${route.params.trainer.last_name} ${route.params.trainer.first_name}`}</Text>
+            <Text style={{ fontFamily: "GeologicaThin" }}>
+              {route.params.audio_length}
+            </Text>
           </View>
           <View
             style={{
@@ -97,6 +102,9 @@ const LessonScreen = ({
                 borderWidth: 2,
                 borderRadius: 5,
                 width: "45%",
+              }}
+              onPress={() => {
+                pageStore.likeLesson(route.params.id);
               }}
             >
               <Text>В ИЗБРАННОЕ</Text>
@@ -141,20 +149,8 @@ const LessonScreen = ({
               lineHeight: 20,
             }}
           >
-            {description}
+            {route.params.description}
           </Text>
-          <TouchableOpacity>
-            <Text
-              style={{
-                textDecorationLine: "underline",
-                marginTop: 10,
-                fontFamily: "GeologicaThin",
-              }}
-            >
-              Читать дальше
-            </Text>
-          </TouchableOpacity>
-
           <View
             style={{
               borderTopColor: "#D9D9D9",
@@ -227,12 +223,12 @@ const LessonScreen = ({
                   marginTop: 10,
                 }}
               >
-                {coach}
+                {`${route.params.trainer.last_name} ${route.params.trainer.first_name}`}
               </Text>
             </View>
           </View>
           <Text style={{ marginTop: 20, fontFamily: "GeologicaLight" }}>
-            {about}
+            {route.params.trainer.description}
           </Text>
 
           <TouchableOpacity
