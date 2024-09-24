@@ -131,13 +131,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    color: "black",
+    color: "white",
     fontWeight: "bold",
     textAlign: "center",
   },
   text: {
     fontSize: 16,
-    color: "black",
+    color: "white",
     textAlign: "center",
   },
 });

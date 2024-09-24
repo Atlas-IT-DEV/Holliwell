@@ -45,55 +45,27 @@ const MainScreen = observer(() => {
         <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
         <SliderComponent />
 
-        {/* <ImageBackground
-          source={require("./../../images/woman_main.png")}
-          style={{ width: "100%", height: 600 }}
+        <View
+          style={{
+            marginTop: 30,
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "row",
+            position: "absolute",
+          }}
         >
-          <View
-            style={{
-              marginTop: 30,
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "row",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 30,
-                color: "white",
-                textAlign: "center",
-                width: "100%",
-              }}
-            >
-              HOLIWELL
-            </Text>
-          </View>
           <Text
             style={{
-              fontSize: 40,
+              fontSize: 30,
               color: "white",
-              alignSelf: "center",
-              marginTop: 220,
-              fontFamily: "GeologicaMedium",
-            }}
-          >
-            МЕДИТИРУЙ
-          </Text>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 20,
-              fontWeight: "300",
-              marginRight: 44,
-              marginLeft: 44,
               textAlign: "center",
-              fontFamily: "GeologicaLight",
+              width: "100%",
             }}
           >
-            Отличный способ научиться сосредоточиться, снизить стресс и улучшить
-            свое общее самочувствие
+            HOLIWELL
           </Text>
-        </ImageBackground> */}
+        </View>
+
         <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={[styles.headerText, { marginTop: 40 }]}>
             ДОБРО ПОЖАЛОВАТЬ
