@@ -107,7 +107,7 @@ const ListenScreen = observer(() => {
                   <>
                     <CourseListenMiniCard
                       name={elem.title}
-                      uri={"http://154.194.52.246" + elem.path_to_cover}
+                      uri={ elem.path_to_cover}
                       price={elem?.price}
 
                       course_obj={elem}
@@ -116,7 +116,7 @@ const ListenScreen = observer(() => {
                     <CourseListenMiniCard
                       name={array[index + 1].title}
                       uri={
-                        "http://154.194.52.246" + array[index + 1].path_to_cover
+                        array[index + 1].path_to_cover
                       }
                       price={array[index + 1]?.price}
                       course_obj={array[index + 1]}
@@ -126,7 +126,7 @@ const ListenScreen = observer(() => {
                 ) : array.slice(index, index + 2).length == 1 ? (
                   <CourseListenMiniCard
                     name={elem.title}
-                    uri={"http://154.194.52.246" + elem.path_to_cover}
+                    uri={elem.path_to_cover}
                     price={elem?.price}
                     course_obj={elem}
                     key={elem}

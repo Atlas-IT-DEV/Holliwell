@@ -5,11 +5,12 @@ const CourseMeditationMiniCard = ({
   name = "Медитация 1",
   uri = "http://legacy.reactjs.org/logo-og.png",
   price = "1990",
+  course_obj = {},
 }) => {
   const navigation = useNavigation();
   return (
     <View>
-      <Image source={{ uri: uri }} style={{ height: 235, width: 175 }} />
+      <Image source={{ uri: uri }} style={{ height: 235, width: 175,  resizeMode:'cover' }} />
       <View
         style={{
           position: "absolute",
@@ -44,7 +45,9 @@ const CourseMeditationMiniCard = ({
         {price}₽
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate("AboutCourseMeditationScreen")}
+        onPress={() =>
+          navigation.navigate("AboutCourseMeditationScreen", course_obj)
+        }
         style={{
           borderColor: "black",
           borderWidth: 2,

@@ -41,7 +41,7 @@ const LessonListenScreen = ({
   const loadAndPlayAudio = async () => {
     try {
       const { sound: newSound } = await Audio.Sound.createAsync({
-        uri: "http://154.194.52.246" + route.params.path_to_audio,
+        uri: route.params.path_to_audio,
       });
       setSound(newSound);
 
@@ -100,7 +100,7 @@ const LessonListenScreen = ({
     <SafeAreaView>
       <ScrollView>
         <ImageBackground
-          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
+          source={{ uri: route.params.path_to_cover }}
           style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           <View

@@ -77,7 +77,7 @@ const AboutCourseListenScreen = ({ route }) => {
           </View>
         </View>
         <Image
-          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
+          source={{ uri: route.params.path_to_cover }}
           style={{
             width: 220,
             height: 220,
@@ -200,7 +200,7 @@ const AboutCourseListenScreen = ({ route }) => {
                     <CoachMiniCard
                       coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
                       uri={
-                        "http://154.194.52.246" + elem.trainer.path_to_avatar
+                        elem.trainer.path_to_avatar
                       }
                       key={elem}
                     />
@@ -209,7 +209,7 @@ const AboutCourseListenScreen = ({ route }) => {
                         array[index + 1].trainer.first_name
                       }`}
                       uri={
-                        "http://154.194.52.246" +
+                        
                         array[index + 1].trainer.path_to_avatar
                       }
                       key={elem}
@@ -218,7 +218,7 @@ const AboutCourseListenScreen = ({ route }) => {
                 ) : array.slice(index, index + 2).length == 1 ? (
                   <CoachMiniCard
                     coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                    uri={"http://154.194.52.246" + elem.trainer.path_to_avatar}
+                    uri={ elem.trainer.path_to_avatar}
                     key={elem}
                   />
                 ) : null}

@@ -13,10 +13,18 @@ import { useNavigation } from "@react-navigation/native";
 import { SvgXml } from "react-native-svg";
 import { arrow_back_black } from "../../images/images";
 import CourseMeditationMiniCard from "../../components/meditation/course_meditation_mini_card";
+import { useStores } from "../../store/store_context";
+import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 
-const MeditationScreen = () => {
+const MeditationScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
+  const { pageStore } = useStores();
+  useEffect(() => {
+    pageStore.getAllMeditate();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -82,21 +90,53 @@ const MeditationScreen = () => {
               source={require("../../images/arrow_down.png")}
             />
           </View>
-          <View
-            style={{
-              marginTop: 20,
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <CourseMeditationMiniCard />
-            <CourseMeditationMiniCard />
-          </View>
+          {pageStore.meditation.map((elem, index, array) => {
+            index *= 2;
+            console.log();
+            return (
+              <View
+                style={{
+                  marginTop: 20,
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                {array.slice(index, index + 2).length == 2 ? (
+                  <>
+                    <CourseMeditationMiniCard
+                      name={elem.title}
+                      uri={elem.path_to_cover}
+                      price={elem?.price}
+                      course_obj={elem}
+                      key={elem}
+                    />
+                    <CourseMeditationMiniCard
+                      name={array[index + 1].title}
+                      uri={
+                        array[index + 1].path_to_cover
+                      }
+                      price={array[index + 1]?.price}
+                      course_obj={array[index + 1]}
+                      key={array[index + 1]}
+                    />
+                  </>
+                ) : array.slice(index, index + 2).length == 1 ? (
+                  <CourseMeditationMiniCard
+                    name={elem.title}
+                    uri={elem.path_to_cover}
+                    price={elem?.price}
+                    course_obj={elem}
+                    key={elem}
+                  />
+                ) : null}
+              </View>
+            );
+          })}
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

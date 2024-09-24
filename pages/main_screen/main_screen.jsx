@@ -17,6 +17,7 @@ import { SvgXml } from "react-native-svg";
 import { arrow_link } from "../../images/images";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import SliderComponent from "../../components/slider";
 
 const MainScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
@@ -32,7 +33,9 @@ const MainScreen = observer(() => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
-        <ImageBackground
+        <SliderComponent/>
+        
+        {/* <ImageBackground
           source={require("./../../images/woman_main.png")}
           style={{ width: "100%", height: 600 }}
         >
@@ -80,7 +83,7 @@ const MainScreen = observer(() => {
             Отличный способ научиться сосредоточиться, снизить стресс и улучшить
             свое общее самочувствие
           </Text>
-        </ImageBackground>
+        </ImageBackground> */}
         <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={[styles.headerText, { marginTop: 40 }]}>
             ДОБРО ПОЖАЛОВАТЬ
