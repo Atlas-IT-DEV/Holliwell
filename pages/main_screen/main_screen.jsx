@@ -15,7 +15,7 @@ import BurgerMenu from "./burger_menu";
 import CoachMiniCard from "../../components/coaches/coach_mini_card";
 import { SvgXml } from "react-native-svg";
 import { arrow_link } from "../../images/images";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import SliderComponent from "../../components/slider";
 
@@ -23,8 +23,18 @@ const MainScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const { pageStore } = useStores();
+  const [info, setInfo] = useState({ title: "Холи", text: "Велл" });
+  const getInfo = async () => {
+    const response = await fetch(
+      "http://154.194.52.246:8000/api/sliders/main?slider_id=1",
+      { method: "GET", headers: { accept: "application/json" } }
+    );
+    const result = await response.json();
+    setInfo(result);
+  };
   useEffect(() => {
     pageStore.getAllTrainers();
+    getInfo();
   }, []);
   useEffect(() => {
     console.log(pageStore.trainers);
@@ -33,8 +43,8 @@ const MainScreen = observer(() => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
-        <SliderComponent/>
-        
+        <SliderComponent />
+
         {/* <ImageBackground
           source={require("./../../images/woman_main.png")}
           style={{ width: "100%", height: 600 }}
@@ -135,14 +145,10 @@ const MainScreen = observer(() => {
               marginTop: 40,
             }}
           ></View>
-          <Text style={[styles.headerText, { marginTop: 40 }]}>О HOLIWELL</Text>
-          <Text style={[styles.mainText, { marginTop: 10 }]}>
-            Равным образом дальнейшее развитие различных форм деятельности
-            влечет за собой процесс внедрения и модернизации соответствующий
-            условий активизации. Разнообразный и богатый опыт сложившаяся
-            структура организации представляет собой интересный эксперимент
-            проверки форм развития.
+          <Text style={[styles.headerText, { marginTop: 40 }]}>
+            {info?.title}
           </Text>
+          <Text style={[styles.mainText, { marginTop: 10 }]}>{info?.text}</Text>
           <View
             style={{
               borderBottomColor: "#D9D9D9",
