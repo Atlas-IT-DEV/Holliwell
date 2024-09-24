@@ -26,7 +26,7 @@ const AboutCourseMeditationScreen = ({
     <SafeAreaView>
       <ScrollView>
         <ImageBackground
-          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
+          source={{ uri: route.params.path_to_cover }}
           style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           <View

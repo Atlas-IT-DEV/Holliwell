@@ -12,7 +12,7 @@ const CourseCard = ({
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("LessonScreen", lesson_obj)}
+      // onPress={() => navigation.navigate("LessonScreen", lesson_obj)}
     >
       <View style={{ minWidth: "45%" }}>
         <Image

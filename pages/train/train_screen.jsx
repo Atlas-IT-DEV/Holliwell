@@ -72,53 +72,6 @@ const TrainScreen = observer(() => {
         >
           <View
             style={{
-              marginTop: 20,
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: 47,
-              borderRadius: 5,
-              backgroundColor: "rgba(217, 217, 217, 1)",
-              padding: 3,
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => setSelected(0)}
-              style={{ width: "50%" }}
-            >
-              <View style={selected == 1 ? styles.grayButt : styles.whiteButt}>
-                <Text
-                  style={{
-                    textAlign: "center",
-                    fontSize: 14,
-                    fontFamily: "GeologicaLight",
-                  }}
-                >
-                  Уроки
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => setSelected(1)}
-              style={{ width: "50%" }}
-            >
-              <View style={selected == 0 ? styles.grayButt : styles.whiteButt}>
-                <Text
-                  style={{
-                    textAlign: "center",
-
-                    fontSize: 14,
-                    fontFamily: "GeologicaLight",
-                  }}
-                >
-                  Курсы
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
               backgroundColor: "rgba(217, 217, 217, 1)",
               width: 122,
               height: 30,
@@ -142,7 +95,6 @@ const TrainScreen = observer(() => {
             />
           </View>
           <View style={{ marginTop: 20 }}>
-            {selected == 0 ? (
               <>
                 {pageStore.training.map((elem, index, array) => {
                   index *= 2;
@@ -158,17 +110,14 @@ const TrainScreen = observer(() => {
                         <>
                           <CourseCard
                             name={elem.title}
-                            uri={"http://154.194.52.246" + elem.path_to_cover}
+                            uri={elem.path_to_cover}
                             price={elem?.price}
                             course_obj={elem}
                             key={elem}
                           />
                           <CourseCard
                             name={array[index + 1].title}
-                            uri={
-                              "http://154.194.52.246" +
-                              array[index + 1].path_to_cover
-                            }
+                            uri={array[index + 1].path_to_cover}
                             price={array[index + 1]?.price}
                             course_obj={array[index + 1]}
                             key={array[index + 1]}
@@ -177,7 +126,7 @@ const TrainScreen = observer(() => {
                       ) : array.slice(index, index + 2).length == 1 ? (
                         <CourseCard
                           name={elem.title}
-                          uri={"http://154.194.52.246" + elem.path_to_cover}
+                          uri={elem.path_to_cover}
                           price={elem?.price}
                           course_obj={elem}
                           key={elem}
@@ -187,52 +136,6 @@ const TrainScreen = observer(() => {
                   );
                 })}
               </>
-            ) : (
-              <>
-                {pageStore.training.map((elem, index, array) => {
-                  index *= 2;
-                  return (
-                    <View
-                      style={{
-                        marginTop: 20,
-                        flexDirection: "row",
-                        gap: 20,
-                      }}
-                    >
-                      {array.slice(index, index + 2).length == 2 ? (
-                        <>
-                          <CoursePackCard
-                            name={elem.title}
-                            uri={"http://154.194.52.246" + elem.path_to_cover}
-                            price={elem?.price}
-                            course_obj={elem}
-                            key={elem}
-                          />
-                          <CoursePackCard
-                            name={array[index + 1].title}
-                            uri={
-                              "http://154.194.52.246" +
-                              array[index + 1].path_to_cover
-                            }
-                            price={array[index + 1]?.price}
-                            course_obj={array[index + 1]}
-                            key={array[index + 1]}
-                          />
-                        </>
-                      ) : array.slice(index, index + 2).length == 1 ? (
-                        <CoursePackCard
-                          name={elem.title}
-                          uri={"http://154.194.52.246" + elem.path_to_cover}
-                          price={elem?.price}
-                          course_obj={elem}
-                          key={elem}
-                        />
-                      ) : null}
-                    </View>
-                  );
-                })}
-              </>
-            )}
           </View>
         </View>
       </ScrollView>

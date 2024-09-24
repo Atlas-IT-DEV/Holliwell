@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import { arrow_back, icon_share } from "../images/images";
 import { SvgXml } from "react-native-svg";
 
+
 const CoachScreen = ({
   route,
   number = 1,
@@ -27,7 +28,7 @@ const CoachScreen = ({
     <SafeAreaView>
       <ImageBackground
         source={{
-          uri: "http://154.194.52.246" + route.params.path_to_background,
+          uri: route.params.path_to_background,
         }}
         style={{ width: "100%", height: screenHeight / 2 }}
       >
@@ -58,7 +59,7 @@ const CoachScreen = ({
       >
         <Image
           source={{
-            uri: "http://154.194.52.246" + route.params.path_to_avatar,
+            uri: route.params.path_to_avatar,
           }}
           style={{
             width: 170,

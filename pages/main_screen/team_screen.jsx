@@ -63,7 +63,7 @@ const TeamScreen = () => {
             return (
               <CoachMiniCard
                 coach={`${elem.last_name} ${elem.first_name}`}
-                uri={"http://154.194.52.246" + elem.path_to_background}
+                uri={ elem.path_to_background}
               />
             );
           })}
