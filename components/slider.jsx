@@ -56,6 +56,7 @@ const SliderComponent = () => {
       } catch (error) {
         console.error("Ошибка при получении данных слайдера:", error);
         setLoading(false);
+        // console.log(fetchData());
       }
     };
 
