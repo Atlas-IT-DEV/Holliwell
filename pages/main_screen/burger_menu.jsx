@@ -86,7 +86,7 @@ const BurgerMenu = ({ color_burger = "" }) => {
               </Text>
             </TouchableOpacity>
             <View style={styles.menuLinks}>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => navigation.navigate("TrainScreen")}
                 style={{
                   width: "100%",
@@ -145,7 +145,7 @@ const BurgerMenu = ({ color_burger = "" }) => {
                 >
                   МЕДИТИРУЙ
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
             <View style={styles.menuLinks}>
               <TouchableOpacity

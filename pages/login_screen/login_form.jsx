@@ -31,6 +31,7 @@ const LoginForm = () => {
   const { pageStore } = useStores();
   const login = async (values) => {
     await pageStore.login(values);
+    if (pageStore.token) await pageStore.getMe();
     pageStore.registered && navigation.navigate("IntroScreen1");
   };
 
