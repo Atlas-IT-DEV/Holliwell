@@ -30,10 +30,7 @@ const MeditationScreen = observer(() => {
   useEffect(() => {
     pageStore.getAllMeditate();
   }, []);
-  const { pageStore } = useStores();
-  useEffect(() => {
-    pageStore.getAllMeditate();
-  }, []);
+
 
   return (
     <SafeAreaView style={styles.container}>
