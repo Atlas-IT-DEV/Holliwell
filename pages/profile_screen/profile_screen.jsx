@@ -10,12 +10,14 @@ import BurgerMenu from "../main_screen/burger_menu";
 import GetCalendar from "../../components/calendar";
 import { useNavigation } from "@react-navigation/native";
 import FavouritesViewedCard from "../../components/favourites_viewed_card";
+import { useStores } from "../../store/store_context";
 
 const ProfileScreen = ({
   uri = "http://legacy.reactjs.org/logo-og.png",
   name_profile = "ФАМИЛИЯ ИМЯ",
 }) => {
   const navigation = useNavigation();
+  const { pageStore } = useStores();
   return (
     <SafeAreaView>
       <ScrollView>
@@ -24,7 +26,7 @@ const ProfileScreen = ({
           style={{ marginTop: 100, alignItems: "center", marginHorizontal: 20 }}
         >
           <Image
-            source={{ uri: uri }}
+            source={{ uri: pageStore?.avatar_link?  pageStore?.avatar_link : uri }}
             style={{ width: 90, height: 90, borderRadius: 90 }}
           />
           <Text
@@ -35,7 +37,7 @@ const ProfileScreen = ({
               textAlign: "center",
             }}
           >
-            {name_profile}
+            {pageStore?.first_name}{" "}{pageStore?.last_name}
           </Text>
           <TouchableOpacity
             onPress={() => navigation.navigate("EditProfileScreen")}
@@ -102,8 +104,8 @@ const ProfileScreen = ({
               flexDirection: "row",
             }}
           >
-         <FavouritesViewedCard/>
-         <FavouritesViewedCard/>
+            {/* <FavouritesViewedCard />
+            <FavouritesViewedCard /> */}
           </View>
           <View
             style={{
@@ -125,8 +127,8 @@ const ProfileScreen = ({
               justifyContent: "space-between",
             }}
           >
-            <FavouritesViewedCard/>
-            <FavouritesViewedCard/>
+            {/* <FavouritesViewedCard />
+            <FavouritesViewedCard /> */}
           </View>
           <View
             style={{

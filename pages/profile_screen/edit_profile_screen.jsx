@@ -2,6 +2,7 @@ import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
 import { SvgXml } from "react-native-svg";
 import { arrow_back_black, icon_eye } from "../../images/images";
 import { useNavigation } from "@react-navigation/native";
+import { useStores } from "../../store/store_context";
 
 const EditProfileScreen = ({
   uri = "http://legacy.reactjs.org/logo-og.png",
@@ -11,6 +12,7 @@ const EditProfileScreen = ({
   password = "12345",
 }) => {
   const navigation = useNavigation();
+  const { pageStore } = useStores();
 
   return (
     <View>
@@ -45,7 +47,12 @@ const EditProfileScreen = ({
         </Text>
       </View>
       <View style={{ alignItems: "center", marginTop: 70 }}>
-        <Image source={{ uri: uri }} style={{ width: 90, height: 90 }} />
+        <Image
+          source={{
+            uri: pageStore?.avatar_link ? pageStore?.avatar_link : uri,
+          }}
+          style={{ width: 90, height: 90 }}
+        />
         <TouchableOpacity>
           <Text style={{ marginTop: 20, fontFamily: "GeologicaRegular" }}>
             СМЕНИТЬ ФОТО
@@ -64,7 +71,7 @@ const EditProfileScreen = ({
         ></View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputText}>Имя</Text>
-          <Text style={styles.inputData}>{name}</Text>
+          <Text style={styles.inputData}>{pageStore?.first_name}</Text>
         </View>
         <View
           style={{
@@ -77,7 +84,7 @@ const EditProfileScreen = ({
         ></View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputText}>фамилия</Text>
-          <Text style={styles.inputData}>{surname}</Text>
+          <Text style={styles.inputData}>{pageStore?.last_name}</Text>
         </View>
         <View
           style={{
@@ -90,7 +97,7 @@ const EditProfileScreen = ({
         ></View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputText}>Email</Text>
-          <Text style={styles.inputData}>{mail}</Text>
+          <Text style={styles.inputData}>{pageStore?.email}</Text>
         </View>
         <View
           style={{
@@ -101,13 +108,13 @@ const EditProfileScreen = ({
             marginBottom: 20,
           }}
         ></View>
-        <View style={styles.inputContainer}>
+        {/* <View style={styles.inputContainer}>
           <Text style={styles.inputText}>Пароль</Text>
           <Text style={styles.inputData}>{password}</Text>
           <TouchableOpacity style={{ marginLeft: 10 }}>
             <SvgXml xml={icon_eye} />
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View
           style={{
             borderBottomColor: "#D9D9D9",

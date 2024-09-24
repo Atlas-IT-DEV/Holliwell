@@ -73,6 +73,20 @@ class pageStore {
     this.isVerified = false;
     this.isActive = false;
   };
+  getMe = async () => {
+    const response = await fetch("http://154.194.52.246:8000/api/users/me", {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+    const result = await response.json();
+    this.avatar_url = result.path_to_avatar;
+    this.first_name = result.first_name;
+    this.last_name = result.last_name;
+    this.email = result.email;
+  };
   getAllTrainers = async () => {
     const response = await fetch(
       "http://154.194.52.246:8000/api/trainers/all",

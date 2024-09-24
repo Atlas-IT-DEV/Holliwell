@@ -39,6 +39,11 @@ const MainScreen = observer(() => {
   useEffect(() => {
     console.log(pageStore.trainers);
   }, [pageStore.trainers]);
+  useEffect(() => {
+    if (pageStore.token) {
+      pageStore.getMe();
+    }
+  }, [pageStore.token]);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
