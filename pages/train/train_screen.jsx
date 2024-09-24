@@ -10,20 +10,28 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useStores } from "../../store/store_context";
+import { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 import CourseCard from "../../components/train/train_mini_card";
 import CoursePackCard from "../../components/train/train_pack_mini_card";
 import { arrow_back_black } from "../../images/images";
 import { SvgXml } from "react-native-svg";
 
 import VideoPlayer from "../../components/video_screen";
-const TrainScreen = () => {
+const TrainScreen = observer(() => {
   const navigation = useNavigation();
   const [selected, setSelected] = useState(0);
+
+  const { pageStore } = useStores();
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    pageStore.getAllTraining();
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
-      <VideoPlayer/>
-      {/* <ScrollView>
+      {/* <VideoPlayer/> */}
+      <ScrollView>
         <View
           style={{
             flexDirection: "row",
@@ -135,34 +143,102 @@ const TrainScreen = () => {
           </View>
           <View style={{ marginTop: 20 }}>
             {selected == 0 ? (
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <CourseCard />
-                <CourseCard />
-              </View>
+              <>
+                {pageStore.training.map((elem, index, array) => {
+                  index *= 2;
+                  return (
+                    <View
+                      style={{
+                        marginTop: 20,
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      {array.slice(index, index + 2).length == 2 ? (
+                        <>
+                          <CourseCard
+                            name={elem.title}
+                            uri={"http://154.194.52.246" + elem.path_to_cover}
+                            price={elem?.price}
+                            course_obj={elem}
+                            key={elem}
+                          />
+                          <CourseCard
+                            name={array[index + 1].title}
+                            uri={
+                              "http://154.194.52.246" +
+                              array[index + 1].path_to_cover
+                            }
+                            price={array[index + 1]?.price}
+                            course_obj={array[index + 1]}
+                            key={array[index + 1]}
+                          />
+                        </>
+                      ) : array.slice(index, index + 2).length == 1 ? (
+                        <CourseCard
+                          name={elem.title}
+                          uri={"http://154.194.52.246" + elem.path_to_cover}
+                          price={elem?.price}
+                          course_obj={elem}
+                          key={elem}
+                        />
+                      ) : null}
+                    </View>
+                  );
+                })}
+              </>
             ) : (
-              <View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <CoursePackCard />
-                  <CoursePackCard />
-                </View>
-              </View>
+              <>
+                {pageStore.training.map((elem, index, array) => {
+                  index *= 2;
+                  return (
+                    <View
+                      style={{
+                        marginTop: 20,
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      {array.slice(index, index + 2).length == 2 ? (
+                        <>
+                          <CoursePackCard
+                            name={elem.title}
+                            uri={"http://154.194.52.246" + elem.path_to_cover}
+                            price={elem?.price}
+                            course_obj={elem}
+                            key={elem}
+                          />
+                          <CoursePackCard
+                            name={array[index + 1].title}
+                            uri={
+                              "http://154.194.52.246" +
+                              array[index + 1].path_to_cover
+                            }
+                            price={array[index + 1]?.price}
+                            course_obj={array[index + 1]}
+                            key={array[index + 1]}
+                          />
+                        </>
+                      ) : array.slice(index, index + 2).length == 1 ? (
+                        <CoursePackCard
+                          name={elem.title}
+                          uri={"http://154.194.52.246" + elem.path_to_cover}
+                          price={elem?.price}
+                          course_obj={elem}
+                          key={elem}
+                        />
+                      ) : null}
+                    </View>
+                  );
+                })}
+              </>
             )}
           </View>
         </View>
-      </ScrollView> */}
+      </ScrollView>
     </SafeAreaView>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

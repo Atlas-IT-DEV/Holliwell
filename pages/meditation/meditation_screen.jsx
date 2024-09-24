@@ -13,13 +13,23 @@ import { useNavigation } from "@react-navigation/native";
 import { SvgXml } from "react-native-svg";
 import { arrow_back_black } from "../../images/images";
 import CourseMeditationMiniCard from "../../components/meditation/course_meditation_mini_card";
+import { observer } from "mobx-react-lite";
+import { useStores } from "../../store/store_context";
+import { useEffect, useState } from "react";
 import { useStores } from "../../store/store_context";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
 const MeditationScreen = observer(() => {
+const MeditationScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
+  const { pageStore } = useStores();
+
+  const [meditationCard, setMeditationCard] = useState([]);
+  useEffect(() => {
+    pageStore.getAllMeditate();
+  }, []);
   const { pageStore } = useStores();
   useEffect(() => {
     pageStore.getAllMeditate();
@@ -136,6 +146,7 @@ const MeditationScreen = observer(() => {
       </ScrollView>
     </SafeAreaView>
   );
+});
 });
 
 const styles = StyleSheet.create({

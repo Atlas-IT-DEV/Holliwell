@@ -26,8 +26,10 @@ const CoachScreen = ({
   return (
     <SafeAreaView>
       <ImageBackground
-        source={{ uri: "http://154.194.52.246" + route.params.path_to_background }}
-        style={{ width: "100%", height: screenHeight / 2, }}
+        source={{
+          uri: "http://154.194.52.246" + route.params.path_to_background,
+        }}
+        style={{ width: "100%", height: screenHeight / 2 }}
       >
         <View
           style={{
@@ -55,14 +57,16 @@ const CoachScreen = ({
         }}
       >
         <Image
-          source={{ uri: "http://154.194.52.246" + route.params.path_to_avatar }}
+          source={{
+            uri: "http://154.194.52.246" + route.params.path_to_avatar,
+          }}
           style={{
             width: 170,
             height: 170,
             borderRadius: 170,
             borderWidth: 5,
             borderColor: "white",
-            resizeMode:"stretch"
+            resizeMode: "stretch",
           }}
         />
       </View>
