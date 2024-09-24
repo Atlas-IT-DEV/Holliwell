@@ -100,7 +100,7 @@ const ListenScreen = observer(() => {
                 style={{
                   marginTop: 20,
                   flexDirection: "row",
-                  justifyContent: "space-between",
+                  gap: 25
                 }}
               >
                 {array.slice(index, index + 2).length == 2 ? (
