@@ -27,7 +27,7 @@ import LessonListenScreen from "./pages/listen/lesson_listen_screen";
 import LessonMeditationScreen from "./pages/meditation/lesson_meditation_screen";
 import ProfileScreen from "./pages/profile_screen/profile_screen";
 import EditProfileScreen from "./pages/profile_screen/edit_profile_screen";
-
+import VideoScreen from "./components/video_screen";
 
 const Stack = createNativeStackNavigator();
 
@@ -93,7 +93,11 @@ export default function App() {
               component={LessonMeditationScreen}
             />
             <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-            <Stack.Screen name="EditProfileScreen" component={EditProfileScreen}/>
+            <Stack.Screen
+              name="EditProfileScreen"
+              component={EditProfileScreen}
+            />
+            <Stack.Screen name="VideoScreen" component={VideoScreen} />
           </Stack.Navigator>
         )}
       </RootStoreContext.Provider>

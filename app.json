@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dmitrovich.holliwell"
     },
     "android": {
       "adaptiveIcon": {
@@ -26,6 +27,11 @@
     "plugins": [
       "expo-font",
       "expo-video"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "3e34367b-c74b-4b3f-bbdc-72a5f8aa719f"
+      }
+    }
   }
 }
