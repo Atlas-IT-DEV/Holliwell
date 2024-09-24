@@ -130,15 +130,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    fontSize: 24,
+    fontSize: 40,
     color: "white",
-    fontWeight: "bold",
     textAlign: "center",
+    fontFamily: "GeologicaMedium",
   },
   text: {
-    fontSize: 16,
+    fontSize: 20,
     color: "white",
     textAlign: "center",
+    fontFamily: "GeologicaLight",
   },
 });
 
