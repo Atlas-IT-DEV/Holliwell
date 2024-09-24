@@ -14,7 +14,7 @@ const CoachMiniCard = ({
 }) => {
   return (
     <View >
-        <Image source={{uri: uri}} style={{width: 170, height: 170, borderRadius: 170, resizeMode:'contain'}}/>
+        <Image source={{uri: uri}} style={{width: 170, height: 170, borderRadius: 170, resizeMode:'cover'}}/>
         <Text style={{fontFamily: "GeologicaLight", textAlign: "center", marginTop: 10}}>{coach}</Text>
     </View>
   );
