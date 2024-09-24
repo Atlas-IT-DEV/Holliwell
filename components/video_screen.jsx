@@ -3,7 +3,7 @@ import { StyleSheet, Button, View } from "react-native";
 import { Video } from "expo-av";
 import React from "react";
 
-export default function VideoPlayer() {
+export default function VideoScreen() {
   const video = React.useRef(null);
   const secondVideo = React.useRef(null);
   const [status, setStatus] = React.useState({});

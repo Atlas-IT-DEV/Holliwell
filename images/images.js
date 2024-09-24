@@ -120,3 +120,8 @@ export const icon_eye = `<svg width="24" height="25" viewBox="0 0 24 25" fill="n
 </defs>
 </svg>
 `;
+
+export const videoIcon = `<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M25 0C11.1931 0 0 11.1929 0 25C0 38.8071 11.1931 50 25 50C38.8069 50 50 38.8071 50 25C50 11.1929 38.8069 0 25 0ZM9 34C9 35.2 10.3333 35.8333 11 36H32C33.2 36 33.8333 34.6667 34 34V16C34 14.8 32.6667 14.1667 32 14H11C9.8 14 9.16667 15.3333 9 16V34ZM36.5 29V22L44 19C44.5 18.8333 45.5 18.8 45.5 20V30C45.5 32 44.5 32.1667 44 32L36.5 29Z" fill="#303030"/>
+</svg>
+`;

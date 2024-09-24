@@ -83,6 +83,7 @@ const LessonScreen = ({
                 width: "45%",
                 borderRadius: 5,
               }}
+              onPress={() => navigation.navigate("VideoScreen")}
             >
               <Text
                 style={{

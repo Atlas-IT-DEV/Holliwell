@@ -8,10 +8,62 @@ import {
   ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useEffect, useState } from "react";
 
 const IntroScreen1 = () => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  useEffect(() => {
+    // Функция для получения данных с сервера с помощью fetch
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://154.194.52.246:8000/api/sliders/all",
+          {
+            headers: {
+              accept: "application/json",
+            },
+          }
+        );
+        const result = await response.json();
+        // console.log(result);
+
+        const sliderData = [
+          {
+            title: result[0].title_first,
+            text: result[0].text_first,
+            image: result[0].path_to_cover_first,
+          },
+          {
+            title: result[0].title_second,
+            text: result[0].text_second,
+            image: result[0].path_to_cover_second,
+          },
+          {
+            title: result[0].title_third,
+            text: result[0].text_third,
+            image: result[0].path_to_cover_third,
+          },
+        ];
+
+        setData(sliderData);
+        // console.log(sliderData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Ошибка при получении данных слайдера:", error);
+        setLoading(false);
+        // console.log(fetchData());
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(data);
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -29,27 +81,30 @@ const IntroScreen1 = () => {
         >
           HOLIWELL
         </Text>
-        <View style={{ marginHorizontal: 20 }}>
-          <Text
-            style={{
-              marginTop: 300,
-              marginBottom: 20,
-              fontSize: 40,
-              color: "white",
-              fontFamily: "GeologicaMedium",
-            }}
-          >
-            Большой {"\n"}Заголовок {"\n"}в три строки
-          </Text>
-          <Text style={styles.aboutText}>
-            Описание приложения в три строки...
-          </Text>
-          <Text style={styles.aboutText}>
-            Описание приложения в три строки...
-          </Text>
-          <Text style={styles.aboutText}>
-            Описание приложения в три строки...
-          </Text>
+        <View style={{ marginHorizontal: 20, marginTop: "90%" }}>
+          <View>
+            <Text
+              style={{
+                marginBottom: 20,
+                fontSize: 40,
+                color: "white",
+                fontFamily: "GeologicaMedium",
+              }}
+            >
+              {data[0] == undefined ? "Заголовок" : data[0].title}
+            </Text>
+
+            <Text style={styles.aboutText}>
+              {data[0] == undefined ? "Текст1" : data[0].text}
+            </Text>
+            <Text style={styles.aboutText}>
+              {data[0] == undefined ? "Текст2" : data[0].text}
+            </Text>
+            <Text style={styles.aboutText}>
+              {data[0] == undefined ? "Текст3" : data[0].text}
+            </Text>
+          </View>
+
           <TouchableOpacity
             onPress={() => navigation.navigate("IntroScreen2")}
             style={{

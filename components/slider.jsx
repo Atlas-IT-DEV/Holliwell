@@ -30,7 +30,7 @@ const SliderComponent = () => {
           }
         );
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
 
         const sliderData = [
           {
@@ -51,11 +51,12 @@ const SliderComponent = () => {
         ];
 
         setData(sliderData);
-        console.log(sliderData);
+        // console.log(sliderData);
         setLoading(false);
       } catch (error) {
         console.error("Ошибка при получении данных слайдера:", error);
         setLoading(false);
+        // console.log(fetchData());
       }
     };
 
@@ -79,7 +80,7 @@ const SliderComponent = () => {
         animated: true,
       });
     }
-    console.log(currentSlideIndex);
+    // console.log(currentSlideIndex);
   }, [currentSlideIndex]);
 
   const renderSlides = () => {
