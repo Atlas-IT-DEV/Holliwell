@@ -35,7 +35,8 @@ const MainScreen = observer(() => {
   useEffect(() => {
     pageStore.getAllTrainers();
     getInfo();
-    pageStore.login({ email: "user1212@example.com", password: "12345" }); //Только для тестов убрать потом !!!!!!!
+    pageStore.login({ email: "user1212@example.com", password: "12345" });
+     //Только для тестов убрать потом !!!!!!!
   }, []);
   useEffect(() => {
     console.log(pageStore.trainers);

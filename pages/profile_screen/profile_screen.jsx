@@ -26,7 +26,7 @@ const ProfileScreen = ({
           style={{ marginTop: 100, alignItems: "center", marginHorizontal: 20 }}
         >
           <Image
-            source={{ uri: pageStore?.avatar_link?  pageStore?.avatar_link : uri }}
+            source={{ uri: pageStore?.avatar_url ?  pageStore?.avatar_url : uri }}
             style={{ width: 90, height: 90, borderRadius: 90 }}
           />
           <Text

@@ -44,6 +44,7 @@ const RegistrationForm = () => {
         is_verified: false,
         first_name: "",
         last_name: "",
+        tg_id: Math.floor(Math.random() * 1000),
       }}
       validationSchema={loginValidationSchema}
       onSubmit={(values) => register(values)}

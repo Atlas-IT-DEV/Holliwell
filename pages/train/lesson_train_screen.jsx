@@ -99,7 +99,7 @@ const LessonScreen = ({
                 СМОТРЕТЬ
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={{
                 justifyContent: "center",
                 alignItems: "center",
@@ -115,9 +115,9 @@ const LessonScreen = ({
               }}
             >
               <Text>В ИЗБРАННОЕ</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ flexDirection: "row", gap: 5, marginTop: 30 }}
           >
             <Text
@@ -129,7 +129,7 @@ const LessonScreen = ({
               ЗАПЛАНИРОВАТЬ
             </Text>
             <SvgXml xml={icon_calendar} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
           <View

@@ -30,7 +30,7 @@ const LessonMeditationScreen = ({
     <SafeAreaView>
       <ScrollView>
         <ImageBackground
-          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
+          source={{ uri:   route.params.path_to_cover }}
           style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           <View
@@ -96,7 +96,7 @@ const LessonMeditationScreen = ({
                 СЛУШАТЬ
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={{
                 justifyContent: "center",
                 alignItems: "center",
@@ -112,9 +112,9 @@ const LessonMeditationScreen = ({
               }}
             >
               <Text>В ИЗБРАННОЕ</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{ flexDirection: "row", gap: 5, marginTop: 30 }}
           >
             <Text
@@ -126,7 +126,7 @@ const LessonMeditationScreen = ({
               ЗАПЛАНИРОВАТЬ
             </Text>
             <SvgXml xml={icon_calendar} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
           <View
