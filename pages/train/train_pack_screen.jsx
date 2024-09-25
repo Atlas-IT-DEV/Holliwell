@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SvgXml } from "react-native-svg";
+import AudioReview from "../../components/audio_review";
 import {
   arrow_back,
   lock_image,
@@ -35,7 +36,7 @@ const LessonsCourseScreen = ({
     <SafeAreaView>
       <ScrollView>
         <ImageBackground
-          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
+          source={{ uri: route.params.path_to_cover }}
           style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           {/* Разблокировать доступ */}
@@ -101,7 +102,7 @@ const LessonsCourseScreen = ({
                 <SvgXml xml={icon_share} />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={{
                 flexDirection: "row",
                 gap: 5,
@@ -114,7 +115,7 @@ const LessonsCourseScreen = ({
                 ЗАМОРОЗИТЬ
               </Text>
               <SvgXml xml={icon_freeze_small} />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
 
           {/* РАЗМОРОЗИТЬ */}
@@ -223,25 +224,7 @@ const LessonsCourseScreen = ({
             {route.params.description}
           </Text>
 
-          <TouchableOpacity
-            style={{
-              width: "100%",
-              borderColor: "rgba(217,217,217,1)",
-              paddingHorizontal: 15,
-              paddingVertical: 13,
-              borderWidth: 1,
-              marginTop: 30,
-              borderRadius: 200,
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 15,
-            }}
-          >
-            <SvgXml xml={icon_play} />
-            <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
-              Аудиозапись
-            </Text>
-          </TouchableOpacity>
+          <AudioReview uri={route.params.path_to_url_audio} />
           <View
             style={{
               borderTopColor: "#D9D9D9",
@@ -252,16 +235,17 @@ const LessonsCourseScreen = ({
             }}
           ></View>
         </View>
-        <View style={{ marginTop: 40, gap: 20 }}>
+        <View style={{ marginTop: 40, gap: 20, padding: 20 }}>
           {route.params.lessons.map((elem, index) => {
-            console.log(elem.title);
+            console.log(elem);
             return (
               <CourseCard
                 number={index + 1}
                 name={elem.title}
                 coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
                 time={elem.audio_length}
-                lesson_obj={{ ...elem, number: index + 1 }}
+                lesson_obj={[elem]}
+                isPack={true}
                 key={elem}
               />
             );
@@ -302,26 +286,21 @@ const LessonsCourseScreen = ({
                   <>
                     <CoachMiniCard
                       coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                      uri={
-                        "http://154.194.52.246" + elem.trainer.path_to_avatar
-                      }
+                      uri={elem.trainer.path_to_avatar}
                       key={elem}
                     />
                     <CoachMiniCard
                       coach={`${array[index + 1].trainer.last_name} ${
                         array[index + 1].trainer.first_name
                       }`}
-                      uri={
-                        "http://154.194.52.246" +
-                        array[index + 1].trainer.path_to_avatar
-                      }
+                      uri={array[index + 1].trainer.path_to_avatar}
                       key={elem}
                     />
                   </>
                 ) : array.slice(index, index + 2).length == 1 ? (
                   <CoachMiniCard
                     coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                    uri={"http://154.194.52.246" + elem.trainer.path_to_avatar}
+                    uri={elem.trainer.path_to_avatar}
                     key={elem}
                   />
                 ) : null}

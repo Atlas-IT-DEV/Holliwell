@@ -21,6 +21,7 @@ import {
 } from "../../images/images";
 import CoachMiniCard from "../../components/coaches/coach_mini_card";
 import AudioCard from "../../components/listen/audio_card";
+import AudioReview from "../../components/audio_review";
 
 const AboutCourseListenScreen = ({ route }) => {
   const combineTimeStrings = (timeStrings) => {
@@ -129,28 +130,8 @@ const AboutCourseListenScreen = ({ route }) => {
             </Text>
           </View>
         </View>
-        <View style={{ alignItems: "center" }}>
-          <TouchableOpacity
-            style={{
-              justifyContent: "center",
-              backgroundColor: "rgba(48,48,48,1)",
-              marginTop: 20,
-              paddingHorizontal: 60,
-              paddingVertical: 12,
-              borderRadius: 5,
-            }}
-          >
-            <Text
-              style={{
-                color: "white",
-                fontFamily: "GeologicaRegular",
-                fontSize: 20,
-                textAlign: "center",
-              }}
-            >
-              ОБЗОР КУРСА
-            </Text>
-          </TouchableOpacity>
+        <View style={{ alignItems: "center", padding:20}}>
+          <AudioReview uri={route.params.path_to_url_audio} text="Обзор курса"/>
         </View>
         <View style={{ marginTop: 40, marginHorizontal: 20 }}>
           <View

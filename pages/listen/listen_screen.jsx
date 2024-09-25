@@ -21,7 +21,14 @@ const ListenScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const { pageStore } = useStores();
-  const [cards, setCards] = useState([]);
+
+  const [sort, setSort] = useState(0);
+  const handleSort = () => {
+    sort + 1 < 3 ? setSort(sort + 1) : setSort(0);
+  };
+  useEffect(() => {
+    pageStore.getAllListening(sort);
+  }, [sort]);
   useEffect(() => {
     pageStore.getAllListening();
   }, []);
@@ -67,30 +74,31 @@ const ListenScreen = observer(() => {
             marginBottom: 20,
           }}
         >
-          <View
+          <TouchableOpacity
             style={{
               backgroundColor: "rgba(217, 217, 217, 1)",
               width: 122,
               height: 30,
               borderRadius: 20,
-              marginTop: 28,
+              marginTop: 20,
               flexDirection: "row",
               justifyContent: "space-around",
               alignItems: "center",
             }}
+            onPress={() => handleSort()}
           >
-            <Image
+            {/* <Image
               style={{ width: 20, height: 20 }}
               source={require("../../images/filters.png")}
-            />
+            /> */}
             <Text style={{ fontSize: 14, fontFamily: "GeologicaThin" }}>
-              Новое
+              {sort == 0 ? "сортировка" : sort == 1 ? "популярное" : "новое"}
             </Text>
-            <Image
+            {/* <Image
               style={{ width: 20, height: 20 }}
               source={require("../../images/arrow_down.png")}
-            />
-          </View>
+            /> */}
+          </TouchableOpacity>
 
           {pageStore.listening.map((elem, index, array) => {
             index *= 2;
@@ -100,24 +108,21 @@ const ListenScreen = observer(() => {
                 style={{
                   marginTop: 20,
                   flexDirection: "row",
-                  gap: 25
+                  gap: 25,
                 }}
               >
                 {array.slice(index, index + 2).length == 2 ? (
                   <>
                     <CourseListenMiniCard
                       name={elem.title}
-                      uri={ elem.path_to_cover}
+                      uri={elem.path_to_cover}
                       price={elem?.price}
-
                       course_obj={elem}
                       key={elem}
                     />
                     <CourseListenMiniCard
                       name={array[index + 1].title}
-                      uri={
-                        array[index + 1].path_to_cover
-                      }
+                      uri={array[index + 1].path_to_cover}
                       price={array[index + 1]?.price}
                       course_obj={array[index + 1]}
                       key={array[index + 1]}

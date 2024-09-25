@@ -1,19 +1,13 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-
-} from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { arrow_back, icon_share } from "../../images/images";
 import { SvgXml } from "react-native-svg";
 
-const CourseListenMiniCard = ({
+const CourseTrainMiniCard = ({
   name = "СЛУШАЙ",
   uri = "http://legacy.reactjs.org/logo-og.png",
   price = "1990",
-  course_obj = {}
+  course_obj = {},
 }) => {
   const navigation = useNavigation();
   return (
@@ -53,7 +47,9 @@ const CourseListenMiniCard = ({
         {price}₽
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate("AboutCourseListenScreen", course_obj)}
+        onPress={() =>
+          navigation.navigate("AboutCourseTrainScreen", course_obj)
+        }
         style={{
           borderColor: "black",
           borderWidth: 2,
@@ -77,4 +73,4 @@ const CourseListenMiniCard = ({
   );
 };
 
-export default CourseListenMiniCard;
+export default CourseTrainMiniCard;

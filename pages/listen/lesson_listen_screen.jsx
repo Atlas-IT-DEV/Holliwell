@@ -55,7 +55,7 @@ const LessonListenScreen = ({ route }) => {
   // Функция для остановки звука
   const pauseAudio = async () => {
     try {
-      if (sound) {
+      if (sound && isPlaying) {
         await sound.pauseAsync();
         setIsPlaying(false);
       }
@@ -66,15 +66,19 @@ const LessonListenScreen = ({ route }) => {
 
   // Основная функция для проигрывания/остановки аудио
   const playPauseAudio = async () => {
-    if (sound) {
-      if (isPlaying) {
-        await pauseAudio();
+    try {
+      if (sound) {
+        if (isPlaying) {
+          await pauseAudio();
+        } else {
+          await sound.playAsync();
+          setIsPlaying(true);
+        }
       } else {
-        await sound.playAsync();
-        setIsPlaying(true);
+        await loadAndPlayAudio();
       }
-    } else {
-      await loadAndPlayAudio();
+    } catch (error) {
+      console.log("Ошибка при управлении воспроизведением аудио:", error);
     }
   };
 
@@ -86,6 +90,9 @@ const LessonListenScreen = ({ route }) => {
       }
     };
   }, [sound]);
+  useEffect(() => {
+    console.log(pageStore.liked);
+  }, [pageStore.liked]);
 
   return (
     <SafeAreaView>
@@ -160,6 +167,7 @@ const LessonListenScreen = ({ route }) => {
                 width: "45%",
               }}
               onPress={() => {
+                console.log(route.params.id);
                 pageStore.likeLesson(route.params.id);
               }}
             >

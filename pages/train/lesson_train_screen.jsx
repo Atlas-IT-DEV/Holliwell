@@ -16,6 +16,8 @@ import {
   icon_share,
 } from "../../images/images";
 import { SvgXml } from "react-native-svg";
+import { useEffect } from "react";
+import { useStores } from "../../store/store_context";
 
 const LessonScreen = ({
   number = 1,
@@ -29,11 +31,15 @@ const LessonScreen = ({
 }) => {
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
+  const {pageStore } = useStores()
+  useEffect(() => {
+    console.log(route.params);
+  }, [route]);
   return (
     <SafeAreaView>
       <ScrollView>
         <ImageBackground
-          source={{ uri: "http://154.194.52.246" + route.params.path_to_cover }}
+          source={{ uri: route.params?.path_to_cover }}
           style={{ width: "100%", height: screenHeight >= 902 ? 447 : 230 }}
         >
           <View
@@ -234,7 +240,7 @@ const LessonScreen = ({
 
           <TouchableOpacity
             style={{ marginTop: 20 }}
-            onPress={() => navigation.navigate("CoachScreen")}
+            onPress={() => navigation.navigate("CoachScreen", route.params.trainer)}
           >
             <View
               style={{

@@ -95,60 +95,70 @@ class pageStore {
     const result = await response.json();
     this.trainers = result;
   };
-  getAllListening = async () => {
-    const response = await fetch("http://154.194.52.246:8000/api/courses/all", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${this.token}`,
-      },
-    });
+  getAllListening = async (sort = 0) => {
+    const response = await fetch(
+      "http://154.194.52.246:8000/api/courses/all" +
+        (sort == 0 ? "" : sort == 1 ? "?sort_by=popular" : "?sort_by=new"),
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
     const result = await response.json();
     this.listening = result.filter(
       (elem) => elem.course_type_slug == "listening"
     );
     console.log(this.listening);
   };
-  getAllMeditate = async () => {
-    const response = await fetch("http://154.194.52.246:8000/api/courses/all", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${this.token}`,
-      },
-    });
+  getAllMeditate = async (sort = 0) => {
+    const response = await fetch(
+      "http://154.194.52.246:8000/api/courses/all" +
+        (sort == 0 ? "" : sort == 1 ? "?sort_by=popular" : "?sort_by=new"),
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
     const result = await response.json();
     this.meditation = result.filter(
       (elem) => elem.course_type_slug == "meditation"
     );
   };
-  getAllTraining = async () => {
-    const response = await fetch("http://154.194.52.246:8000/api/courses/all", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${this.token}`,
-      },
-    });
+  getAllTraining = async (sort = 0) => {
+    const response = await fetch(
+      "http://154.194.52.246:8000/api/courses/all" +
+        (sort == 0 ? "" : sort == 1 ? "?sort_by=popular" : "?sort_by=new"),
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
     const result = await response.json();
     this.training = result.filter(
       (elem) => elem.course_type_slug == "training"
     );
   };
   likeLesson = async (id) => {
-    const response = await fetch(
-      "http://154.194.52.246:8000/api/users/like-lessons",
-      {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: `Bearer ${this.token}`,
-        },
-        body: JSON.stringify({ lesson_id: id }),
-      }
-    );
+    const response = await fetch("https://holiwell.ru/api/users/like-lesson", {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.token}`,
+      },
+      body: JSON.stringify({ lesson_id: id }),
+    });
     const result = await response.json();
+    console.log(response, result);
     await this.getLiked();
   };
   getLiked = async () => {

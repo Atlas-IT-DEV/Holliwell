@@ -6,7 +6,7 @@ const CoursePackCard = ({
   name = "Рельеф как у Скалы",
   description = "Фамилия Имя",
   uri = "http://legacy.reactjs.org/logo-og.png",
-  course_obj = {}
+  course_obj = {},
 }) => {
   const navigation = useNavigation();
   return (
@@ -34,9 +34,11 @@ const CoursePackCard = ({
             alignItems: "center",
           }}
         >
-          <Text style={{ fontFamily: "GeologicaThin", color: "white" }}>
-            {count} уроков
-          </Text>
+          {count >= 1 ? (
+            <Text style={{ fontFamily: "GeologicaThin", color: "white" }}>
+              {count} {count >= 2 ? "уроков" : "урок"}
+            </Text>
+          ) : null}
         </View>
       </View>
     </TouchableOpacity>

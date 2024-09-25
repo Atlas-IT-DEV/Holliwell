@@ -21,8 +21,14 @@ const MeditationScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const { pageStore } = useStores();
+  const [sort, setSort] = useState(0);
 
-  const [meditationCard, setMeditationCard] = useState([]);
+  const handleSort = () => {
+    sort + 1 < 3 ? setSort(sort + 1) : setSort(0);
+  };
+  useEffect(() => {
+    pageStore.getAllMeditate(sort);
+  }, [sort]);
   useEffect(() => {
     pageStore.getAllMeditate();
   }, []);
@@ -69,30 +75,31 @@ const MeditationScreen = observer(() => {
             marginBottom: 20,
           }}
         >
-          <View
+          <TouchableOpacity
             style={{
               backgroundColor: "rgba(217, 217, 217, 1)",
               width: 122,
               height: 30,
               borderRadius: 20,
-              marginTop: 28,
+              marginTop: 20,
               flexDirection: "row",
               justifyContent: "space-around",
               alignItems: "center",
             }}
+            onPress={() => handleSort()}
           >
-            <Image
+            {/* <Image
               style={{ width: 20, height: 20 }}
               source={require("../../images/filters.png")}
-            />
+            /> */}
             <Text style={{ fontSize: 14, fontFamily: "GeologicaThin" }}>
-              Новое
+              {sort == 0 ? "сортировка" : sort == 1 ? "популярное" : "новое"}
             </Text>
-            <Image
+            {/* <Image
               style={{ width: 20, height: 20 }}
               source={require("../../images/arrow_down.png")}
-            />
-          </View>
+            /> */}
+          </TouchableOpacity>
           {pageStore.meditation.map((elem, index, array) => {
             index *= 2;
             console.log();
