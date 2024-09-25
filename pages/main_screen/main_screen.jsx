@@ -18,6 +18,7 @@ import { arrow_link } from "../../images/images";
 import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import SliderComponent from "../../components/slider";
+import BottomMenu from "../../components/bottom_menu";
 
 const MainScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
@@ -36,7 +37,7 @@ const MainScreen = observer(() => {
     pageStore.getAllTrainers();
     getInfo();
     pageStore.login({ email: "user1212@example.com", password: "12345" });
-     //Только для тестов убрать потом !!!!!!!
+    //Только для тестов убрать потом !!!!!!!
   }, []);
   useEffect(() => {
     console.log(pageStore.trainers);
@@ -166,7 +167,7 @@ const MainScreen = observer(() => {
             horizontal
             style={{ marginTop: 20, marginBottom: 30, paddingBottom: 10 }}
           >
-            <View style={{ gap: 20, flexDirection: "row" }}>
+            <View style={{ gap: 20, flexDirection: "row", marginBottom: 70}}>
               {pageStore.trainers.map((elem) => {
                 return (
                   <CoachMiniCard
@@ -180,6 +181,7 @@ const MainScreen = observer(() => {
           </ScrollView>
         </View>
       </ScrollView>
+      <BottomMenu />
     </SafeAreaView>
   );
 });

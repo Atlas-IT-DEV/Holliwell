@@ -11,6 +11,7 @@ import GetCalendar from "../../components/calendar";
 import { useNavigation } from "@react-navigation/native";
 import FavouritesViewedCard from "../../components/favourites_viewed_card";
 import { useStores } from "../../store/store_context";
+import BottomMenu from "../../components/bottom_menu";
 
 const ProfileScreen = ({
   uri = "http://legacy.reactjs.org/logo-og.png",
@@ -26,7 +27,9 @@ const ProfileScreen = ({
           style={{ marginTop: 100, alignItems: "center", marginHorizontal: 20 }}
         >
           <Image
-            source={{ uri: pageStore?.avatar_url ?  pageStore?.avatar_url : uri }}
+            source={{
+              uri: pageStore?.avatar_url ? pageStore?.avatar_url : uri,
+            }}
             style={{ width: 90, height: 90, borderRadius: 90 }}
           />
           <Text
@@ -37,7 +40,7 @@ const ProfileScreen = ({
               textAlign: "center",
             }}
           >
-            {pageStore?.first_name}{" "}{pageStore?.last_name}
+            {pageStore?.first_name} {pageStore?.last_name}
           </Text>
           <TouchableOpacity
             onPress={() => navigation.navigate("EditProfileScreen")}
@@ -140,6 +143,7 @@ const ProfileScreen = ({
           ></View>
         </View>
       </ScrollView>
+      <BottomMenu />
     </SafeAreaView>
   );
 };

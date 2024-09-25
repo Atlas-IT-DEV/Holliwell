@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 const { width: screenWidth } = Dimensions.get("window");
+const { height: screenHight } = Dimensions.get("window");
 
 const SliderComponent = () => {
   const [data, setData] = useState([]);
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: screenWidth,
-    height: 300,
+    height: screenHight - 320,
     resizeMode: "cover",
   },
   textContainer: {
