@@ -1,6 +1,6 @@
 import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
 import { SvgXml } from "react-native-svg";
-import { arrow_back_black, icon_eye } from "../../images/images";
+import { arrow_back, arrow_back_black, icon_eye } from "../../images/images";
 import { useNavigation } from "@react-navigation/native";
 import { useStores } from "../../store/store_context";
 import { observer } from "mobx-react-lite";
@@ -29,16 +29,24 @@ const EditProfileScreen = observer(
           }}
         >
           <TouchableOpacity
-            style={{ top: 10 }}
+            style={{
+              top: 10,
+              backgroundColor: "rgba(18,18,18,1)",
+              width: 35,
+              height: 35,
+              borderRadius: 20,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
             onPress={() => navigation.goBack()}
           >
-            <SvgXml xml={arrow_back_black} />
+            <SvgXml xml={arrow_back} width={20} height={20} />
           </TouchableOpacity>
           <Text
             style={{
               fontSize: 20,
               width: "100%",
-              top: 10,
+              top: 15,
               textAlign: "center",
               position: "absolute",
               zIndex: -1,
@@ -55,7 +63,7 @@ const EditProfileScreen = observer(
             }}
             style={{ width: 90, height: 90 }}
           />
-          <TouchableOpacity >
+          <TouchableOpacity>
             <Text style={{ marginTop: 20, fontFamily: "GeologicaRegular" }}>
               СМЕНИТЬ ФОТО
             </Text>

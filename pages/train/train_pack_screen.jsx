@@ -19,6 +19,8 @@ import {
   icon_freeze_small,
   icon_freeze_big,
   icon_play,
+  arrow_back_black,
+  shareBlack,
 } from "../../images/images";
 import CourseCard from "../../components/train/train_mini_card";
 import CoachMiniCard from "../../components/coaches/coach_mini_card";
@@ -95,11 +97,30 @@ const LessonsCourseScreen = ({
                 justifyContent: "space-between",
               }}
             >
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-                <SvgXml xml={arrow_back} />
+              <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                style={{
+                  backgroundColor: "rgba(18,18,18,1)",
+                  width: 35,
+                  height: 35,
+                  borderRadius: 20,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <SvgXml xml={arrow_back} width={20} height={20} />
               </TouchableOpacity>
-              <TouchableOpacity>
-                <SvgXml xml={icon_share} />
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "rgba(18,18,18,1)",
+                  width: 35,
+                  height: 35,
+                  borderRadius: 20,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <SvgXml xml={icon_share} width={20} height={20} />
               </TouchableOpacity>
             </View>
             {/* <TouchableOpacity

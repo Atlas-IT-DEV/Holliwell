@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SvgXml } from "react-native-svg";
-import { arrow_back_black } from "../../images/images";
+import { arrow_back, arrow_back_black } from "../../images/images";
 import CourseMeditationMiniCard from "../../components/meditation/course_meditation_mini_card";
 import { observer } from "mobx-react-lite";
 import { useStores } from "../../store/store_context";
@@ -33,7 +33,6 @@ const MeditationScreen = observer(() => {
     pageStore.getAllMeditate();
   }, []);
 
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -48,10 +47,18 @@ const MeditationScreen = observer(() => {
           }}
         >
           <TouchableOpacity
-            style={{ top: 10 }}
+            style={{
+              top: 10,
+              backgroundColor: "rgba(18,18,18,1)",
+              width: 35,
+              height: 35,
+              borderRadius: 20,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
             onPress={() => navigation.goBack()}
           >
-            <SvgXml xml={arrow_back_black} />
+            <SvgXml xml={arrow_back} width={20} height={20} />
           </TouchableOpacity>
           <Text
             style={{
@@ -108,7 +115,7 @@ const MeditationScreen = observer(() => {
                 style={{
                   marginTop: 20,
                   flexDirection: "row",
-                  gap: 20
+                  gap: 20,
                 }}
               >
                 {array.slice(index, index + 2).length == 2 ? (
@@ -122,9 +129,7 @@ const MeditationScreen = observer(() => {
                     />
                     <CourseMeditationMiniCard
                       name={array[index + 1].title}
-                      uri={
-                        array[index + 1].path_to_cover
-                      }
+                      uri={array[index + 1].path_to_cover}
                       price={array[index + 1]?.price}
                       course_obj={array[index + 1]}
                       key={array[index + 1]}

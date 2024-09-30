@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import CourseCard from "../../components/train/train_mini_card";
 import CoursePackCard from "../../components/train/train_pack_mini_card";
-import { arrow_back_black } from "../../images/images";
+import { arrow_back, arrow_back_black } from "../../images/images";
 import { SvgXml } from "react-native-svg";
 const TrainScreen = observer(() => {
   const navigation = useNavigation();
@@ -47,10 +47,18 @@ const TrainScreen = observer(() => {
           }}
         >
           <TouchableOpacity
-            style={{ top: 10 }}
+            style={{
+              top: 5,
+              backgroundColor: "rgba(18,18,18,1)",
+              width: 35,
+              height: 35,
+              borderRadius: 20,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
             onPress={() => navigation.goBack()}
           >
-            <SvgXml xml={arrow_back_black} />
+            <SvgXml xml={arrow_back} width={20} height={20}/>
           </TouchableOpacity>
           <Text
             style={{
