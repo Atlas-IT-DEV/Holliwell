@@ -11,9 +11,11 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import {
   arrow_back,
+  arrow_back_black,
   arrow_link,
   icon_calendar,
   icon_share,
+  shareBlack,
 } from "../../images/images";
 import { SvgXml } from "react-native-svg";
 import { useEffect } from "react";
@@ -31,7 +33,7 @@ const LessonScreen = ({
 }) => {
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
-  const {pageStore } = useStores()
+  const { pageStore } = useStores();
   useEffect(() => {
     console.log(route.params);
   }, [route]);
@@ -50,11 +52,30 @@ const LessonScreen = ({
               justifyContent: "space-between",
             }}
           >
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <SvgXml xml={arrow_back} />
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{
+                backgroundColor: "rgba(18,18,18,1)",
+                width: 35,
+                height: 35,
+                borderRadius: 20,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <SvgXml xml={arrow_back} width={20} height={20} />
             </TouchableOpacity>
-            <TouchableOpacity>
-              <SvgXml xml={icon_share} />
+            <TouchableOpacity
+              style={{
+                backgroundColor: "rgba(18,18,18,1)",
+                width: 35,
+                height: 35,
+                borderRadius: 20,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <SvgXml xml={icon_share} width={20}  />
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -240,7 +261,9 @@ const LessonScreen = ({
 
           <TouchableOpacity
             style={{ marginTop: 20 }}
-            onPress={() => navigation.navigate("CoachScreen", route.params.trainer)}
+            onPress={() =>
+              navigation.navigate("CoachScreen", route.params.trainer)
+            }
           >
             <View
               style={{

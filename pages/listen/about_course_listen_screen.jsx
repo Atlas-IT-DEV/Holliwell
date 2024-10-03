@@ -18,6 +18,7 @@ import {
   icon_freeze_small,
   icon_freeze_big,
   icon_play,
+  arrow_back,
 } from "../../images/images";
 import CoachMiniCard from "../../components/coaches/coach_mini_card";
 import AudioCard from "../../components/listen/audio_card";
@@ -72,8 +73,18 @@ const AboutCourseListenScreen = ({ route }) => {
               justifyContent: "space-between",
             }}
           >
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <SvgXml xml={arrow_back_black} />
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{
+                backgroundColor: "rgba(18,18,18,1)",
+                width: 35,
+                height: 35,
+                borderRadius: 20,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <SvgXml xml={arrow_back} width={20} height={20} />
             </TouchableOpacity>
           </View>
         </View>
@@ -130,8 +141,11 @@ const AboutCourseListenScreen = ({ route }) => {
             </Text>
           </View>
         </View>
-        <View style={{ alignItems: "center", padding:20}}>
-          <AudioReview uri={route.params.path_to_url_audio} text="Обзор курса"/>
+        <View style={{ alignItems: "center", padding: 20 }}>
+          <AudioReview
+            uri={route.params.path_to_url_audio}
+            text="Обзор курса"
+          />
         </View>
         <View style={{ marginTop: 40, marginHorizontal: 20 }}>
           <View
@@ -180,26 +194,21 @@ const AboutCourseListenScreen = ({ route }) => {
                   <>
                     <CoachMiniCard
                       coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                      uri={
-                        elem.trainer.path_to_avatar
-                      }
+                      uri={elem.trainer.path_to_avatar}
                       key={elem}
                     />
                     <CoachMiniCard
                       coach={`${array[index + 1].trainer.last_name} ${
                         array[index + 1].trainer.first_name
                       }`}
-                      uri={
-                        
-                        array[index + 1].trainer.path_to_avatar
-                      }
+                      uri={array[index + 1].trainer.path_to_avatar}
                       key={elem}
                     />
                   </>
                 ) : array.slice(index, index + 2).length == 1 ? (
                   <CoachMiniCard
                     coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                    uri={ elem.trainer.path_to_avatar}
+                    uri={elem.trainer.path_to_avatar}
                     key={elem}
                   />
                 ) : null}

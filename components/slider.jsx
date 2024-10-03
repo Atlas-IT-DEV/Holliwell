@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 const { width: screenWidth } = Dimensions.get("window");
+const { height: screenHight } = Dimensions.get("window");
 
 const SliderComponent = () => {
   const [data, setData] = useState([]);
@@ -22,7 +23,7 @@ const SliderComponent = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://154.194.52.246:8000/api/sliders/all",
+          "https://holiwell.ru:8000/api/sliders/all",
           {
             headers: {
               accept: "application/json",
@@ -30,7 +31,7 @@ const SliderComponent = () => {
           }
         );
         const result = await response.json();
-        // console.log(result);
+        console.log(result);
 
         const sliderData = [
           {
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: screenWidth,
-    height: 300,
+    height: screenHight - 320,
     resizeMode: "cover",
   },
   textContainer: {

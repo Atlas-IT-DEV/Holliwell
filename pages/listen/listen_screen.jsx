@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SvgXml } from "react-native-svg";
-import { arrow_back_black } from "../../images/images";
+import { arrow_back, arrow_back_black } from "../../images/images";
 import CourseListenMiniCard from "../../components/listen/course_listen_mini_card";
 import { useStores } from "../../store/store_context";
 import { useEffect, useState } from "react";
@@ -47,10 +47,18 @@ const ListenScreen = observer(() => {
           }}
         >
           <TouchableOpacity
-            style={{ top: 10 }}
+            style={{
+              top: 5,
+              backgroundColor: "rgba(18,18,18,1)",
+              width: 35,
+              height: 35,
+              borderRadius: 20,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
             onPress={() => navigation.goBack()}
           >
-            <SvgXml xml={arrow_back_black} />
+            <SvgXml xml={arrow_back} width={20} height={20} />
           </TouchableOpacity>
           <Text
             style={{
