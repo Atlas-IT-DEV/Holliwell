@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-const baseUrl = "http://154.194.52.246:8000";
+const baseUrl = "https://holiwell.ru:8000";
 
 class pageStore {
   email = null;
@@ -74,7 +74,7 @@ class pageStore {
     this.isActive = false;
   };
   getMe = async () => {
-    const response = await fetch("http://154.194.52.246:8000/api/users/me", {
+    const response = await fetch("https://holiwell.ru:8000/api/users/me", {
       method: "GET",
       headers: {
         accept: "application/json",
@@ -89,7 +89,7 @@ class pageStore {
   };
   getAllTrainers = async () => {
     const response = await fetch(
-      "http://154.194.52.246:8000/api/trainers/all",
+      "https://holiwell.ru:8000/api/trainers/all",
       { method: "GET", headers: { accept: "application/json" } }
     );
     const result = await response.json();
@@ -97,7 +97,7 @@ class pageStore {
   };
   getAllListening = async (sort = 0) => {
     const response = await fetch(
-      "http://154.194.52.246:8000/api/courses/all" +
+      "https://holiwell.ru:8000/api/courses/all" +
         (sort == 0 ? "" : sort == 1 ? "?sort_by=popular" : "?sort_by=new"),
       {
         method: "GET",
@@ -115,7 +115,7 @@ class pageStore {
   };
   getAllMeditate = async (sort = 0) => {
     const response = await fetch(
-      "http://154.194.52.246:8000/api/courses/all" +
+      "https://holiwell.ru:8000/api/courses/all" +
         (sort == 0 ? "" : sort == 1 ? "?sort_by=popular" : "?sort_by=new"),
       {
         method: "GET",
@@ -132,7 +132,7 @@ class pageStore {
   };
   getAllTraining = async (sort = 0) => {
     const response = await fetch(
-      "http://154.194.52.246:8000/api/courses/all" +
+      "https://holiwell.ru:8000/api/courses/all" +
         (sort == 0 ? "" : sort == 1 ? "?sort_by=popular" : "?sort_by=new"),
       {
         method: "GET",
@@ -163,7 +163,7 @@ class pageStore {
   };
   getLiked = async () => {
     const response = await fetch(
-      "http://154.194.52.246:8000/api/users/my_favorite",
+      "https://holiwell.ru:8000/api/users/my_favorite",
       {
         method: "GET",
         headers: {

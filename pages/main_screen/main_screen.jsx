@@ -27,7 +27,7 @@ const MainScreen = observer(() => {
   const [info, setInfo] = useState({ title: "Холи", text: "Велл" });
   const getInfo = async () => {
     const response = await fetch(
-      "http://154.194.52.246:8000/api/sliders/main?slider_id=1",
+      "https://holiwell.ru:8000/api/sliders/main?slider_id=1",
       { method: "GET", headers: { accept: "application/json" } }
     );
     const result = await response.json();

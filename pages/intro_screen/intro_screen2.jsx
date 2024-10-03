@@ -24,7 +24,7 @@ const IntroScreen2 = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://154.194.52.246:8000/api/sliders/all",
+          "https://holiwell.ru:8000/api/sliders/all",
           {
             headers: {
               accept: "application/json",
