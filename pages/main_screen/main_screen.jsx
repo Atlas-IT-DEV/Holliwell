@@ -49,30 +49,32 @@ const MainScreen = observer(() => {
   }, [pageStore.token]);
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
-        <SliderComponent />
-
-        <View
+      <View
+        style={{
+          marginTop: 30,
+          justifyContent: "center",
+          flexDirection:"row",
+          position: "absolute",
+          top: 10,
+          zIndex: 4,
+          // display: "flex",
+          // width: "100%",
+        }}
+      >
+        <Text
           style={{
-            marginTop: 30,
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
-            position: "absolute",
+            fontSize: 30,
+            color: "white",
+            textAlign: "center",
+            width:"100%"
           }}
         >
-          <Text
-            style={{
-              fontSize: 30,
-              color: "white",
-              textAlign: "center",
-              width: "100%",
-            }}
-          >
-            HOLIWELL
-          </Text>
-        </View>
+          HOLIWELL
+        </Text>
+        <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
+      </View>
+      <ScrollView>
+        <SliderComponent />
 
         <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={[styles.headerText, { marginTop: 40 }]}>
@@ -167,7 +169,7 @@ const MainScreen = observer(() => {
             horizontal
             style={{ marginTop: 20, marginBottom: 30, paddingBottom: 10 }}
           >
-            <View style={{ gap: 20, flexDirection: "row", marginBottom: 70}}>
+            <View style={{ gap: 20, flexDirection: "row", marginBottom: 70 }}>
               {pageStore.trainers.map((elem) => {
                 return (
                   <CoachMiniCard

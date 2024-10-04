@@ -14,6 +14,7 @@ import { SvgXml } from "react-native-svg";
 import { arrow_back, lock_image, icon_share } from "../../images/images";
 import CoachMiniCard from "../../components/coaches/coach_mini_card";
 import LessonMeditationMiniCard from "../../components/meditation/lesson_meditation_mini_card";
+import AudioReview from "../../components/audio_review";
 
 const AboutCourseMeditationScreen = ({
   // uri = "http://legacy.reactjs.org/logo-og.png",
@@ -82,7 +83,13 @@ const AboutCourseMeditationScreen = ({
           <Text style={{ fontFamily: "GeologicaThin", textAlign: "center" }}>
             Курс медитаций
           </Text>
-          <TouchableOpacity
+          <View style={{ alignItems: "center", marginTop: 20, width: "100%" }}>
+            <AudioReview
+              uri={route.params.path_to_url_audio}
+              text="Обзор курса"
+            />
+          </View>
+          {/* <TouchableOpacity
             style={{
               justifyContent: "center",
               backgroundColor: "rgba(48,48,48,1)",
@@ -102,7 +109,7 @@ const AboutCourseMeditationScreen = ({
             >
               ОБЗОР КУРСА
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View
             style={{
               borderBottomColor: "#D9D9D9",
