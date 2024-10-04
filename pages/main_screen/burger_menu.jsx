@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
   },
   burgerButton: {
     position: "absolute",
-    top: 0,
+    top: -10,
     right: 15,
     zIndex: 2,
   },
