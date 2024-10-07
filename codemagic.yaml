@@ -7,15 +7,15 @@ workflows:
       groups:
         - app_store_credentials
       vars:
-        XCODE_WORKSPACE: "BigBassBummer.xcworkspace" # <----
-        XCODE_SCHEME: "BigBassBummer" # <----
+        # XCODE_WORKSPACE: "BigBassBummer.xcworkspace" # <----
+        # XCODE_SCHEME: "BigBassBummer" # <----
         BUNDLE_ID: "com.dooster473.holliwell" # <----
         APP_STORE_APP_ID: 6717594425 # <----
         APP_STORE_CONNECT_KEY_ID: "YFTKF7X436" # <----
         APP_STORE_CONNECT_ISSUER_ID: "5d5284ca-bab9-4c14-b47a-9f66b6c90849" # <----
         node: latest
         xcode: latest
-        cocoapods: default
+        # cocoapods: default
     triggering:
       events:
         - push
