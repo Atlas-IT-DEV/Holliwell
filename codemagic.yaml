@@ -13,6 +13,7 @@ workflows:
         APP_STORE_APP_ID: 6717594425 # <----
         APP_STORE_CONNECT_KEY_IDENTIFIER: "YFTKF7X436" # <----
         APP_STORE_CONNECT_ISSUER_ID: "5d5284ca-bab9-4c14-b47a-9f66b6c90849" # <----
+        APP_STORE_CONNECT_PRIVATE_KEY: "d5bd7518f4dc4440971b1a10b070600b"
         node: latest
         xcode: latest
         # cocoapods: default
@@ -52,12 +53,12 @@ workflows:
     publishing:
       email:
         recipients:
-          - NanAron5@outlook.com        # <----
+          - NanAron5@outlook.com # <----
         notify:
           success: true
           failure: false
       slack:
-        channel: '#builds'
+        channel: "#builds"
         notify_on_build_start: true
         notify:
           success: true
