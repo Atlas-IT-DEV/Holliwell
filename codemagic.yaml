@@ -1,70 +1,70 @@
-workflows:
-  react-native-ios:
-    name: React Native iOS
-    max_build_duration: 120
-    instance_type: mac_mini_m2
-    environment:
-      groups:
-        - app_store_credentials
-      vars:
-        # XCODE_WORKSPACE: "BigBassBummer.xcworkspace" # <----
-        # XCODE_SCHEME: "BigBassBummer" # <----
-        BUNDLE_ID: "com.dooster473.holliwell" # <----
-        APP_STORE_APP_ID: 6717594425 # <----
-        APP_STORE_CONNECT_KEY_IDENTIFIER: "YFTKF7X436" # <----
-        APP_STORE_CONNECT_ISSUER_ID: "5d5284ca-bab9-4c14-b47a-9f66b6c90849" # <----
-        APP_STORE_CONNECT_PRIVATE_KEY: "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgtKUnGMT2W889kwlkpiEnVvPiqG9sFwd+25gxkwMlA8uhRANCAASQYdnd2MlkKIZjev88Koy3VGzdKJdz0dRZr8kynFXISQ+rnrjvJpAxhCXog8LsW4VR8mXhSbvF64lh4hEoOmea"
-        node: latest
-        xcode: latest
-        # cocoapods: default
-    triggering:
-      events:
-        - push
-        - tag
-        - pull_request
-      branch_patterns:
-        - pattern: develop
-          include: true
-          source: true
-    scripts:
-      - name: Install npm dependencies
-        script: npm install
-      # - name: Install CocoaPods dependencies
-      #   script: cd ios && pod install
-      - name: Set up keychain for code signing
-        script: keychain initialize
-      - name: Fetch signing files
-        script: app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
-      - name: Use system default keychain
-        script: keychain add-certificates
-      - name: Increment build number
-        script: |
-          cd $CM_BUILD_DIR/ios
-          agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
-      - name: Set up code signing settings in Xcode project
-        script: xcode-project use-profiles --warn-only
-      - name: Build IPA for distribution
-        script: xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" --archive-flags="-destination 'generic/platform=iOS'"
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-    publishing:
-      email:
-        recipients:
-          - NanAron5@outlook.com # <----
-        notify:
-          success: true
-          failure: false
-      slack:
-        channel: "#builds"
-        notify_on_build_start: true
-        notify:
-          success: true
-          failure: false
-      app_store_connect:
-        api_key: "$APP_STORE_CONNECT_PRIVATE_KEY"
-        key_id: "$APP_STORE_CONNECT_KEY_ID"
-        issuer_id: "$APP_STORE_CONNECT_ISSUER_ID"
-        submit_to_testflight: true
+# workflows:
+#   react-native-ios:
+#     name: React Native iOS
+#     max_build_duration: 120
+#     instance_type: mac_mini_m2
+#     environment:
+#       groups:
+#         - app_store_credentials
+#       vars:
+#         # XCODE_WORKSPACE: "BigBassBummer.xcworkspace" # <----
+#         # XCODE_SCHEME: "BigBassBummer" # <----
+#         BUNDLE_ID: "com.dooster473.holliwell" # <----
+#         APP_STORE_APP_ID: 6717594425 # <----
+#         APP_STORE_CONNECT_KEY_IDENTIFIER: "YFTKF7X436" # <----
+#         APP_STORE_CONNECT_ISSUER_ID: "5d5284ca-bab9-4c14-b47a-9f66b6c90849" # <----
+#         APP_STORE_CONNECT_PRIVATE_KEY: "-----BEGIN PRIVATE KEY-----MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgp46mfVSQ0vExqlbKch6YDi8tAcb1/GSKJf8/cOLgk7+gCgYIKoZIzj0DAQehRANCAAQouDKvNHiKfVdJ/u9J9XrbHwOY+1+GwFkFnUMoOwxB1XnV7AH0p31UgWZYE3F1luazfBy1D3U+7IbK6Zsi4at6-----END PRIVATE KEY-----"
+#         node: latest
+#         xcode: latest
+#         # cocoapods: default
+#     triggering:
+#       events:
+#         - push
+#         - tag
+#         - pull_request
+#       branch_patterns:
+#         - pattern: develop
+#           include: true
+#           source: true
+#     scripts:
+#       - name: Install npm dependencies
+#         script: npm install
+#       # - name: Install CocoaPods dependencies
+#       #   script: cd ios && pod install
+#       - name: Set up keychain for code signing
+#         script: keychain initialize
+#       - name: Fetch signing files
+#         script: app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+#       - name: Use system default keychain
+#         script: keychain add-certificates
+#       - name: Increment build number
+#         script: |
+#           cd $CM_BUILD_DIR/ios
+#           agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
+#       - name: Set up code signing settings in Xcode project
+#         script: xcode-project use-profiles --warn-only
+#       - name: Build IPA for distribution
+#         script: xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" --archive-flags="-destination 'generic/platform=iOS'"
+#     artifacts:
+#       - build/ios/ipa/*.ipa
+#       - /tmp/xcodebuild_logs/*.log
+#       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+#       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+#     publishing:
+#       email:
+#         recipients:
+#           - NanAron5@outlook.com # <----
+#         notify:
+#           success: true
+#           failure: false
+#       slack:
+#         channel: "#builds"
+#         notify_on_build_start: true
+#         notify:
+#           success: true
+#           failure: false
+#       app_store_connect:
+#         api_key: "$APP_STORE_CONNECT_PRIVATE_KEY"
+#         key_id: "$APP_STORE_CONNECT_KEY_ID"
+#         issuer_id: "$APP_STORE_CONNECT_ISSUER_ID"
+#         submit_to_testflight: true
