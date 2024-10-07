@@ -13,21 +13,20 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.dmitrovich.holliwell"
+      "bundleIdentifier": "com.dmitrovich.holliwell",
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"]
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-font",
-      "expo-video"
-    ],
+    "plugins": ["expo-font", "expo-video"],
     "extra": {
       "eas": {
         "projectId": "3e34367b-c74b-4b3f-bbdc-72a5f8aa719f"

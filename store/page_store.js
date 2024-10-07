@@ -88,10 +88,10 @@ class pageStore {
     this.email = result.email;
   };
   getAllTrainers = async () => {
-    const response = await fetch(
-      "https://holiwell.ru:8000/api/trainers/all",
-      { method: "GET", headers: { accept: "application/json" } }
-    );
+    const response = await fetch("https://holiwell.ru:8000/api/trainers/all", {
+      method: "GET",
+      headers: { accept: "application/json" },
+    });
     const result = await response.json();
     this.trainers = result;
   };
@@ -126,6 +126,7 @@ class pageStore {
       }
     );
     const result = await response.json();
+    console.log(response);
     this.meditation = result.filter(
       (elem) => elem.course_type_slug == "meditation"
     );

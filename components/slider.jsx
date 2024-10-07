@@ -30,8 +30,10 @@ const SliderComponent = () => {
             },
           }
         );
+        console.log(response)
         const result = await response.json();
         console.log(result);
+        
 
         const sliderData = [
           {
@@ -55,6 +57,7 @@ const SliderComponent = () => {
         // console.log(sliderData);
         setLoading(false);
       } catch (error) {
+        console.log(response)
         console.error("Ошибка при получении данных слайдера:", error);
         setLoading(false);
         // console.log(fetchData());
