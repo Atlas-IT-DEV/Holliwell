@@ -7,8 +7,8 @@ workflows:
       groups:
         - app
       vars:
-        # XCODE_WORKSPACE: "BigBassBummer.xcworkspace" # <----
-        # XCODE_SCHEME: "BigBassBummer" # <----
+        XCODE_WORKSPACE: "BigBassBummer.xcworkspace" # <----
+        XCODE_SCHEME: "BigBassBummer" # <----
         BUNDLE_ID: "com.dooster473.holliwell" # <----
         APP_STORE_APP_ID: 6717594425 # <----
         APP_STORE_CONNECT_KEY_IDENTIFIER: "5HTCHX96YQ" # <----
