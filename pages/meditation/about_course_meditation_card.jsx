@@ -138,16 +138,7 @@ const AboutCourseMeditationScreen = ({
         <View style={{ gap: 30 }}>
           {route.params.lessons.map((elem, index) => {
             console.log(elem.title);
-            return (
-              <LessonMeditationMiniCard
-                number={index + 1}
-                name={elem.title}
-                coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                time={elem.audio_length}
-                lesson_obj={{ ...elem, number: index + 1 }}
-                key={elem}
-              />
-            );
+            return <AudioReview text={elem.title} uri={elem.path_to_audio} />;
           })}
         </View>
         <View style={{ marginTop: 40, marginHorizontal: 20 }}>

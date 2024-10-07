@@ -156,16 +156,7 @@ const AboutCourseListenScreen = ({ route }) => {
             }}
           ></View>
           {route.params.lessons.map((elem, index) => {
-            return (
-              <AudioCard
-                number={index + 1}
-                name={elem.title}
-                coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                time={elem.audio_length}
-                lesson_obj={{ ...elem, number: index + 1 }}
-                key={elem}
-              />
-            );
+            return <AudioReview uri={elem.path_to_audio} text={elem.title} />;
           })}
         </View>
 
