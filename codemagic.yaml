@@ -37,10 +37,10 @@ workflows:
         script: app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
       - name: Use system default keychain
         script: keychain add-certificates
-      - name: Increment build number
-        script: |
-          cd $CM_BUILD_DIR/ios
-          agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
+      # - name: Increment build number
+      #   script: |
+      #     cd $CM_BUILD_DIR/ios
+      #     agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
       - name: Set up code signing settings in Xcode project
         script: xcode-project use-profiles --warn-only
       - name: Build IPA for distribution
