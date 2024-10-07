@@ -5,9 +5,9 @@ import {
   StyleSheet,
   Image,
   Dimensions,
-  ImageBackground,
   ScrollView,
   SafeAreaView,
+  Animated,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useStores } from "../../store/store_context";
@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import SliderComponent from "../../components/slider";
 import BottomMenu from "../../components/bottom_menu";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const MainScreen = observer(() => {
   const screenHeight = Dimensions.get("window").height;
@@ -47,32 +48,50 @@ const MainScreen = observer(() => {
       pageStore.getMe();
     }
   }, [pageStore.token]);
+
+  const insets = useSafeAreaInsets();
+  const safeAreaHeight = insets.top + insets.bottom;
+
+  const [scrollY, setScrollY] = useState(0);
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
-        <SliderComponent />
-
-        <View
-          style={{
-            marginTop: 30,
+      <View
+        style={[
+          {
+            marginTop: safeAreaHeight,
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "row",
             position: "absolute",
+            top: 0,
+            zIndex: 4,
+            height: 60,
+            // backgroundColor: {scrollY >= (screenHeight-320) ? {backgroundColor:"rgba(0,0,0,0.5)"} : null}
+          },
+          scrollY >= screenHeight - 320
+            ? { backgroundColor: "rgba(0,0,0,0.5)" }
+            : null,
+        ]}
+      >
+        <Text
+          style={{
+            fontSize: 30,
+            color: "white",
+            textAlign: "center",
+            width: "100%",
           }}
         >
-          <Text
-            style={{
-              fontSize: 30,
-              color: "white",
-              textAlign: "center",
-              width: "100%",
-            }}
-          >
-            HOLIWELL
-          </Text>
-        </View>
+          HOLIWELL
+        </Text>
+        <BurgerMenu color_burger="rgba(255, 255, 255, 1)" />
+      </View>
+      <ScrollView
+        onScroll={(event) => {
+          setScrollY(event.nativeEvent.contentOffset.y);
+        }}
+        scrollEventThrottle={16}
+      >
+        <SliderComponent />
 
         <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={[styles.headerText, { marginTop: 40 }]}>
@@ -167,7 +186,7 @@ const MainScreen = observer(() => {
             horizontal
             style={{ marginTop: 20, marginBottom: 30, paddingBottom: 10 }}
           >
-            <View style={{ gap: 20, flexDirection: "row", marginBottom: 70}}>
+            <View style={{ gap: 20, flexDirection: "row", marginBottom: 70 }}>
               {pageStore.trainers.map((elem) => {
                 return (
                   <CoachMiniCard
@@ -188,6 +207,7 @@ const MainScreen = observer(() => {
 
 const styles = StyleSheet.create({
   container: {
+    position: "relative",
     width: "100%",
     backgroundColor: "white",
     display: "flex",

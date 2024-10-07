@@ -48,7 +48,13 @@ const BurgerMenu = ({ color_burger = "" }) => {
     <View style={styles.container}>
       <StatusBar style="auto" />
       {!isMenuVisible ? (
-        <TouchableOpacity style={styles.burgerButton} onPress={toggleMenu}>
+        <TouchableOpacity
+          style={styles.burgerButton}
+          onPress={() => {
+            toggleMenu();
+            console.log(isMenuVisible);
+          }}
+        >
           <Text style={[styles.burgerText, { color: color_burger }]}>☰</Text>
         </TouchableOpacity>
       ) : null}
@@ -308,7 +314,7 @@ const styles = StyleSheet.create({
   },
   burgerButton: {
     position: "absolute",
-    top: 40,
+    top: -10,
     right: 15,
     zIndex: 2,
   },
@@ -317,13 +323,16 @@ const styles = StyleSheet.create({
   },
   menuContainer: {
     position: "absolute",
-    top: 34,
-    left: 0,
+    top: 0,
+    right: 0,
     width: width,
     backgroundColor: "rgb(48, 48, 48)",
-    zIndex: 1,
+    zIndex: 3,
     justifyContent: "flex-start",
     alignItems: "center",
+    display: "flex",
+    // width: "100%",
+    height: "100%",
   },
   closeButton: {
     position: "absolute",
