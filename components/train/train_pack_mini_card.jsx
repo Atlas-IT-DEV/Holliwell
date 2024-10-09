@@ -12,6 +12,7 @@ const CoursePackCard = ({
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("LessonsCourseScreen", course_obj)}
+      style={{width:"50%"}}
     >
       <View style={{ minWidth: "45%" }}>
         <Image

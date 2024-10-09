@@ -210,6 +210,7 @@ const TrainScreen = observer(() => {
                         marginTop: 20,
                         flexDirection: "row",
                         justifyContent: "space-between",
+                        gap:10
                       }}
                     >
                       {array.slice(index, index + 2).length == 2 ? (
