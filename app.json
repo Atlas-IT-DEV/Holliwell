@@ -26,7 +26,18 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-font", "expo-video"],
+    "plugins": [
+      "expo-font",
+      "expo-video",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "3e34367b-c74b-4b3f-bbdc-72a5f8aa719f"
