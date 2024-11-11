@@ -16,6 +16,7 @@ import BottomMenu from "../../components/bottom_menu";
 const ProfileScreen = ({
   uri = "http://legacy.reactjs.org/logo-og.png",
   name_profile = "ФАМИЛИЯ ИМЯ",
+  route,
 }) => {
   const navigation = useNavigation();
   const { pageStore } = useStores();
@@ -143,7 +144,7 @@ const ProfileScreen = ({
           ></View>
         </View>
       </ScrollView>
-      <BottomMenu />
+      <BottomMenu route={route} />
     </SafeAreaView>
   );
 };

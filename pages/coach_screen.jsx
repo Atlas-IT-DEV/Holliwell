@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   ImageBackground,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { arrow_back, icon_share } from "../images/images";
@@ -25,85 +26,87 @@ const CoachScreen = ({
   const screenWidth = Dimensions.get("window").width;
   return (
     <SafeAreaView>
-      <ImageBackground
-        source={{
-          uri: route.params.path_to_background,
-        }}
-        style={{ width: "100%", height: screenHeight / 2 }}
-      >
+      <ScrollView>
+        <ImageBackground
+          source={{
+            uri: route.params.path_to_background,
+          }}
+          style={{ width: "100%", height: screenHeight / 2 }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 30,
+              marginRight: 20,
+              marginLeft: 20,
+              justifyContent: "space-between",
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{
+                backgroundColor: "rgba(18,18,18,1)",
+                width: 35,
+                height: 35,
+                borderRadius: 20,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <SvgXml xml={arrow_back} width={20} height={20} />
+            </TouchableOpacity>
+            {/* <TouchableOpacity
+              style={{
+                backgroundColor: "rgba(18,18,18,1)",
+                width: 35,
+                height: 35,
+                borderRadius: 20,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <SvgXml xml={icon_share} width={20} height={20} />
+            </TouchableOpacity> */}
+          </View>
+        </ImageBackground>
         <View
           style={{
-            flexDirection: "row",
-            marginTop: 30,
-            marginRight: 20,
-            marginLeft: 20,
-            justifyContent: "space-between",
+            width: "100%",
+            position: "absolute",
+            top: 300,
+            alignItems: "center",
           }}
         >
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={{
-              backgroundColor: "rgba(18,18,18,1)",
-              width: 35,
-              height: 35,
-              borderRadius: 20,
-              alignItems: "center",
-              justifyContent: "center",
+          <Image
+            source={{
+              uri: route.params.path_to_avatar,
             }}
-          >
-            <SvgXml xml={arrow_back} width={20} height={20} />
-          </TouchableOpacity>
-          <TouchableOpacity
             style={{
-              backgroundColor: "rgba(18,18,18,1)",
-              width: 35,
-              height: 35,
-              borderRadius: 20,
-              alignItems: "center",
-              justifyContent: "center",
+              width: 170,
+              height: 170,
+              borderRadius: 170,
+              borderWidth: 5,
+              borderColor: "white",
+              resizeMode: "stretch",
             }}
-          >
-            <SvgXml xml={icon_share} width={20} height={20} />
-          </TouchableOpacity>
+          />
         </View>
-      </ImageBackground>
-      <View
-        style={{
-          width: "100%",
-          position: "absolute",
-          top: 300,
-          alignItems: "center",
-        }}
-      >
-        <Image
-          source={{
-            uri: route.params.path_to_avatar,
-          }}
+        <View
           style={{
-            width: 170,
-            height: 170,
-            borderRadius: 170,
-            borderWidth: 5,
-            borderColor: "white",
-            resizeMode: "stretch",
+            marginTop: 100,
+            alignItems: "center",
+            marginLeft: 20,
+            marginRight: 20,
           }}
-        />
-      </View>
-      <View
-        style={{
-          marginTop: 100,
-          alignItems: "center",
-          marginLeft: 20,
-          marginRight: 20,
-        }}
-      >
-        <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
-          {`${route.params.last_name} ${route.params.first_name}`}
-        </Text>
-        <Text style={{ marginTop: 30, fontFamily: "GeologicaLight" }}>
-          {route.params.description}
-        </Text>
-      </View>
+        >
+          <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
+            {`${route.params.last_name} ${route.params.first_name}`}
+          </Text>
+          <Text style={{ marginTop: 30, fontFamily: "GeologicaLight" }}>
+            {route.params.description}
+          </Text>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -1,9 +1,9 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { SvgXml } from "react-native-svg";
-import { homeAct, profileAct } from "../images/images";
+import { homeAct, profileAct, homeInact, profileInact } from "../images/images";
 import { useNavigation } from "@react-navigation/native";
 
-const BottomMenu = ({ active, inactive }) => {
+const BottomMenu = ({ active, inactive, route }) => {
   const navigation = useNavigation();
   return (
     <View
@@ -25,14 +25,16 @@ const BottomMenu = ({ active, inactive }) => {
         style={{ alignItems: "center", gap: 3 }}
         onPress={() => navigation.navigate("MainScreen")}
       >
-        <SvgXml xml={homeAct} />
+        <SvgXml xml={route?.name == "MainScreen" ? homeAct : homeInact} />
         <Text>Домой</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={{ alignItems: "center", gap: 3 }}
         onPress={() => navigation.navigate("ProfileScreen")}
       >
-        <SvgXml xml={profileAct} />
+        <SvgXml
+          xml={route?.name == "ProfileScreen" ? profileAct : profileInact}
+        />
         <Text>Профиль</Text>
       </TouchableOpacity>
     </View>

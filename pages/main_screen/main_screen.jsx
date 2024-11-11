@@ -8,6 +8,7 @@ import {
   ScrollView,
   SafeAreaView,
   Animated,
+  Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useStores } from "../../store/store_context";
@@ -21,11 +22,17 @@ import SliderComponent from "../../components/slider";
 import BottomMenu from "../../components/bottom_menu";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const MainScreen = observer(() => {
+const MainScreen = observer(({ route }) => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const { pageStore } = useStores();
-  const [info, setInfo] = useState({ title: "Холи", text: "Велл" });
+  const [info, setInfo] = useState({
+    title: "Холи",
+    text: "Велл",
+    path_to_video:
+      "https://holiwell.ru/files/sliders/cover/5puvjRJrZyHWYE5SXqujyN/4.jpg",
+  });
+  const [after, setAfter] = useState({});
   const getInfo = async () => {
     const response = await fetch(
       "https://holiwell.ru:8000/api/sliders/main?slider_id=1",
@@ -33,11 +40,42 @@ const MainScreen = observer(() => {
     );
     const result = await response.json();
     setInfo(result);
+    console.log(result);
+  };
+  const getAfter = async () => {
+    const response = await fetch("https://holiwell.ru:8000/api/sliders/7", {
+      method: "GET",
+      headers: { accept: "application/json" },
+    });
+    const result = await response.json();
+    setAfter(result);
+    console.log(result);
+  };
+  const getLink = (data) => {
+    console.log(data, "ХУЙ");
+    if (data.includes("/profile")) {
+      data.replace("/profile", "");
+    }
+    if (data.includes("/calendar")) {
+      data.replace("/calendar", "");
+    }
+    if (data.includes("/meditate")) {
+      data.replace("/meditate", "");
+    }
+    if (data.includes("/train")) {
+      data.replace("/train", "");
+    }
+    if (data.includes("/listening")) {
+      data.replace("/listening", "");
+    }
+    return data;
   };
   useEffect(() => {
     pageStore.getAllTrainers();
     getInfo();
+    getAfter();
     pageStore.login({ email: "user1212@example.com", password: "12345" });
+
     //Только для тестов убрать потом !!!!!!!
   }, []);
   useEffect(() => {
@@ -50,7 +88,7 @@ const MainScreen = observer(() => {
   }, [pageStore.token]);
 
   const insets = useSafeAreaInsets();
-  const safeAreaHeight = insets.top + insets.bottom;
+  const safeAreaHeight = insets.top;
 
   const [scrollY, setScrollY] = useState(0);
   return (
@@ -68,9 +106,7 @@ const MainScreen = observer(() => {
             height: 60,
             // backgroundColor: {scrollY >= (screenHeight-320) ? {backgroundColor:"rgba(0,0,0,0.5)"} : null}
           },
-          scrollY >= screenHeight - 320
-            ? { backgroundColor: "rgba(0,0,0,0.5)" }
-            : null,
+          scrollY >= 50 ? { backgroundColor: "rgba(0,0,0,0.5)" } : null,
         ]}
       >
         <Text
@@ -95,18 +131,23 @@ const MainScreen = observer(() => {
 
         <View style={{ marginLeft: 20, marginRight: 20 }}>
           <Text style={[styles.headerText, { marginTop: 40 }]}>
-            ДОБРО ПОЖАЛОВАТЬ
-            {pageStore.first_name != "" &&
-              pageStore.first_name != null &&
-              ","}{" "}
-            {"\n"}
-            {pageStore.first_name}
+            {pageStore.token && pageStore.first_name
+              ? after.title_second?.replace(
+                  "@user.first_name",
+                  pageStore.first_name
+                )
+              : after.title_first}
           </Text>
           <Text style={[styles.mainText, { marginTop: 10 }]}>
-            Не ограничивай себя в движении, {"\n"}
-            {"\n"}В здоровом теле здоровый дух. Регулярная практика и позитивный
-            настрой дадут тебе энергию для реализации твоей цели 🎯
+            {pageStore.token
+              ? after?.text_second?.replace("календаре/profile", "")
+              : after.text_first}
           </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("ProfileScreen")}
+          >
+            <Text style={[styles.mainText]}>календаре</Text>
+          </TouchableOpacity>
           <View
             style={{
               borderBottomColor: "#D9D9D9",
@@ -118,13 +159,23 @@ const MainScreen = observer(() => {
           <TouchableOpacity onPress={() => navigation.navigate("TrainScreen")}>
             <Image
               source={require("./../../images/train.png")}
-              style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
+              style={{
+                marginTop: 40,
+                width: "100%",
+                height: 180,
+                resizeMode: "contain",
+              }}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("ListenScreen")}>
             <Image
               source={require("./../../images/listen.png")}
-              style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
+              style={{
+                marginTop: 15,
+                width: "100%",
+                height: 180,
+                resizeMode: "contain",
+              }}
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -132,7 +183,25 @@ const MainScreen = observer(() => {
           >
             <Image
               source={require("./../../images/meditation.png")}
-              style={{ marginTop: 40, width: "100%", resizeMode: "contain" }}
+              style={{
+                marginTop: 15,
+                width: "100%",
+                height: 180,
+                resizeMode: "contain",
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Alert.alert("Раздел временно не работает")}
+          >
+            <Image
+              source={require("./../../images/esh.jpg")}
+              style={{
+                marginTop: 15,
+                width: "100%",
+                height: 180,
+                resizeMode: "contain",
+              }}
             />
           </TouchableOpacity>
 
@@ -144,10 +213,18 @@ const MainScreen = observer(() => {
               marginTop: 40,
             }}
           ></View>
-          <Text style={[styles.headerText, { marginTop: 40 }]}>
-            {info?.title}
-          </Text>
-          <Text style={[styles.mainText, { marginTop: 10 }]}>{info?.text}</Text>
+          <View style={{ display: "flex", flexDirection: "column" }}>
+            <Text style={[styles.headerText, { marginTop: 40 }]}>
+              {info?.title}
+            </Text>
+            <Text style={[styles.mainText, { marginTop: 10 }]}>
+              {info?.text}
+            </Text>
+          </View>
+          <Image
+            src={{ uri: info?.path_to_video }}
+            style={{ resizeMode: "cover", width: 100, height: 100 }}
+          />
           <View
             style={{
               borderBottomColor: "#D9D9D9",
@@ -156,6 +233,7 @@ const MainScreen = observer(() => {
               marginTop: 40,
             }}
           ></View>
+
           <View
             style={{
               flexDirection: "row",
@@ -186,13 +264,14 @@ const MainScreen = observer(() => {
             horizontal
             style={{ marginTop: 20, marginBottom: 30, paddingBottom: 10 }}
           >
-            <View style={{ gap: 20, flexDirection: "row", marginBottom: 70 }}>
+            <View style={{ gap: 25, flexDirection: "row", marginBottom: 70 }}>
               {pageStore.trainers.map((elem) => {
                 return (
                   <CoachMiniCard
                     coach={`${elem.last_name} ${elem.first_name}`}
                     uri={elem.path_to_background}
                     key={elem.description}
+                    obj={elem}
                   />
                 );
               })}
@@ -200,7 +279,7 @@ const MainScreen = observer(() => {
           </ScrollView>
         </View>
       </ScrollView>
-      <BottomMenu />
+      <BottomMenu route={route} />
     </SafeAreaView>
   );
 });

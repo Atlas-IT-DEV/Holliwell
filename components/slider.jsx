@@ -30,34 +30,15 @@ const SliderComponent = () => {
             },
           }
         );
-        console.log(response)
+        console.log(response);
         const result = await response.json();
         console.log(result);
-        
 
-        const sliderData = [
-          {
-            title: result[0].title_first,
-            text: result[0].text_first,
-            image: result[0].path_to_cover_first,
-          },
-          {
-            title: result[0].title_second,
-            text: result[0].text_second,
-            image: result[0].path_to_cover_second,
-          },
-          {
-            title: result[0].title_third,
-            text: result[0].text_third,
-            image: result[0].path_to_cover_third,
-          },
-        ];
-
-        setData(sliderData);
+        setData(result.filter((elem) => elem.id != 7));
         // console.log(sliderData);
         setLoading(false);
       } catch (error) {
-        console.log(response)
+        console.log(response);
         console.error("Ошибка при получении данных слайдера:", error);
         setLoading(false);
         // console.log(fetchData());
@@ -90,10 +71,13 @@ const SliderComponent = () => {
   const renderSlides = () => {
     return data.map((item, index) => (
       <View key={index} style={styles.slide}>
-        <Image source={{ uri: item.image }} style={styles.image} />
+        <Image
+          source={{ uri: item.path_to_cover_first }}
+          style={styles.image}
+        />
         <View style={styles.textContainer}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.text}>{item.text}</Text>
+          <Text style={styles.title}>{item.title_first}</Text>
+          <Text style={styles.text}>{item.text_first}</Text>
         </View>
       </View>
     ));
@@ -109,7 +93,7 @@ const SliderComponent = () => {
       pagingEnabled
       ref={scrollViewRef}
       showsHorizontalScrollIndicator={true}
-      scrollEnabled={false} // отключаем ручную прокрутку
+      scrollEnabled={true} // отключаем ручную прокрутку
     >
       {renderSlides()}
     </ScrollView>

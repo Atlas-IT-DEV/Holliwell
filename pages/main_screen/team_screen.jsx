@@ -60,21 +60,57 @@ const TeamScreen = () => {
         </View>
         <View
           style={{
-            marginTop: 66,
-            flexDirection: "row",
+            marginTop: 40,
+            flexDirection: "column",
             justifyContent: "space-between",
             marginLeft: 20,
             marginRight: 20,
           }}
         >
-          {pageStore.trainers.map((elem) => {
+          {/*           {pageStore.trainers.map((elem) => {
             return (
               <CoachMiniCard
                 coach={`${elem.last_name} ${elem.first_name}`}
                 uri={elem.path_to_background}
               />
             );
-          })}
+          })} */}
+          {pageStore.trainers.reduce((rows, elem, index) => {
+            if (index % 2 === 0) {
+              // Создаем новую строку для пары элементов
+              rows.push(
+                <View
+                  key={index}
+                  style={{
+                    marginTop: 20,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <CoachMiniCard
+                    coach={`${elem.last_name} ${elem.first_name}`}
+                    uri={elem.path_to_background}
+                    obj={elem}
+                  />
+
+                  {pageStore.trainers[index + 1] ? (
+                    // Если есть второй элемент в паре, отображаем его
+                    <CoachMiniCard
+                      coach={`${pageStore.trainers[index + 1].last_name} ${
+                        pageStore.trainers[index + 1].first_name
+                      }`}
+                      uri={pageStore.trainers[index + 1].path_to_background}
+                      obj={pageStore.trainers[index + 1]}
+                    />
+                  ) : (
+                    // Если второго элемента нет, просто оставляем пустое место
+                    <View style={{ flex: 1 }} />
+                  )}
+                </View>
+              );
+            }
+            return rows;
+          }, [])}
         </View>
       </ScrollView>
     </SafeAreaView>
