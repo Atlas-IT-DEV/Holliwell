@@ -110,7 +110,7 @@ const LessonsCourseScreen = ({
               >
                 <SvgXml xml={arrow_back} width={20} height={20} />
               </TouchableOpacity>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={{
                   backgroundColor: "rgba(18,18,18,1)",
                   width: 35,
@@ -121,7 +121,7 @@ const LessonsCourseScreen = ({
                 }}
               >
                 <SvgXml xml={icon_share} width={20} height={20} />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
             {/* <TouchableOpacity
               style={{
@@ -245,7 +245,7 @@ const LessonsCourseScreen = ({
             {route.params.description}
           </Text>
 
-          <AudioReview uri={route.params.path_to_url_audio} />
+          {/* <AudioReview uri={route.params.path_to_url_audio} /> */}
           <View
             style={{
               borderTopColor: "#D9D9D9",
@@ -263,9 +263,10 @@ const LessonsCourseScreen = ({
               <CourseCard
                 number={index + 1}
                 name={elem.title}
-                coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                time={elem.audio_length}
-                lesson_obj={[elem]}
+                uri={elem?.path_to_cover}
+                description={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
+                time={elem.video_length}
+                lesson_obj={elem}
                 isPack={true}
                 key={elem}
               />
@@ -292,42 +293,45 @@ const LessonsCourseScreen = ({
           >
             КОМАНДА
           </Text>
-          {route.params.lessons.map((elem, index, array) => {
-            index *= 2;
+          {[
+            ...new Map(
+              route.params.lessons.map((lesson) => [
+                `${lesson.trainer.first_name}-${lesson.trainer.last_name}`,
+                lesson,
+              ])
+            ).values(),
+          ].reduce((rows, elem, index, array) => {
+            if (index % 2 === 0) {
+              rows.push(
+                <View
+                  key={index}
+                  style={{
+                    marginTop: 40,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <CoachMiniCard
+                    coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
+                    uri={elem.trainer.path_to_avatar}
+                    obj={elem}
+                  />
 
-            return (
-              <View
-                style={{
-                  marginTop: 40,
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                {array.slice(index, index + 2).length == 2 ? (
-                  <>
-                    <CoachMiniCard
-                      coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                      uri={elem.trainer.path_to_avatar}
-                      key={elem}
-                    />
+                  {array[index + 1] && (
                     <CoachMiniCard
                       coach={`${array[index + 1].trainer.last_name} ${
                         array[index + 1].trainer.first_name
                       }`}
                       uri={array[index + 1].trainer.path_to_avatar}
-                      key={elem}
+                      obj={array[index + 1]}
                     />
-                  </>
-                ) : array.slice(index, index + 2).length == 1 ? (
-                  <CoachMiniCard
-                    coach={`${elem.trainer.last_name} ${elem.trainer.first_name}`}
-                    uri={elem.trainer.path_to_avatar}
-                    key={elem}
-                  />
-                ) : null}
-              </View>
-            );
-          })}
+                  )}
+                </View>
+              );
+            }
+            return rows;
+          }, [])}
+
           <View
             style={{
               borderTopColor: "#D9D9D9",

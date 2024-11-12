@@ -9,9 +9,17 @@ const CourseMeditationMiniCard = ({
 }) => {
   const navigation = useNavigation();
   return (
-    <View>
-      <Image source={{ uri: uri }} style={{ height: 235, width: 175,  resizeMode:'cover' }} />
-      <View
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("AboutCourseMeditationScreen", course_obj)
+      }
+    >
+      <View>
+        <Image
+          source={{ uri: uri }}
+          style={{ height: 235, width: 170, resizeMode: "cover" }}
+        />
+        {/* <View
         style={{
           position: "absolute",
           right: 0,
@@ -24,50 +32,51 @@ const CourseMeditationMiniCard = ({
         <Text style={{ color: "white", fontFamily: "GeologicaThin" }}>
           для дома
         </Text>
-      </View>
-      <Text
-        style={{
-          marginTop: 10,
-          textAlign: "center",
-          fontFamily: "GeologicaRegular",
-          fontSize: 16,
-        }}
-      >
-        {name}
-      </Text>
-      <Text
-        style={{
-          textAlign: "center",
-          fontFamily: "GeologicaLight",
-          fontSize: 20,
-        }}
-      >
-        {price}₽
-      </Text>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("AboutCourseMeditationScreen", course_obj)
-        }
-        style={{
-          borderColor: "black",
-          borderWidth: 2,
-          borderRadius: 5,
-          marginTop: 10,
-        }}
-      >
+      </View> */}
         <Text
           style={{
-            paddingHorizontal: 30,
-            paddingVertical: 12,
+            marginTop: 10,
             textAlign: "center",
             fontFamily: "GeologicaRegular",
+            fontSize: 16,
+          }}
+        >
+          {name}
+        </Text>
+        <Text
+          style={{
+            textAlign: "center",
+            fontFamily: "GeologicaLight",
             fontSize: 20,
           }}
         >
-          КУПИТЬ
+          {price}₽
         </Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("AboutCourseMeditationScreen", course_obj)
+          }
+          style={{
+            borderColor: "black",
+            borderWidth: 2,
+            borderRadius: 5,
+            marginTop: 10,
+          }}
+        >
+          <Text
+            style={{
+              paddingHorizontal: 30,
+              paddingVertical: 12,
+              textAlign: "center",
+              fontFamily: "GeologicaRegular",
+              fontSize: 20,
+            }}
+          >
+            КУПИТЬ
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </TouchableOpacity>
   );
 };
 

@@ -19,7 +19,12 @@ import {
 } from "../images/images";
 import { icon_play, icon_stop } from "../images/images";
 import { SvgXml } from "react-native-svg";
-const AudioReview = ({ uri, text = "Аудиозапись" }) => {
+const AudioReview = ({
+  uri,
+  text = "Аудиозапись",
+  length = "0",
+  trainer = {},
+}) => {
   const [sound, setSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -90,12 +95,13 @@ const AudioReview = ({ uri, text = "Аудиозапись" }) => {
     <TouchableOpacity
       style={{
         width: "100%",
-        borderColor: "rgba(217,217,217,1)",
+        borderTopColor: "rgba(217,217,217,1)",
         paddingHorizontal: 15,
-        paddingVertical: 13,
-        borderWidth: 1,
+        paddingVertical: 20,
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderBottomColor: "rgba(217,217,217,1)",
         marginTop: 30,
-        borderRadius: 200,
         flexDirection: "row",
         alignItems: "center",
         gap: 15,
@@ -105,6 +111,16 @@ const AudioReview = ({ uri, text = "Аудиозапись" }) => {
       <SvgXml xml={isPlaying ? icon_stop : icon_play} />
       <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
         {text}
+      </Text>
+      <Text
+        style={{ position: "absolute", top: 5, right: 15, fontWeight: 300 }}
+      >
+        {length?.slice(4, length.length)}
+      </Text>
+      <Text
+        style={{ position: "absolute", bottom: 1, left: 80, fontWeight: 300 }}
+      >
+        {trainer?.first_name} {trainer?.last_name}
       </Text>
     </TouchableOpacity>
   );

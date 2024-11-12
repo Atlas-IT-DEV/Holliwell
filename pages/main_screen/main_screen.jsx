@@ -74,7 +74,7 @@ const MainScreen = observer(({ route }) => {
     pageStore.getAllTrainers();
     getInfo();
     getAfter();
-    pageStore.login({ email: "user1212@example.com", password: "12345" });
+    // pageStore.login({ email: "user1212@example.com", password: "12345" });
 
     //Только для тестов убрать потом !!!!!!!
   }, []);
@@ -143,11 +143,14 @@ const MainScreen = observer(({ route }) => {
               ? after?.text_second?.replace("календаре/profile", "")
               : after.text_first}
           </Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("ProfileScreen")}
-          >
-            <Text style={[styles.mainText]}>календаре</Text>
-          </TouchableOpacity>
+          {pageStore.token && (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ProfileScreen")}
+            >
+              <Text style={[styles.mainText]}>календаре</Text>
+            </TouchableOpacity>
+          )}
+
           <View
             style={{
               borderBottomColor: "#D9D9D9",

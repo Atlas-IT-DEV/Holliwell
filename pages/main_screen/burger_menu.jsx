@@ -11,10 +11,12 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { useStores } from "../../store/store_context";
 import { useNavigation } from "@react-navigation/native";
+import * as Linking from "expo-linking";
+import { observer } from "mobx-react-lite";
 
 const { width, height } = Dimensions.get("window");
 
-const BurgerMenu = ({ color_burger = "" }) => {
+const BurgerMenu = observer(({ color_burger = "" }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const animationValue = useState(new Animated.Value(0))[0];
   const { pageStore } = useStores();
@@ -239,6 +241,7 @@ const BurgerMenu = ({ color_burger = "" }) => {
                   alignContent: "center",
                   alignSelf: "center",
                 }}
+                onPress={() => Linking.openURL("https://holiwell.ru")}
               >
                 <Text
                   style={{
@@ -273,36 +276,62 @@ const BurgerMenu = ({ color_burger = "" }) => {
                 ПРОФИЛЬ
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: "100%",
-                display: "flex",
-                alignContent: "center",
-                alignSelf: "center",
-              }}
-              onPress={() => {
-                pageStore.logout();
-                navigation.navigate("LoginScreen");
-              }}
-            >
-              <Text
+            {pageStore.token ? (
+              <TouchableOpacity
                 style={{
-                  fontSize: 20,
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
                   alignSelf: "center",
-                  marginTop: 30,
-                  fontFamily: "GeologicaRegular",
-                  color: "rgba(162, 162, 162, 1)",
+                }}
+                onPress={() => {
+                  pageStore.logout();
+                  navigation.navigate("LoginScreen");
                 }}
               >
-                ВЫЙТИ
-              </Text>
-            </TouchableOpacity>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    alignSelf: "center",
+                    marginTop: 30,
+                    fontFamily: "GeologicaRegular",
+                    color: "rgba(162, 162, 162, 1)",
+                  }}
+                >
+                  ВЫЙТИ
+                </Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignContent: "center",
+                  alignSelf: "center",
+                }}
+                onPress={() => {
+                  navigation.navigate("LoginScreen");
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 20,
+                    alignSelf: "center",
+                    marginTop: 30,
+                    fontFamily: "GeologicaRegular",
+                    color: "rgba(162, 162, 162, 1)",
+                  }}
+                >
+                  ВОЙТИ
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
         </Animated.View>
       )}
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

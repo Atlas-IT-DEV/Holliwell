@@ -23,6 +23,33 @@ const AboutCourseMeditationScreen = ({
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
   console.log(route.params.lessons);
+  const combineTimeStrings = (timeStrings) => {
+    // Разделяем каждую строку времени на часы, минуты и секунды
+    const times = timeStrings.map((str) => {
+      const parts = str.split(":");
+      return {
+        hours: parseInt(parts[0], 10),
+        minutes: parseInt(parts[1], 10),
+        seconds: parseInt(parts[2], 10),
+      };
+    });
+
+    // Суммируем часы, минуты и секунды
+    let totalHours = 0;
+    let totalMinutes = 0;
+    let totalSeconds = 0;
+    for (const time of times) {
+      totalHours += time.hours;
+      totalMinutes += time.minutes;
+      totalSeconds += time.seconds;
+    }
+
+    // Приводим результаты к целым числам и форматируем результат
+    const totalHoursString = ("0" + Math.floor(totalHours)).slice(-2);
+    const totalMinutesString = ("0" + Math.floor(totalMinutes)).slice(-2);
+    const totalSecondsString = ("0" + Math.floor(totalSeconds)).slice(-2);
+    return `${totalHoursString}:${totalMinutesString}:${totalSecondsString}`;
+  };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -52,7 +79,7 @@ const AboutCourseMeditationScreen = ({
             >
               <SvgXml xml={arrow_back} width={20} height={20} />
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={{
                 backgroundColor: "rgba(18,18,18,1)",
                 width: 35,
@@ -63,7 +90,7 @@ const AboutCourseMeditationScreen = ({
               }}
             >
               <SvgXml xml={icon_share} width={20} height={20} />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </ImageBackground>
 
@@ -86,7 +113,7 @@ const AboutCourseMeditationScreen = ({
           <View style={{ alignItems: "center", marginTop: 20, width: "100%" }}>
             <AudioReview
               uri={route.params.path_to_url_audio}
-              text="Обзор курса"
+              text="Обзор медитации"
             />
           </View>
           {/* <TouchableOpacity
@@ -112,20 +139,54 @@ const AboutCourseMeditationScreen = ({
           </TouchableOpacity> */}
           <View
             style={{
-              borderBottomColor: "#D9D9D9",
-              borderBottomWidth: 1,
+              borderTopColor: "#D9D9D9",
+              borderTopWidth: 1,
+              borderStyle: "solid",
               width: "100%",
-              marginTop: 40,
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "flex-start",
+              alignItems: "flex-start",
             }}
           ></View>
           <Text
             style={{
               marginTop: 30,
+              fontFamily: "GeologicaRegular",
+              fontSize: 20,
+              alignSelf: "flex-start",
+            }}
+          >
+            ОПИСАНИЕ КУРСА
+          </Text>
+          <Text
+            style={{
+              marginTop: 10,
               fontFamily: "GeologicaLight",
+              lineHeight: 20,
             }}
           >
             {route.params.description}
           </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              gap: 40,
+              marginTop: 20,
+            }}
+          >
+            <Text style={{ fontFamily: "GeologicaThin" }}>
+              Занятий: {route.params.lessons.length}
+            </Text>
+            <Text style={{ fontFamily: "GeologicaThin" }}>
+              {combineTimeStrings(
+                route.params.lessons.map((elem) => {
+                  return elem.audio_length;
+                })
+              )}
+            </Text>
+          </View>
           <View
             style={{
               borderBottomColor: "#D9D9D9",
@@ -138,10 +199,17 @@ const AboutCourseMeditationScreen = ({
         <View style={{ gap: 30 }}>
           {route.params.lessons.map((elem, index) => {
             console.log(elem.title);
-            return <AudioReview text={elem.title} uri={elem.path_to_audio} />;
+            return (
+              <AudioReview
+                uri={elem.path_to_audio}
+                text={elem.title}
+                length={elem?.audio_length}
+                trainer={elem?.trainer}
+              />
+            );
           })}
         </View>
-        <View style={{ marginTop: 40, marginHorizontal: 20 }}>
+        {/* <View style={{ marginTop: 40, marginHorizontal: 20 }}>
           <View
             style={{
               borderBottomColor: "#D9D9D9",
@@ -208,7 +276,7 @@ const AboutCourseMeditationScreen = ({
               marginVertical: 40,
             }}
           ></View>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

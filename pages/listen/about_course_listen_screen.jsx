@@ -141,26 +141,33 @@ const AboutCourseListenScreen = ({ route }) => {
             </Text>
           </View>
         </View>
-        <View style={{ alignItems: "center", padding: 20 }}>
+        {/*         <View style={{ alignItems: "center", padding: 20 }}>
           <AudioReview
             uri={route.params.path_to_url_audio}
             text="Обзор курса"
           />
-        </View>
+        </View> */}
         <View style={{ marginTop: 40, marginHorizontal: 20 }}>
-          <View
+          {/*           <View
             style={{
               borderBottomColor: "#D9D9D9",
               borderBottomWidth: 1,
               width: "100%",
             }}
-          ></View>
+          ></View> */}
           {route.params.lessons.map((elem, index) => {
-            return <AudioReview uri={elem.path_to_audio} text={elem.title} />;
+            return (
+              <AudioReview
+                uri={elem.path_to_audio}
+                text={elem.title}
+                length={elem?.audio_length}
+                trainer={elem?.trainer}
+              />
+            );
           })}
         </View>
 
-        <View style={{ marginTop: 40, marginHorizontal: 20 }}>
+        {/* <View style={{ marginTop: 40, marginHorizontal: 20 }}>
           <Text
             style={{
               fontFamily: "GeologicaRegular",
@@ -214,7 +221,7 @@ const AboutCourseListenScreen = ({ route }) => {
               marginVertical: 40,
             }}
           ></View>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

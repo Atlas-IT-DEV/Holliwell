@@ -58,7 +58,7 @@ const TrainScreen = observer(() => {
             }}
             onPress={() => navigation.goBack()}
           >
-            <SvgXml xml={arrow_back} width={20} height={20}/>
+            <SvgXml xml={arrow_back} width={20} height={20} />
           </TouchableOpacity>
           <Text
             style={{
@@ -129,122 +129,127 @@ const TrainScreen = observer(() => {
               </View>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity
+          <View
             style={{
-              backgroundColor: "rgba(217, 217, 217, 1)",
-              width: 122,
-              height: 30,
-              borderRadius: 20,
-              marginTop: 20,
+              width: "100%",
+              display: "flex",
               flexDirection: "row",
-              justifyContent: "space-around",
+              justifyContent: "space-between",
+              alignContent: "center",
               alignItems: "center",
             }}
-            onPress={() => handleSort()}
           >
-            {/* <Image
+            <TouchableOpacity
+              style={{
+                backgroundColor: "rgba(217, 217, 217, 1)",
+                width: 122,
+                height: 30,
+                borderRadius: 20,
+                marginTop: 20,
+                flexDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+              }}
+              onPress={() => handleSort()}
+            >
+              {/* <Image
               style={{ width: 20, height: 20 }}
               source={require("../../images/filters.png")}
             /> */}
-            <Text style={{ fontSize: 14, fontFamily: "GeologicaThin" }}>
-              {sort == 0 ? "сортировка" : sort == 1 ? "популярное" : "новое"}
-            </Text>
-            {/* <Image
+              <Text style={{ fontSize: 14, fontFamily: "GeologicaThin" }}>
+                {sort == 0 ? "сортировка" : sort == 1 ? "популярное" : "новое"}
+              </Text>
+              {/* <Image
               style={{ width: 20, height: 20 }}
               source={require("../../images/arrow_down.png")}
             /> */}
-          </TouchableOpacity>
+            </TouchableOpacity>
+            <Text style={{ marginTop: 20 }}>
+              Кол-во:{" "}
+              {selected == 0
+                ? pageStore.training.flatMap((course) => course.lessons).length
+                : pageStore.training.length}
+            </Text>
+          </View>
+
           <View style={{ marginTop: 20 }}>
-            {selected == 0 ? (
+            {selected === 0 ? (
               <>
                 {pageStore.training
-                  .map((course) => course.lessons.map((lesson) => lesson))
-                  .map((elem, index, array) => {
-                    index *= 2;
-                    return (
-                      <View
-                        style={{
-                          marginTop: 20,
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        {array.slice(index, index + 2).length == 2 ? (
-                          <>
-                            <CourseCard
-                              name={elem.title}
-                              uri={elem.path_to_cover}
-                              price={elem?.price}
-                              lesson_obj={elem}
-                              key={elem}
-                            />
-                            <CourseCard
-                              name={array[index + 1].title}
-                              uri={array[index + 1].path_to_cover}
-                              price={array[index + 1]?.price}
-                              lesson_obj={array[index + 1]}
-                              key={array[index + 1]}
-                            />
-                          </>
-                        ) : array.slice(index, index + 2).length == 1 ? (
+                  .flatMap((course) => course.lessons) // Объединяем все уроки в один массив
+                  .reduce((rows, elem, index, array) => {
+                    if (index % 2 === 0) {
+                      rows.push(
+                        <View
+                          key={index}
+                          style={{
+                            marginTop: 20,
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                          }}
+                        >
                           <CourseCard
                             name={elem.title}
                             uri={elem.path_to_cover}
                             price={elem?.price}
                             lesson_obj={elem}
-                            key={elem}
+                            description={`${elem?.trainer?.first_name} ${elem?.trainer?.last_name}`}
+                            time={elem?.video_length}
                           />
-                        ) : null}
-                      </View>
-                    );
-                  })}
+                          {array[index + 1] && (
+                            <CourseCard
+                              name={array[index + 1].title}
+                              uri={array[index + 1].path_to_cover}
+                              price={array[index + 1]?.price}
+                              lesson_obj={array[index + 1]}
+                              description={`${
+                                array[index + 1]?.trainer?.first_name
+                              } ${array[index + 1]?.trainer?.last_name}`}
+                              time={array[index + 1]?.video_length}
+                            />
+                          )}
+                        </View>
+                      );
+                    }
+                    return rows;
+                  }, [])}
               </>
             ) : (
               <>
-                {pageStore.training.map((elem, index, array) => {
-                  index *= 2;
-
-                  return (
-                    <View
-                      style={{
-                        marginTop: 20,
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        gap:10
-                      }}
-                    >
-                      {array.slice(index, index + 2).length == 2 ? (
-                        <>
-                          <CoursePackCard
-                            name={elem.title}
-                            uri={elem.path_to_cover}
-                            price={elem?.price}
-                            course_obj={elem}
-                            count={elem.lessons.length}
-                            key={elem}
-                          />
-                          <CoursePackCard
-                            name={array[index + 1].title}
-                            uri={array[index + 1].path_to_cover}
-                            price={array[index + 1]?.price}
-                            course_obj={array[index + 1]}
-                            count={array[index + 1].lessons.length}
-                            key={array[index + 1]}
-                          />
-                        </>
-                      ) : array.slice(index, index + 2).length == 1 ? (
+                {pageStore.training.reduce((rows, elem, index, array) => {
+                  if (index % 2 === 0) {
+                    console.log(pageStore.training);
+                    rows.push(
+                      <View
+                        key={index}
+                        style={{
+                          marginTop: 20,
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                          gap: 10,
+                        }}
+                      >
                         <CoursePackCard
                           name={elem.title}
                           uri={elem.path_to_cover}
                           price={elem?.price}
                           course_obj={elem}
                           count={elem.lessons.length}
-                          key={elem}
                         />
-                      ) : null}
-                    </View>
-                  );
-                })}
+                        {array[index + 1] && (
+                          <CoursePackCard
+                            name={array[index + 1].title}
+                            uri={array[index + 1].path_to_cover}
+                            price={array[index + 1]?.price}
+                            course_obj={array[index + 1]}
+                            count={array[index + 1].lessons.length}
+                          />
+                        )}
+                      </View>
+                    );
+                  }
+                  return rows;
+                }, [])}
               </>
             )}
           </View>

@@ -4,33 +4,44 @@ import { useNavigation } from "@react-navigation/native";
 const CourseCard = ({
   number = 1,
   name = "слушай",
-  description = "неплохой урок",
+  description = "",
   uri = "http://legacy.reactjs.org/logo-og.png",
   time = "22:40",
   isPack = false,
   lesson_obj = {},
+  coach,
 }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       onPress={() => {
         console.log(lesson_obj);
-        navigation.navigate("LessonScreen", lesson_obj[0]);
+        navigation.navigate("LessonScreen", lesson_obj);
       }}
     >
       <View style={{ minWidth: "45%" }}>
         <Image
           source={{ uri: uri }}
           style={{
-            width: isPack ? "100%" : "45vw",
+            width: isPack ? 350 : 170,
             resizeMode: "cover",
             height: 127,
           }}
         />
-        <Text style={{ fontFamily: "GeologicaRegular", fontSize: 16 }}>
-          Урок {number}: {name}
+        <Text
+          style={{
+            fontFamily: "GeologicaRegular",
+            fontSize: 16,
+            width: isPack ? 350 : 170,
+          }}
+        >
+          {name}
         </Text>
-        <Text style={{ fontFamily: "GeologicaThin" }}>{description}</Text>
+        <Text
+          style={{ fontFamily: "GeologicaThin", width: isPack ? 350 : 170 }}
+        >
+          {description}
+        </Text>
         <View
           style={{
             width: 80,

@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 const CoursePackCard = ({
   count = 5,
   name = "Рельеф как у Скалы",
-  description = "Фамилия Имя",
+  description = "",
   uri = "http://legacy.reactjs.org/logo-og.png",
   course_obj = {},
 }) => {
@@ -12,7 +12,7 @@ const CoursePackCard = ({
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("LessonsCourseScreen", course_obj)}
-      style={{width:"50%"}}
+      style={{ width: "50%" }}
     >
       <View style={{ minWidth: "45%" }}>
         <Image
@@ -35,6 +35,11 @@ const CoursePackCard = ({
             alignItems: "center",
           }}
         >
+          {count == 0 && (
+            <Text style={{ fontFamily: "GeologicaThin", color: "white" }}>
+              Нет уроков
+            </Text>
+          )}
           {count >= 1 ? (
             <Text style={{ fontFamily: "GeologicaThin", color: "white" }}>
               {count} {count >= 2 ? "уроков" : "урок"}

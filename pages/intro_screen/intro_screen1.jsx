@@ -6,6 +6,7 @@ import {
   Image,
   Dimensions,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
@@ -66,73 +67,75 @@ const IntroScreen1 = () => {
   console.log(data);
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require("./../../images/fullscreen_woman.png")}
-        style={{ height: screenHeight, width: "100%" }}
-      >
-        <Text
-          style={{
-            fontSize: 30,
-            marginTop: 30,
-            justifyContent: "center",
-            alignSelf: "center",
-            color: "white",
-          }}
+      <ScrollView>
+        <ImageBackground
+          source={require("./../../images/fullscreen_woman.png")}
+          style={{ height: screenHeight, width: "100%" }}
         >
-          HOLIWELL
-        </Text>
-        <View style={{ marginHorizontal: 20, marginTop: "90%" }}>
-          <View>
-            <Text
-              style={{
-                marginBottom: 20,
-                fontSize: 40,
-                color: "white",
-                fontFamily: "GeologicaMedium",
-              }}
-            >
-              {data[0] == undefined ? "Заголовок" : data[0].title}
-            </Text>
-
-            <Text style={styles.aboutText}>
-              {data[0] == undefined ? "Текст1" : data[0].text}
-            </Text>
-            <Text style={styles.aboutText}>
-              {data[0] == undefined ? "Текст2" : data[0].text}
-            </Text>
-            <Text style={styles.aboutText}>
-              {data[0] == undefined ? "Текст3" : data[0].text}
-            </Text>
-          </View>
-
-          <TouchableOpacity
-            onPress={() => navigation.navigate("IntroScreen2")}
+          <Text
             style={{
-              marginTop: 20,
-              backgroundColor: "white",
-              display: "flex",
-              flexDirection: "row",
-              alignContent: "center",
+              fontSize: 30,
+              marginTop: 30,
               justifyContent: "center",
-              paddingTop: 12,
-              paddingLeft: 30,
-              paddingRight: 30,
-              paddingBottom: 12,
-              borderRadius: 5,
+              alignSelf: "center",
+              color: "white",
             }}
           >
-            <Text
+            HOLIWELL
+          </Text>
+          <View style={{ marginHorizontal: 20, marginTop: "90%" }}>
+            <View>
+              <Text
+                style={{
+                  marginBottom: 20,
+                  fontSize: 40,
+                  color: "white",
+                  fontFamily: "GeologicaMedium",
+                }}
+              >
+                {data[0] == undefined ? "Заголовок" : data[0].title}
+              </Text>
+
+              <Text style={styles.aboutText}>
+                {data[0] == undefined ? "Текст1" : data[0].text}
+              </Text>
+              <Text style={styles.aboutText}>
+                {data[0] == undefined ? "Текст2" : data[0].text}
+              </Text>
+              <Text style={styles.aboutText}>
+                {data[0] == undefined ? "Текст3" : data[0].text}
+              </Text>
+            </View>
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate("IntroScreen2")}
               style={{
-                fontSize: 20,
-                color: "black",
-                fontFamily: "GeologicaRegular",
+                marginTop: 20,
+                backgroundColor: "white",
+                display: "flex",
+                flexDirection: "row",
+                alignContent: "center",
+                justifyContent: "center",
+                paddingTop: 12,
+                paddingLeft: 30,
+                paddingRight: 30,
+                paddingBottom: 12,
+                borderRadius: 5,
               }}
             >
-              Продолжить
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: "black",
+                  fontFamily: "GeologicaRegular",
+                }}
+              >
+                Продолжить
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
+      </ScrollView>
     </View>
   );
 };

@@ -107,46 +107,40 @@ const MeditationScreen = observer(() => {
               source={require("../../images/arrow_down.png")}
             /> */}
           </TouchableOpacity>
-          {pageStore.meditation.map((elem, index, array) => {
-            index *= 2;
-            console.log();
-            return (
-              <View
-                style={{
-                  marginTop: 20,
-                  flexDirection: "row",
-                  gap: 20,
-                }}
-              >
-                {array.slice(index, index + 2).length == 2 ? (
-                  <>
-                    <CourseMeditationMiniCard
-                      name={elem.title}
-                      uri={elem.path_to_cover}
-                      price={elem?.price}
-                      course_obj={elem}
-                      key={elem}
-                    />
-                    <CourseMeditationMiniCard
-                      name={array[index + 1].title}
-                      uri={array[index + 1].path_to_cover}
-                      price={array[index + 1]?.price}
-                      course_obj={array[index + 1]}
-                      key={array[index + 1]}
-                    />
-                  </>
-                ) : array.slice(index, index + 2).length == 1 ? (
+          {pageStore.meditation.reduce((rows, elem, index, array) => {
+            if (index % 2 === 0) {
+              rows.push(
+                <View
+                  key={index}
+                  style={{
+                    marginTop: 20,
+                    flexDirection: "row",
+                    gap: 10,
+                    justifyContent: "space-between",
+                  }}
+                >
                   <CourseMeditationMiniCard
                     name={elem.title}
                     uri={elem.path_to_cover}
-                    price={elem?.price}
+                    price={elem?.price_course}
                     course_obj={elem}
-                    key={elem}
+                    key={`${elem.title}-${index}`}
                   />
-                ) : null}
-              </View>
-            );
-          })}
+
+                  {array[index + 1] && (
+                    <CourseMeditationMiniCard
+                      name={array[index + 1].title}
+                      uri={array[index + 1].path_to_cover}
+                      price={array[index + 1]?.price_course}
+                      course_obj={array[index + 1]}
+                      key={`${array[index + 1].title}-${index + 1}`}
+                    />
+                  )}
+                </View>
+              );
+            }
+            return rows;
+          }, [])}
         </View>
       </ScrollView>
     </SafeAreaView>

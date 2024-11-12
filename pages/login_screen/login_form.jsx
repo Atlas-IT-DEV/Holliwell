@@ -32,7 +32,7 @@ const LoginForm = () => {
   const login = async (values) => {
     await pageStore.login(values);
     if (pageStore.token) await pageStore.getMe();
-    pageStore.registered && navigation.navigate("IntroScreen1");
+    pageStore.registered && navigation.navigate("MainScreen");
   };
 
   return (

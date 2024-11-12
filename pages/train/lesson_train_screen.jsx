@@ -65,7 +65,7 @@ const LessonScreen = ({
             >
               <SvgXml xml={arrow_back} width={20} height={20} />
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={{
                 backgroundColor: "rgba(18,18,18,1)",
                 width: 35,
@@ -75,17 +75,56 @@ const LessonScreen = ({
                 justifyContent: "center",
               }}
             >
-              <SvgXml xml={icon_share} width={20}  />
-            </TouchableOpacity>
+              <SvgXml xml={icon_share} width={20} />
+            </TouchableOpacity> */}
           </View>
         </ImageBackground>
-        <View style={{ marginTop: 40, alignItems: "center" }}>
-          <Text style={{ fontSize: 28, fontFamily: "GeologicaRegular" }}>
+        <View
+          style={{
+            marginTop: 40,
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            alignItems: "center",
+            alignSelf: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 28,
+              fontFamily: "GeologicaRegular",
+              textAlign: "left",
+              paddingHorizontal: 20,
+            }}
+          >
             {route.params.title}
           </Text>
-          <View style={{ flexDirection: "row", gap: 30, marginTop: 30 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 5,
+              marginTop: 30,
+            }}
+          >
             <Text
-              style={{ fontFamily: "GeologicaThin" }}
+              style={{
+                fontFamily: "GeologicaThin",
+                textAlign: "left",
+                display: "flex",
+                alignSelf: "center",
+              }}
+            >
+              Тренер:{" "}
+            </Text>
+            <Text
+              style={{
+                fontFamily: "GeologicaThin",
+                textAlign: "left",
+                display: "flex",
+                alignSelf: "center",
+                textDecorationLine: "underline",
+              }}
             >{`${route.params.trainer.last_name} ${route.params.trainer.first_name}`}</Text>
             <Text style={{ fontFamily: "GeologicaThin" }}>
               {route.params.audio_length}
@@ -189,7 +228,7 @@ const LessonScreen = ({
             }}
           ></View>
         </View>
-        <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
+        {/* <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
           <Text style={{ fontFamily: "GeologicaRegular", fontSize: 20 }}>
             До тренировки
           </Text>
@@ -230,10 +269,18 @@ const LessonScreen = ({
               marginTop: 30,
             }}
           ></View>
-        </View>
+        </View> */}
         <View style={{ marginTop: 30, marginLeft: 20, marginRight: 20 }}>
           <View style={{ flexDirection: "row" }}>
-            <Image source={require("../../images/team1.png")} />
+            <Image
+              source={{ uri: route.params.trainer.path_to_avatar }}
+              style={{
+                width: 200,
+                resizeMode: "stretch",
+                height: 200,
+                borderRadius: 100,
+              }}
+            />
             <View>
               <Text
                 style={{

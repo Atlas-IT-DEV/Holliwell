@@ -108,46 +108,45 @@ const ListenScreen = observer(() => {
             /> */}
           </TouchableOpacity>
 
-          {pageStore.listening.map((elem, index, array) => {
-            index *= 2;
-            console.log();
-            return (
-              <View
-                style={{
-                  marginTop: 20,
-                  flexDirection: "row",
-                  gap: 25,
-                }}
-              >
-                {array.slice(index, index + 2).length == 2 ? (
-                  <>
-                    <CourseListenMiniCard
-                      name={elem.title}
-                      uri={elem.path_to_cover}
-                      price={elem?.price}
-                      course_obj={elem}
-                      key={elem}
-                    />
-                    <CourseListenMiniCard
-                      name={array[index + 1].title}
-                      uri={array[index + 1].path_to_cover}
-                      price={array[index + 1]?.price}
-                      course_obj={array[index + 1]}
-                      key={array[index + 1]}
-                    />
-                  </>
-                ) : array.slice(index, index + 2).length == 1 ? (
+          {pageStore.listening.reduce((rows, elem, index) => {
+            if (index % 2 === 0) {
+              // Создаем новую строку для пары элементов
+              rows.push(
+                <View
+                  key={index}
+                  style={{
+                    marginTop: 20,
+                    flexDirection: "row",
+                    gap: 15,
+                    justifyContent: "space-between",
+                  }}
+                >
                   <CourseListenMiniCard
                     name={elem.title}
                     uri={elem.path_to_cover}
                     price={elem?.price}
                     course_obj={elem}
-                    key={elem}
+                    key={index}
                   />
-                ) : null}
-              </View>
-            );
-          })}
+
+                  {pageStore.listening[index + 1] ? (
+                    // Если есть второй элемент в паре, отображаем его
+                    <CourseListenMiniCard
+                      name={pageStore.listening[index + 1].title}
+                      uri={pageStore.listening[index + 1].path_to_cover}
+                      price={pageStore.listening[index + 1]?.price}
+                      course_obj={pageStore.listening[index + 1]}
+                      key={index + 1}
+                    />
+                  ) : (
+                    // Если второго элемента нет, оставляем пустое место для выравнивания
+                    <View style={{ flex: 1 }} />
+                  )}
+                </View>
+              );
+            }
+            return rows;
+          }, [])}
         </View>
       </ScrollView>
     </SafeAreaView>
