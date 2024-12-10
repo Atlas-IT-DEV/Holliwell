@@ -18,15 +18,17 @@ const CoachMiniCard = ({
   return (
     <TouchableOpacity onPress={() => navigation.navigate("CoachScreen", obj)}>
       <View style={{ alignItems: "center" }}>
-        <Image
-          source={{ uri: uri }}
-          style={{
-            width: 130,
-            height: 130,
-            borderRadius: 170,
-            resizeMode: "stretch",
-          }}
-        />
+        {
+          <Image
+            source={{ uri: uri }}
+            style={{
+              width: 130,
+              height: 130,
+              borderRadius: 170,
+              resizeMode: "stretch",
+            }}
+          />
+        }
         <Text
           style={{
             fontFamily: "GeologicaLight",

@@ -15,7 +15,7 @@ const CourseListenMiniCard = ({
       onPress={() => navigation.navigate("AboutCourseListenScreen", course_obj)}
     >
       <View>
-        <Image source={{ uri: uri }} style={{ height: 200, width: 170 }} />
+        {<Image source={{ uri: uri }} style={{ height: 200, width: 170 }} />}
         {/* <View
         style={{
           position: "absolute",

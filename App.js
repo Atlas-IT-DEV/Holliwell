@@ -96,7 +96,7 @@ export default function App() {
             <Stack.Screen
               name="EditProfileScreen"
               component={EditProfileScreen}
-            />
+            />"newArchEnabled": true
             <Stack.Screen name="VideoScreen" component={VideoScreen} />
           </Stack.Navigator>
         )}

@@ -32,6 +32,7 @@ const MainScreen = observer(({ route }) => {
     path_to_video:
       "https://holiwell.ru/files/sliders/cover/5puvjRJrZyHWYE5SXqujyN/4.jpg",
   });
+  
   const [after, setAfter] = useState({});
   const getInfo = async () => {
     const response = await fetch(

@@ -71,10 +71,12 @@ const SliderComponent = () => {
   const renderSlides = () => {
     return data.map((item, index) => (
       <View key={index} style={styles.slide}>
-        <Image
-          source={{ uri: item.path_to_cover_first }}
-          style={styles.image}
-        />
+        {
+          <Image
+            source={{ uri: item.path_to_cover_first }}
+            style={styles.image}
+          />
+        }
         <View style={styles.textContainer}>
           <Text style={styles.title}>{item.title_first}</Text>
           <Text style={styles.text}>{item.text_first}</Text>
